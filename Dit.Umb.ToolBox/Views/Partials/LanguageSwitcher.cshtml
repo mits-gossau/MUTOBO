@@ -1,0 +1,20 @@
+﻿
+@model Dit.Umb.ToolBox.Models.PoCo.LanguageSwitcherModel
+
+@if (Model.Languages.Any())
+{
+    <ul class="language-switcher">
+
+        
+        @if (Model.Languages.Any())
+        {
+            foreach (var lang in Model.Languages)
+            {
+                <li>
+                    <a href="@lang.Url">@lang.Name.Substring(0, 2)</a>
+                </li>
+            }
+        }
+        
+    </ul>
+}

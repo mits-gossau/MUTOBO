@@ -1,0 +1,48 @@
+﻿@using ClientDependency.Core.Mvc
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.SearchResultModel>
+
+@{
+    Layout = "WCBasePage.cshtml";
+
+}
+@section CustomElementsDefine {
+    <script>
+        [
+            ['p-general', General],
+            ['o-header', Header],
+            ['a-logo', Logo],
+            ['m-navigation', Navigation],
+            ['o-body', Body],
+            ['o-stage', Stage],
+            ['o-highlight-list', HighlightList],
+            ['m-highlight', Highlight],
+            ['o-footer', Footer],
+            ['m-flyer', Flyer],
+            ['m-teaser', Teaser],
+            ['o-teaser-wrapper', TeaserWrapper],
+        ].forEach(element => {
+            // don't define already existing customElements
+            if (element && !customElements.get(element[0])) customElements.define(...element)
+        })
+    </script>
+}
+<o-body>
+    @Html.Action("Index", "SearchForm")
+    <h3>@Umbraco.GetDictionaryValue("SearchResultsPageTitle")</h3>
+    @if (Model.Results.Any())
+    {
+        //TODO: Texte in Dictionary
+        <p>Ihre Suche nach "@Model.Term" lieferte @Model.Results.Count() Treffer</p>
+
+        foreach (var searchResults in Model.Results)
+        {
+            <h4>@searchResults.Title</h4>
+            <p>@searchResults.Abstract</p>
+            <a href="@searchResults.Url">@searchResults.UrlTitle</a>
+        }
+    }
+    else
+    {
+        <p>@Umbraco.GetDictionaryValue("SearchResultsPageNoResults") @Model.Term</p>
+    }
+</o-body>

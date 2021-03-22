@@ -1,0 +1,6 @@
+﻿@model Dit.Umb.ToolBox.Models.PoCo.SearchFormModel
+@using(Html.BeginUmbracoForm("PostData", "SearchForm", FormMethod.Post)) {
+    @Html.Label("Suche")
+    @Html.TextBoxFor(m => m.SearchTerm)
+    <button type="submit">Suchen</button>
+}

@@ -1,0 +1,43 @@
+﻿@using Dit.Umb.ToolBox.Common.Extensions
+@using Dit.Umb.ToolBox.Models.Constants
+@using Dit.Umb.ToolBox.Models.PoCo
+@using Image = Dit.Umb.ToolBox.Models.PoCo.Image
+@model Dit.Umb.ToolBox.Models.PoCo.Flyer
+
+@{
+    var img = Model.Image;
+        //new Image();
+        //Model.GetImage(DocumentTypes.Flyer.FlyerImage);
+}
+
+<m-flyer href="@(Model.Link?.Url ?? "#")" direction="@Model.Direction.ToString().ToLower()"
+         timer="@Model.Timer" position="@Model.Position.ToString().ToLower()">
+    <style>
+        :host {
+            --transform: rotate(@(Model.Rotation)deg);
+            --background-color: transparent;
+            --z-index: 9999;
+            @if (Model.Height > 0)
+            {
+                @($"--picture-img-height: {Model.Height}px;");
+            }
+            @if (Model.Width > 0)
+            {
+                @($"--picture-img-width: { Model.Width}px;");
+            }
+            
+        }
+    </style>
+    <div style="width: 25%">
+
+        <div style="transform: rotate(@($"-{Model.Rotation}deg"))">
+            <h1 style="color: @Model.Color">@Model.Title</h1>
+            <p>
+                @Model.TeaserText
+            </p>
+        </div>
+        <div>
+            @(img?.RenderWcPictureTag() ?? new HtmlString(String.Empty))
+        </div>
+    </div>
+</m-flyer>

@@ -1,0 +1,47 @@
+﻿@using ClientDependency.Core.Mvc
+@using Dit.Umb.MKulturProzent.Classics.Models.Constants
+@using Dit.Umb.ToolBox.Models.PageModels
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.ArticlePage>
+@{
+
+
+
+    Layout = "WCBasePage.cshtml";
+
+}
+@section CustomElementsDefine {
+    <script>
+        [
+            ['p-general', General],
+            ['o-header', Header],
+            ['a-logo', Logo],
+            ['m-navigation', Navigation],
+            ['o-body', Body],
+            ['o-stage', Stage],
+            ['o-highlight-list', HighlightList],
+            ['m-highlight', Highlight],
+            ['o-footer', Footer],
+            ['m-flyer', Flyer],
+            ['m-teaser', Teaser],
+            ['o-teaser-wrapper', TeaserWrapper],
+            ['m-wide-teaser', WideTeaser],
+            ['a-arrow', Arrow]
+        ].forEach(element => {
+            // don't define already existing customElements
+            if (element && !customElements.get(element[0])) customElements.define(...element)
+        })
+    </script>
+}
+<o-body>
+    @Html.Partial("~/Views/Partials/WideTeaser.cshtml", Model)
+    @Html.Partial("~/Views/Partials/Teaser.cshtml", new List<Dit.Umb.ToolBox.Models.PageModels.ArticlePage>
+        () { Model })
+    <h1>@Model.PageTitle</h1>
+    @if (Model.EmotionImages.Any())
+    {
+        @Model.EmotionImages.ToList()[0].RenderWcPictureTag()
+    }
+    <div>
+        @Html.Raw(Model.MainContent)
+    </div>
+</o-body>

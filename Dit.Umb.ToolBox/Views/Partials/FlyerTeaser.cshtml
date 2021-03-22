@@ -1,0 +1,18 @@
+﻿@using Dit.Umb.ToolBox.Common.Extensions
+@using Dit.Umb.ToolBox.Models.Constants
+@using Dit.Umb.ToolBox.Models.PoCo
+@using Image = Dit.Umb.ToolBox.Models.PoCo.Image
+@model Dit.Umb.ToolBox.Models.PoCo.Flyer
+@{
+    var img = Model.Image;
+    //new Image();
+    //Model.GetImage(DocumentTypes.Flyer.FlyerImage);
+}
+
+<m-flyer href="@(Model.Link?.Url ?? "#")">
+    <h1>@Model.Title</h1>
+    <p>
+        @Model.TeaserText
+    </p>
+    @(img?.RenderWcPictureTag() ?? new HtmlString(String.Empty))
+</m-flyer>

@@ -1,0 +1,18 @@
+﻿@using Dit.Umb.ToolBox.Common.Extensions
+@model IEnumerable<Dit.Umb.MKulturProzent.Classics.Models.Interpreters.Artist>
+<o-highlight-list namespace="highlight-list-">
+    @foreach (var artist in Model)
+    {
+        var image = artist.Content.GetImage(Dit.Umb.MKulturProzent.Classics.Models.Constants.DocumentTypes.Artist.Fields.Image);
+
+        <m-highlight>
+            <h2>@(!string.IsNullOrEmpty(artist.InterpreterName) ? artist.InterpreterName : string.Empty)</h2>
+            <p>@(!string.IsNullOrEmpty(artist.Role) ? artist.Role : string.Empty)</p>
+            <p>@(!string.IsNullOrEmpty(artist.ShortDescription) ? artist.ShortDescription : string.Empty)</p>
+            @if (image != null)
+            {
+                image.RenderWcPictureTag();
+            }
+        </m-highlight>
+    }
+</o-highlight-list>

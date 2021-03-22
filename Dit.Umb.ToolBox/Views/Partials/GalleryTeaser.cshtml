@@ -1,0 +1,18 @@
+﻿@using Umbraco.Web.Composing
+@model Dit.Umb.ToolBox.Models.PoCo.Teaser
+
+
+<div style="width: 100%;  text-align: center;">
+    @if (Model.Images != null && Model.Images.Any())
+    {
+        @Html.Partial("~/Views/Partials/Slider.cshtml", Model.Images)
+    }
+
+    <h3>@Model.TeaserTitle</h3>
+    <article>
+        @Html.Raw(Model.TeaserText)
+    </article>
+    <a href="@Model.Link.Url" target="@Model.Link.Target">
+        @Current.UmbracoHelper.GetDictionaryValue("readMore")
+    </a>
+</div>

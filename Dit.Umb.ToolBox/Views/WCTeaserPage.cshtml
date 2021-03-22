@@ -1,0 +1,9 @@
+﻿@using ClientDependency.Core.Mvc
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.TeaserPage>
+@{
+    Layout = "WCBasePage.cshtml";
+    @Html.RequiresJs("~/scripts/WebComponentsLoader/articlePage.js", 1, 1, new { rel = "preload", type = "module" });
+}
+<o-body>
+    @Html.Partial("~/Views/Partials/Teaser.cshtml", Model.Teasers)
+</o-body>

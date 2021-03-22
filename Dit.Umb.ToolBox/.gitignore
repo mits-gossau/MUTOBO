@@ -1,0 +1,5 @@
+App_Data/
+Media/
+Umbraco/
+config/appSettings.config
+config/connectionString.config

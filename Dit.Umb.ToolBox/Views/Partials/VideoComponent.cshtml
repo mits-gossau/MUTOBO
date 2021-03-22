@@ -1,0 +1,17 @@
+﻿@model Dit.Umb.ToolBox.Models.PoCo.VideoComponent
+
+
+<div style="width: 100%;  text-align: center;">
+    @if (Model.Video != null)
+    {
+        <video width="320" height="240" controls>
+            <source src="@Model.Video.Source" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    }
+    else
+    {
+        @Html.Raw(Model.Embedded)
+    }
+</div>
+

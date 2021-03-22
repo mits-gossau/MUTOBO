@@ -1,0 +1,51 @@
+﻿@using ClientDependency.Core.Mvc
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.HomePage>
+@{
+    Layout = "WCBasePage.cshtml";
+
+    @*Html.RequiresJs("~/scripts/WebComponentsLoader/homePage.js", 1, 1, new { rel = "preload", type = "module" });*@
+    //var path = "~/web-components-cms-template/src/es/components/";
+    //Html.RequiresJs($"{path}prototypes/Shadow.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}pages/General.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}organisms/Header.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}atoms/Logo.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}molecules/Navigation.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}organisms/Body.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}organisms/Stage.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}organisms/HighlightList.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}molecules/Highlight.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}organisms/Footer.js", 1, 1, new { rel = "preload", type = "module" });
+    //Html.RequiresJs($"{path}molecules/Flyer.js", 1, 1, new { rel = "preload", type = "module" });
+}
+@section CustomElementsDefine {
+    <script>
+    [
+        ['p-general', General],
+        ['o-header', Header],
+        ['a-logo', Logo],
+        ['m-navigation', Navigation],
+        ['o-body', Body],
+        ['o-stage', Stage],
+        ['o-highlight-list', HighlightList],
+        ['m-highlight', Highlight],
+        ['o-footer', Footer],
+        ['m-flyer', Flyer],
+        ['m-teaser', Teaser],
+        ['o-teaser-wrapper', TeaserWrapper],
+    ].forEach(element => {
+        // don't define already existing customElements
+        if (element && !customElements.get(element[0])) customElements.define(...element)
+    })
+    </script>
+}
+<o-body>
+    @Html.Action("Index", "SearchForm")
+    @Html.Partial("~/Views/Partials/Teaser.cshtml", Model.TeaserList)
+    @if (Model.FlyerList != null && Model.FlyerList.Any())
+    {
+        foreach (var flyer in Model.FlyerList)
+        {
+            @Html.Partial("~/Views/Partials/Flyer.cshtml", flyer);
+        }
+    }
+</o-body>

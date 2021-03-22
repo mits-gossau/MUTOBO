@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Dit.Umb.ToolBox.Models.PoCo.Image>
+<third-party-macro-carousel pagination loop height="1000px"  interval="5000" >
+    @foreach (var image in Model)
+    {
+        @*@image.RenderWcPictureTag(width: "1200px")*@
+
+        <a-picture defaultSource="@image.DefaultSource" alt="@image.Alt" sources='@image.GetSourcesAsJSON()'></a-picture>
+    }
+</third-party-macro-carousel>

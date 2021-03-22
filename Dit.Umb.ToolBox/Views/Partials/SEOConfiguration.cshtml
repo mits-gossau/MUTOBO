@@ -1,0 +1,19 @@
+﻿@model Dit.Umb.ToolBox.Models.Configuration.SeoConfiguration
+<meta name="title" content="@Model.MetaTitle" />
+<meta name="description" content="@Model.MetaDescription">
+<meta property="og:description" content="@Model.MetaDescription" />
+<meta name="keywords" content="@Model.MetaKeywords">
+
+
+@if (!string.IsNullOrEmpty(Model.ThumbnailUrl))
+{
+    <PageMap>
+        <DataObject type="thumbnail">
+            <Attribute name="src" value="@Model.ThumbnailUrl"/>
+            <Attribute name="width" value="@Model.ThumbNailWidth"/>
+            <Attribute name="height" value="@Model.ThumbNailHeight"/>
+        </DataObject>
+    </PageMap>
+}
+
+

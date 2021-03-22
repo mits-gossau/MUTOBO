@@ -1,0 +1,31 @@
+﻿@model Dit.Umb.ToolBox.Models.Configuration.HeaderConfiguration
+<o-header namespace="header-">
+    @if (Model.GlobalSlogan != null)
+    {
+        <h1>@Model.GlobalSlogan.Title.ToUpper()</h1>
+        <h2>@Model.GlobalSlogan.SubTitle</h2>
+    }
+
+    @if (Model.NavigationItems != null && Model.NavigationItems.Any())
+    {
+        <m-navigation hover="true" namespace="navigation-">
+            <ul>
+                @foreach (var navItem in Model.NavigationItems)
+                {
+                    <li>
+                        <a href="@navItem.Url" target="@(navItem.NewWindow ? "_blank" : string.Empty)">@navItem.Title</a>
+                        @if (navItem.Children.Any())
+                        {
+                            <ul>
+                                @foreach (var childNavItem in navItem.Children)
+                                {
+                                    <li><a href="@childNavItem.Url" target="@(childNavItem.NewWindow ? "_blank" : string.Empty)">@childNavItem.Title</a></li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </m-navigation>
+    }
+</o-header>

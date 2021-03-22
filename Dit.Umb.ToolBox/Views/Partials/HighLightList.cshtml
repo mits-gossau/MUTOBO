@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Dit.Umb.ToolBox.Models.PageModels.ArticlePage>
+<o-highlight-list>
+    <h1>Unsere Clubkonzerte</h1>
+    @foreach (var highlight in Model)
+    {
+        <m-highlight href=./baaahh>
+            <h5>@highlight.PageTitle</h5>
+
+            <p>@highlight.Abstract</p>
+            @if (highlight.EmotionImages.Any())
+            {
+                var image = highlight.EmotionImages.FirstOrDefault();
+
+                
+                @(image?.RenderWcPictureTag())
+               
+            }
+        </m-highlight>
+    }
+</o-highlight-list>
+
+

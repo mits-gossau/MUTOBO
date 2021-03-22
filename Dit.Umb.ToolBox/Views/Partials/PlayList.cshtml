@@ -1,0 +1,47 @@
+﻿@using Dit.Umb.MKulturProzent.Classics.Common.Extensions
+@model IEnumerable<Dit.Umb.MKulturProzent.Classics.Models.Pages.ConcertPage>
+
+
+<o-highlight-list>
+    @foreach (var concert in Model.Select((concert, index) => new { concert, index }))
+    {
+        <m-highlight href="@concert.concert.Content.Url()">
+            @if (concert.index > 0)
+            {
+                <hr style="color: white;" />
+
+            }
+
+            <h3 style="font-family: var(--font-family-bold)">
+                @Html.GetDateTimeStringForPlayList(concert.concert)
+                <br />
+                @concert.concert.Orchestra.InterpreterName.ToUpper()
+                <br />
+                @Html.GetCitiesForPlaylist(concert.concert)
+            </h3>
+
+            @if (concert.concert.Artists != null && concert.concert.Artists.Any())
+            {
+                <p style="text-align: center;">
+                    @foreach (var artist in concert.concert.Artists.Select((artist, index) => new { artist, index }))
+                    {
+                        @($"{artist.artist.InterpreterName} ({artist.artist.Role})")
+
+                        if (artist.index < concert.concert.Artists.Count() - 1)
+                        {
+                            <br />
+                        }
+                    }
+                </p>
+            }
+        </m-highlight>
+    }
+
+
+
+</o-highlight-list>
+
+
+
+
+

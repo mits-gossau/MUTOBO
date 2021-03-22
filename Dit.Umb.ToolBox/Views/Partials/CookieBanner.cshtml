@@ -1,0 +1,15 @@
+﻿@model Dit.Umb.ToolBox.Models.PoCo.CookieBannerModel
+@using System.Globalization
+@using Umbraco.Web.Composing
+<msrc-cookie-banner
+    props="{'env': '@Model.Environment', 'language': '@CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToLower()', 'theme': '@Model.Theme', 'webAPIKey': '@Model.ApiKey'}"
+    mobile-breakpoint="1000px"
+>
+    
+    <style>
+        #msrc-widget {
+            --font-size: 0.8rem;
+        }
+    </style>
+
+</msrc-cookie-banner>

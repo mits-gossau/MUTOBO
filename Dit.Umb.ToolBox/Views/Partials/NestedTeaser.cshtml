@@ -1,0 +1,23 @@
+﻿@using Dit.Umb.ToolBox.Common.Extensions
+@model Dit.Umb.ToolBox.Models.PoCo.Teaser
+<o-teaser-wrapper>
+        <m-teaser>
+            @if (Model.Images.Any())
+            {
+                foreach (var image in Model.Images.Take(1))
+                {
+
+                    <a href="@Model.Link.Url" target="@Model.Link.Target">
+                        <figure>
+                            @image.RenderWcPictureTag()
+                            <figcaption>
+                                <h3>@Model.TeaserTitle</h3>
+                                <p>@Html.Raw(Model.TeaserText)</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                }
+            }
+        </m-teaser>
+    </o-teaser-wrapper>
+

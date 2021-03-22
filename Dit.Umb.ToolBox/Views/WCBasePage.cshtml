@@ -1,0 +1,40 @@
+﻿ @inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.BasePage>
+@using System.Globalization
+@using ClientDependency.Core.Mvc
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+    Html.RequiresCss("~/web-components-cms-template/src/css/variablesM4music.css");
+    Html.RequiresCss($"~/web-components-cms-template/src/css/misc.css");
+    Html.RequiresCss($"~/web-components-cms-template/src/css/fonts.css");
+    Html.RequiresCssFolder("~/css");
+}
+ <!DOCTYPE html>
+@*TODO: set the language attribute dynamically *@
+<html lang="@CultureInfo.CurrentCulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    @*<link href="/web-components-cms-template/src/favicon.ico" rel="short" />*@
+
+
+
+    @Html.RenderCssHere()
+    <title>@Model.PageTitle</title>
+    @Html.Action("Index", "Seo")
+    @if (Model.Theme != null)
+    {
+        @Html.Action("Index", "CssVariables", new { Theme = Model.Theme })
+    }
+
+</head>
+<body>
+    <p-general>
+        @Html.Partial("~/Views/Partials/Header.cshtml", Model.HeaderConfiguration)
+        @RenderBody()
+        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration)
+    </p-general>
+@Html.Action("Index", "WcRender")
+@RenderSection("CustomElementsDefine", required: false)
+</body>
+</html>

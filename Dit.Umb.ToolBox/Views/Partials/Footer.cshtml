@@ -1,0 +1,64 @@
+﻿@using Dit.Umb.ToolBox.Models.Constants
+@model Dit.Umb.ToolBox.Models.Configuration.FooterConfiguration
+<o-footer namespace="footer-" theme="simple">
+
+
+    @if (Model.PictureLinks != null && Model.PictureLinks.Any())
+    {
+        <div class="logo-container">
+            @foreach (var picLink in Model.PictureLinks.Take(2))
+            {
+                <a-logo namespace="footer-logo-" src="@picLink.Image.DefaultSource.Src" href="@picLink.Link.Url" target="@picLink.Link.Target">    
+
+                    @if (!string.IsNullOrEmpty(picLink.Text))
+                    {
+                    <p>@picLink.Text&nbsp;
+                        <a href="@picLink.Link.Url" target="@picLink.Link.Target">@picLink.Link.Name</a></p>
+                    }
+         
+                </a-logo>
+    
+            }
+        </div>
+
+
+    }
+    
+    
+
+    
+    <div class="footer-links">
+        
+        
+        @if (Model.FooterLinks != null && Model.FooterLinks.Any())
+        {
+            <ul>
+                @if (Model.HasValue(DocumentTypes.FooterConfiguration.Fields.CopyRight))
+                {
+                    <li>
+                        <span>
+                            @Html.Raw(Model.Copyright)
+                        </span>
+                    </li>
+
+                }
+                @foreach (var link in Model.FooterLinks)
+                {
+                    <li>
+                        <a href="@link.Url" target="@link.Target">
+                            @link.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+        @if (Model.Languages != null && Model.Languages.Any())
+        {
+            Html.RenderAction("Index", "LanguageSwitcher");
+        }
+    </div>
+
+
+
+
+</o-footer>

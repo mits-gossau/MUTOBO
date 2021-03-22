@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+@model IEnumerable<Dit.Umb.ToolBox.Models.PageModels.BasePage>
+@{Layout = null; Response.ContentType = "text/xml"; }
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    @foreach (var page in Model)
+    {
+        if (!page.ExcludeFromXMLSitemap)
+        {
+            <url>
+                <loc>@page.Content.Url(mode: UrlMode.Absolute).Replace("http", "https")</loc>
+                <lastmod>@($"{page.Content.UpdateDate:s}+00:00")</lastmod>
+                <changefreq>@page.SearchEngineFrequency</changefreq>
+                <priority>@page.SearchEngineRelativePriority</priority>
+            </url>
+        }
+    }
+</urlset>

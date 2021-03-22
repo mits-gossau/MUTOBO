@@ -1,0 +1,45 @@
+﻿@model Dit.Umb.ToolBox.Models.PoCo.ContactFormModel
+
+@using (Html.BeginUmbracoForm("SendContactForm", "SimpleContactForm", FormMethod.Post))
+{
+    <div class="form-group">
+        <label class="label label-primary">Name *</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control mandatory" })
+        <p class="error-msg"></p>
+    </div>
+    <div class="form-group">
+        <label class="label label-primary">Vorname *</label>
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control mandatory" })
+        <p class="error-msg"></p>
+    </div>
+    <div class="form-group">
+        <label class="label label-primary">Adresse *</label>
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        <p class="error-msg"></p>
+    </div>
+    <div class="form-group">
+        <label class="label label-primary">PLZ / Ort *</label>
+        @Html.TextBoxFor(m => m.ZipCity, new { @class = "form-control" })
+        <p class="error-msg"></p>
+    </div>
+    <div class="form-group">
+        <label class="label label-primary">Telefon</label>
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+        <p class="error-msg"></p>
+    </div>
+    <div class="form-group">
+        <label class="label label-primary">Email *</label>
+        @Html.TextBoxFor(m => m.Mail, new { @class = "form-control mandatory" })
+        <p class="error-msg"></p>
+    </div>
+    <div class="form-group">
+        <label class="label label-primary">Nachricht *</label>
+        @Html.TextAreaFor(m => m.Message, new { @class = "form-control mandatory" })
+        <p class="error-msg"></p>
+    </div>
+    <div class="form-group right">
+        <input type="hidden" name="formReceiver" value="@Model.Receiver.Content.Id" />
+        <input type="hidden" name="formCustomer" value="@Model.Customer.Content.Id" />
+        <button id="submitButton" type="submit" style="text-align: right">Senden</button>
+    </div>  
+}

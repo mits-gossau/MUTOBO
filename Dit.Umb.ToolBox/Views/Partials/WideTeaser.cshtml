@@ -1,0 +1,21 @@
+﻿@model Dit.Umb.ToolBox.Models.PageModels.ArticlePage
+
+@{
+    var image = Model.EmotionImages?.FirstOrDefault();
+}
+<m-wide-teaser href="@Model.Content.Url()">
+    <!-- TODO:
+    Redirect is currently being handled by JavaScript, check if this is UX/Accessibility compliant
+    -->
+    <figure>
+        @(image?.RenderWcPictureTag("200"))
+        <figcaption>
+            <h4>@Model.PageTitle</h4>
+            <p>@Model.Abstract</p>
+            <p class="moreLink">
+                <a-arrow direction=right></a-arrow>
+                <span>Home</span>
+            </p>
+        </figcaption>
+    </figure>
+</m-wide-teaser>
