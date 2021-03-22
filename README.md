@@ -18,4 +18,10 @@ to run MUTOBO:
 7. Build your Website and enjoy
 
 
+Urgent! if you decide to use the web-components-cms templates you must update the submodule
+
+ git submodule update --init --recursive --remote
+ 
+ 
+
 
