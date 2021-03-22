@@ -619,6 +619,7 @@
     <Content Include="Views\WCFormPage.cshtml" />
     <Content Include="Views\Partials\SimpleContactForm.cshtml" />
     <Content Include="Views\Partials\VideoComponent.cshtml" />
+    <Content Include="Views\WCContentPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common\Dit.Umb.ToolBox.Common.csproj">
