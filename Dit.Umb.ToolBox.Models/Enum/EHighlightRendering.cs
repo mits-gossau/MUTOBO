@@ -1,4 +1,4 @@
-﻿namespace Dit.Umb.MKulturProzent.Classics.Models.Enums
+﻿namespace Dit.Umb.ToolBox.Models.Enum
 {
     public enum EHighlightRendering
     {

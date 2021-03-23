@@ -264,6 +264,7 @@
     <Compile Include="IMailService.cs" />
     <Compile Include="INavigationService.cs" />
     <Compile Include="IPageLayoutService.cs" />
+    <Compile Include="IPdfService.cs" />
     <Compile Include="IPictureLinkService.cs" />
     <Compile Include="IScriptService.cs" />
     <Compile Include="ISearchService.cs" />

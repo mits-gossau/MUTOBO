@@ -40,6 +40,8 @@
 }
 <o-body>
     @Html.Action("Index", "SearchForm")
+
+  
     @Html.Partial("~/Views/Partials/Teaser.cshtml", Model.TeaserList)
     @if (Model.FlyerList != null && Model.FlyerList.Any())
     {

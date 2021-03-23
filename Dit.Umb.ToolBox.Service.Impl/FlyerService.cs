@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Dit.Umb.Toolbox.Common.ContentExtensions;
 using Dit.Umb.ToolBox.Common.Exceptions;
 using Dit.Umb.ToolBox.Common.Extensions;
 using Dit.Umb.ToolBox.Models.Constants;
@@ -28,7 +29,10 @@ namespace Dit.Umb.ToolBox.Services.Impl
             
             foreach (IPublishedElement element in elements)
             {
-                Flyer fly = new Flyer(element);
+                Flyer fly = new Flyer(element)
+                {
+                    
+                };
                 var articelContent = element.Value<IPublishedContent>(DocumentTypes.Flyer.Fields.Link);
                 ArticlePage articel = null;
 
@@ -52,7 +56,7 @@ namespace Dit.Umb.ToolBox.Services.Impl
                         : articel.Abstract;
 
                     fly.Image = element.HasValue(DocumentTypes.Flyer.Fields.FlyerImage)
-                        ? element.GetImage(DocumentTypes.Flyer.Fields.FlyerImage, height: 300,
+                        ? element.GetImage(DocumentTypes.Flyer.Fields.FlyerImage, fly.Height, fly.Width,
                             imageCropMode: ImageCropMode.Max)
                         : articelContent.GetImages(DocumentTypes.ArticlePage.Fields.EmotionImages, 
                             height: fly.Height, width: fly.Width, imageCropMode: ImageCropMode.Max)?.FirstOrDefault();

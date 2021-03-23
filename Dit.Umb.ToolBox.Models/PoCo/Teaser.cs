@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Dit.Umb.MKulturProzent.Classics.Models.Enums;
 using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Enum;
 using Umbraco.Core.Models.PublishedContent;

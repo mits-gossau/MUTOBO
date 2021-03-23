@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dit.Umb.Toolbox.Common.ContentExtensions;
 using Dit.Umb.ToolBox.Common.Extensions;
 using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.PageModels;
@@ -61,6 +62,8 @@ namespace Dit.Umb.ToolBox.Services.Impl
                         case DocumentTypes.Teaser.Alias:
                             result.Add(GetTeaser(element));
                             break;
+
+                      
                     }
 
 
@@ -88,10 +91,7 @@ namespace Dit.Umb.ToolBox.Services.Impl
                 if (article == null)
                     throw new Exception($"Please make sure that you have a linked article page when using article data.");
 
-                //teaser.Images = GetHighlightImages(article.Content);
-
-                //teaser.TeaserText = GetHighlightText(article.Content);
-                //teaser.TeaserTitle = GetHighlightTitle(article.Content);
+              
             }
             else
             {
@@ -110,10 +110,6 @@ namespace Dit.Umb.ToolBox.Services.Impl
             return teaser;
 
         }
-
-
-
-
 
 
 

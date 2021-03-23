@@ -11,11 +11,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox.Services", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox.Services.Impl", "Dit.Umb.ToolBox.Service.Impl\Dit.Umb.ToolBox.Services.Impl.csproj", "{1A49FC73-FB47-4C22-BCBF-3E37FE566703}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{3DAF8150-21C7-48C5-A032-B75F8ACA6A74}"
+	ProjectSection(SolutionItems) = preProject
+		Deployment\delete-usync-folder.ps1 = Deployment\delete-usync-folder.ps1
+		Deployment\deploy-configs.ps1 = Deployment\deploy-configs.ps1
+		Deployment\setup-cd-server.ps1 = Deployment\setup-cd-server.ps1
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_WebProject", "_WebProject", "{AE672E16-A211-4D16-BAF2-FC4BF22048A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolbox", "Toolbox", "{0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox.Common", "Dit.Umb.Toolbox.Common\Dit.Umb.ToolBox.Common.csproj", "{6688F7E3-0FA5-4CAC-8256-805DACAF2C57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.Toolbox.Common.ContentExtensions", "Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj", "{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +52,10 @@ Global
 		{6688F7E3-0FA5-4CAC-8256-805DACAF2C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6688F7E3-0FA5-4CAC-8256-805DACAF2C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6688F7E3-0FA5-4CAC-8256-805DACAF2C57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +66,7 @@ Global
 		{927618A5-ACDB-4580-8562-20700C724919} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 		{1A49FC73-FB47-4C22-BCBF-3E37FE566703} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 		{6688F7E3-0FA5-4CAC-8256-805DACAF2C57} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
+		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70340767-2600-46EC-8C6C-78B7C59BEA16}

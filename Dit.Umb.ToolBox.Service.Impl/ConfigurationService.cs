@@ -11,6 +11,7 @@ using Umbraco.Web.Models;
 using Current = Umbraco.Web.Composing.Current;
 using System.Collections.Generic;
 using System.Linq;
+using Dit.Umb.Toolbox.Common.ContentExtensions;
 
 namespace Dit.Umb.ToolBox.Services.Impl
 {

@@ -229,6 +229,9 @@
     <Reference Include="NUglify, Version=1.13.2.0, Culture=neutral, PublicKeyToken=15bc7810aec21b5e, processorArchitecture=MSIL">
       <HintPath>..\packages\NUglify.1.13.2\lib\net40\NUglify.dll</HintPath>
     </Reference>
+    <Reference Include="OpenHtmlToPdf, Version=1.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenHtmlToPdf.1.12.0.0\lib\net45\OpenHtmlToPdf.dll</HintPath>
+    </Reference>
     <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=2.0.0.399, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoFileSystemProviders.Azure.2.0.0\lib\net472\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
@@ -460,10 +463,12 @@
     <Compile Include="Controllers\SurfaceControllers\FooterController.cs" />
     <Compile Include="Controllers\SurfaceControllers\HeaderController.cs" />
     <Compile Include="Controllers\SurfaceControllers\LanguageSwitcherController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\PdfGeneratorController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SearchFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SeoController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SimpleContactFormController.cs" />
     <Compile Include="Controllers\XmlSitemapController.cs" />
+    <Compile Include="Mutobo\ModuleRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +542,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\ArticlePage.cshtml" />
+    <Content Include="Views\BasePage.cshtml" />
+    <Content Include="Views\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -547,6 +555,7 @@
     <Folder Include="Views\FormPage\" />
     <Folder Include="Views\GoogleAnalytics\" />
     <Folder Include="Views\LanguageSwitcher\" />
+    <Folder Include="Views\PdfGenerator\" />
     <Folder Include="Views\SimpleContactForm\" />
   </ItemGroup>
   <ItemGroup>
@@ -577,10 +586,10 @@
     <Content Include="config\imageprocessor\security.config.www1.env" />
     <Content Include="config\imageprocessor\security.config.www2.env" />
     <Content Include="config\serilog.config" />
-    <None Include="config\appSettings.config" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\Header.cshtml" />
     <Content Include="Views\Partials\Teaser.cshtml" />
+    <Content Include="Views\TeaserPage.cshtml" />
     <Content Include="Views\WCArticlePage.cshtml" />
     <Content Include="Views\WCBasePage.cshtml" />
     <Content Include="Views\WCHomePage.cshtml" />
@@ -604,13 +613,24 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
     <Content Include="Views\Partials\HighLightList.cshtml" />
+    <Content Include="Views\ClubConcertHome.cshtml" />
+    <Content Include="Views\WCClubConcertHomePage.cshtml" />
     <Content Include="Views\Partials\ClubConcertList.cshtml" />
+    <Content Include="Views\WCImpressumPage.cshtml" />
+    <Content Include="Views\WCClubConcertBasePage.cshtml" />
     <Content Include="Views\Partials\ClubConcertHeader.cshtml" />
+    <Content Include="Views\WCClubConcertArticlePage.cshtml" />
+    <Content Include="Views\WCClubConcertDetailPage.cshtml" />
     <Content Include="Views\Partials\ArtistList.cshtml" />
     <Content Include="Views\Partials\CssVariables.cshtml" />
     <Content Include="Views\Partials\FontFaces.cshtml" />
+    <Content Include="Views\WCClassicsBasePage.cshtml" />
+    <Content Include="Views\WCClassicsHomePage.cshtml" />
     <Content Include="Views\Partials\CookieBanner.cshtml" />
     <Content Include="Views\Partials\GoogleAnalytics.cshtml" />
+    <Content Include="Views\WCClassicsConcertList.cshtml" />
+    <Content Include="Views\WCClassicsConcertPage.cshtml" />
+    <Content Include="Views\WCClassicsArtistList.cshtml" />
     <Content Include="Views\Partials\PlayList.cshtml" />
     <Content Include="Views\Partials\Slider.cshtml" />
     <Content Include="Views\Partials\GalleryTeaser.cshtml" />
@@ -619,9 +639,16 @@
     <Content Include="Views\WCFormPage.cshtml" />
     <Content Include="Views\Partials\SimpleContactForm.cshtml" />
     <Content Include="Views\Partials\VideoComponent.cshtml" />
-    <Content Include="Views\WCContentPage.cshtml" />
+    <Content Include="Views\WCClassicsContentPage.cshtml" />
+    <Content Include="Views\WCClassicsArticlePage.cshtml" />
+    <Content Include="Views\Partials\ArticleContent.cshtml" />
+    <Content Include="Views\Partials\SeasonProgramComponent.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj">
+      <Project>{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}</Project>
+      <Name>Dit.Umb.Toolbox.Common.ContentExtensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common\Dit.Umb.ToolBox.Common.csproj">
       <Project>{6688F7E3-0FA5-4CAC-8256-805DACAF2C57}</Project>
       <Name>Dit.Umb.ToolBox.Common</Name>

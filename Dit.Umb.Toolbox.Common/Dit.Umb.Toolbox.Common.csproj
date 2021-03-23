@@ -261,7 +261,6 @@
     <Compile Include="Exceptions\AppSettingsException.cs" />
     <Compile Include="Exceptions\NavigationException.cs" />
     <Compile Include="Exceptions\ToolboxException.cs" />
-    <Compile Include="Extensions\ContentExtensions.cs" />
     <Compile Include="Exceptions\FlyerException.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\ElementTypeExtensions.cs" />
@@ -274,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ActionFilters\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dit.Umb.ToolBox.Models\Dit.Umb.ToolBox.Models.csproj">

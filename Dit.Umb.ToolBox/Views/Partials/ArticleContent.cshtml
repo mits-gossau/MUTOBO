@@ -1,0 +1,21 @@
+﻿@model Dit.Umb.ToolBox.Models.PageModels.ArticlePage
+
+
+@if (!string.IsNullOrEmpty(Model.PageTitle))
+{
+    <h2>@Model.PageTitle.ToUpper()</h2>
+}
+@if (Model.EmotionImages != null && Model.EmotionImages.Any())
+{
+    @Html.Partial("~/Views/Partials/Slider.cshtml", Model.EmotionImages)
+}
+@if (!string.IsNullOrEmpty(Model.Abstract))
+{
+    <p>@Model.Abstract</p>
+}
+@if (!string.IsNullOrEmpty(Model.MainContent))
+{
+    <div>
+        @Html.Raw(Model.MainContent)
+    </div>
+}
