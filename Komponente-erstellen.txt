@@ -1,0 +1,6 @@
+1. Im Umbraco Backend unter Settings -> Document Types -> Element Types einen neuen Document Type ohne template erstellen
+2. neuen Document Type als "Is an element type" kennzeichnen (Permissions)
+3. Save Dockument Type
+4. Zu nested content hinzufügen
+5. In VS in Dit.Umb.ToolBox.Services.Impl -> MutoboContentService -> GetContent case statement einfügen
+6. In VS in Dit.Umb.ToolBox.Common.Extensions -> HtmlHelperExtensions -> RenderModules case statement einfügen
