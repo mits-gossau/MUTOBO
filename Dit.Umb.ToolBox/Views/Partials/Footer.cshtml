@@ -1,35 +1,65 @@
-﻿@using Dit.Umb.ToolBox.Models.Constants
+﻿@using System.Linq
+@using Dit.Umb.ToolBox.Models.Constants
 @model Dit.Umb.ToolBox.Models.Configuration.FooterConfiguration
-<o-footer namespace="footer-" theme="simple">
-
+<o-footer namespace="footer-" theme="@Model.Theme">
+    @{
+        var index = 0;
+    }
 
     @if (Model.PictureLinks != null && Model.PictureLinks.Any())
     {
         <div class="logo-container">
             @foreach (var picLink in Model.PictureLinks.Take(2))
             {
-                <a-logo namespace="footer-logo-" src="@picLink.Image.DefaultSource.Src" href="@picLink.Link.Url" target="@picLink.Link.Target">    
 
+
+
+                <a-logo namespace="footer-logo-" src="@picLink.Image.DefaultSource.Src" href="@(picLink.LogoLink?.Url ?? picLink.Link.Url)" target="@(picLink.LogoLink?.Target ?? picLink.Link.Target)">
+                    @if (index < 1)
+                    {
+                        @* QnD-Hack to fit the engagement logo to the correct size *@
+                        <style>
+                            :host{
+                                --footer-logo-max-height:40px;
+                                --footer-logo-max-height-mobile:40px;
+                                --footer-logo-text-font-size:0.4rem;
+                                --footer-logo-text-font-size-mobile:0.4rem;
+                                --footer-logo-text-padding:10px 0 0 32%;
+                                --footer-logo-text-padding-mobile:10px 0 0 32%;
+                                --footer-logo-text-padding-fr:10px 0 0 27%;
+                                --footer-logo-text-padding-mobile-fr:10px 0 0 27%;
+                                --footer-logo-text-padding-en:10px 0 0 25%;
+                                --footer-logo-text-padding-mobile-en:10px 0 0 25%;
+                            }
+                        </style>
+
+                    }
                     @if (!string.IsNullOrEmpty(picLink.Text))
                     {
-                    <p>@picLink.Text&nbsp;
-                        <a href="@picLink.Link.Url" target="@picLink.Link.Target">@picLink.Link.Name</a></p>
+                        <p>
+                            @picLink.Text&nbsp;
+                            <br />
+                            <strong>
+                                <a href="@picLink.Link.Url" target="@picLink.Link.Target">@picLink.Link.Name</a>
+                            </strong>
+                        </p>
                     }
-         
+
                 </a-logo>
-    
+                index++;
+
             }
         </div>
 
 
     }
-    
-    
 
-    
+
+
+
     <div class="footer-links">
-        
-        
+
+
         @if (Model.FooterLinks != null && Model.FooterLinks.Any())
         {
             <ul>

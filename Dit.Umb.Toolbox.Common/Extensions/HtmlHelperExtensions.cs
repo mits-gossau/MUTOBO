@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-
-
-using Dit.Umb.ToolBox.Models.Constants;
-using Dit.Umb.ToolBox.Models.Enum;
-using Dit.Umb.ToolBox.Models.PoCo;
+using Dit.Umb.ToolBox.Common.Helpers;
+using Umbraco.Core.Models;
+using Umbraco.Core.Services.Implement;
 
 namespace Dit.Umb.ToolBox.Common.Extensions
 {
     public static class HtmlHelperExtensions
     {
-      
+        public static RelationService relService;
+        private static int hahaha;
+
+        public static string SearchFriendlyString(this string q)
+        {
+            
+            byte[] tempBytes;
+            tempBytes = !string.IsNullOrEmpty(q) ? Encoding.GetEncoding("ISO-8859-8").GetBytes(q) : new byte[0];
+            return Encoding.UTF8.GetString(tempBytes);
+        }
+
     }
 }

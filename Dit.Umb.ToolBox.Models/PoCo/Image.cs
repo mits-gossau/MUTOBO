@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Dit.Umb.ToolBox.Models.Enum;
+using Dit.Umb.ToolBox.Models.Interfaces;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -13,7 +14,7 @@ using Umbraco.Core.Models.PublishedContent;
 
 namespace Dit.Umb.ToolBox.Models.PoCo
 {
-    public class Image
+    public class Image : ISliderItem
     {
         public IPublishedContent ImageNode { get; set; }
         public IEnumerable<ImageSource> Sources { get; set; }
@@ -21,6 +22,8 @@ namespace Dit.Umb.ToolBox.Models.PoCo
         public string Width { get; set; }
         public string Height { get; set; }
         public string Namespace { get; set; }
+        public bool IsGoldenRatio { get; set; }
+
 
 
 
@@ -45,7 +48,7 @@ namespace Dit.Umb.ToolBox.Models.PoCo
 
         }
 
-        public HtmlString RenderWcPictureTag(string width = null, string height = null)
+        public HtmlString RenderWcPictureTag(string width = null, string height = null, string nameSpace = "picture-", string fireLoadingEvent = "", bool useSources = false)
         {
             if (height != null || width != null)
             {
@@ -55,27 +58,25 @@ namespace Dit.Umb.ToolBox.Models.PoCo
 
 
             var bld = new StringBuilder();
+            var sources = IsGoldenRatio || useSources ? $"sources=\"{GetSourcesAsJSON()}\"" : String.Empty;
+            var nameSpaceAttribute = $"namespace=\"{nameSpace}\"";
 
             bld.Append(
-                $"<a-picture namespace=\"{Namespace}-\" defaultSource=\"{DefaultSource.Src}\" alt=\"{Alt}\" sources=\"{GetSourcesAsJSON()}\">");
+                $"<a-picture {fireLoadingEvent} {nameSpaceAttribute} defaultSource=\"{DefaultSource.Src}\" {sources} alt=\"{Alt}\" >");
 
-            if (Width != null || Height != null)
+            if (!IsGoldenRatio && (Width != null || Height != null))
             {
                 bld.Append("<style>:host{");
 
-                if (Height != null && Width == null)
+                if (Height != null)
+                {
                     bld.Append($"--{Namespace}-height:{Height};");
-
+                    bld.Append($"--{Namespace}-height-mobile:{Height};");
+                }
                 if (Width != null)
                 {
-                    if (Height == null)
-                    {
-                        bld.Append($"--{Namespace}-width:{Width};");
-                    }
-                }
-                else
-                {
-                    bld.Append($"--{Namespace}-img-width:auto;");
+                    bld.Append($"--{Namespace}-width: min({Width}, var(--content-width, 100%));");
+                    bld.Append($"--{Namespace}-width-mobile: min({Width}, var(--content-width-mobile, 100%));");
                 }
 
                 bld.Append("}</style>");

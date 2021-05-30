@@ -21,7 +21,7 @@ namespace Dit.Umb.ToolBox.Controllers.NonUmbraco
         {
             var cached = Session["cachedJS"]?.ToString();
 
-            if (cached == null)
+            if (true)
             {
                 Session["cachedJS"] = _scriptService.GetWebComponentsBundled();
                 cached = Session["cachedJS"].ToString();

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Serilog.Debugging;
 using Umbraco.Core.Logging;
 using Umbraco.Web;
 using Umbraco.Web.Composing;
@@ -16,5 +17,6 @@ namespace Dit.Umb.ToolBox.Services.Impl
         {
             _logger = (ILogger)DependencyResolver.Current.GetService(typeof(ILogger));
         }
+
     }
 }

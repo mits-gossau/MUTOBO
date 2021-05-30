@@ -1,18 +1,17 @@
-﻿@model Dit.Umb.ToolBox.Models.PoCo.VideoComponent
+﻿@model Dit.Umb.ToolBox.Models.Interfaces.IVideoComponent
 
 
-<div style="width: 100%;  text-align: center;">
-    @if (Model.Video != null)
-    {
-        <video width="320" height="240" controls>
-            <source src="@Model.Video.Source" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    }
-    else
-    {
-        // TODO: Parse IFRAME  and set src as Parameter
+@if (Model.Video != null)
+{
+
+
+    <a-video namespace="video-" controls height="@(Model.Height != null ? $"{Model.Height}px" : string.Empty)" width="@(Model.Width != null ? $"{Model.Width}px" : string.Empty)">
+        <source src="@Model.Video.Source" type="video/mp4">
+    </a-video>
+}
+else
+{
+    <a-video namespace="video-">
         @Html.Raw(Model.Embedded)
-    }
-</div>
-
+    </a-video>
+}

@@ -1,18 +1,28 @@
 ﻿@using Umbraco.Web.Composing
+@using Dit.Umb.ToolBox.Models.Constants
 @model Dit.Umb.ToolBox.Models.PoCo.Teaser
 
+@if (Model.Images != null && Model.Images.Any())
+{
+    if (Model.Images.Count() < 2)
+    {
+        var image = Model.Images.FirstOrDefault();
 
-<div style="width: 100%;  text-align: center;">
-    @if (Model.Images != null && Model.Images.Any())
+        if (image != null)
+        {
+            @image.RenderWcPictureTag()
+        }
+    }
+    else
     {
         @Html.Partial("~/Views/Partials/Slider.cshtml", Model.Images)
     }
+}
+<h3>@Model.TeaserTitle</h3>
+<p>
+    @Html.Raw(Model.TeaserText)
+</p>
+<a href="@Model.Link.Url" target="@Model.Link.Target">
+    @Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.Global.ReadMore)
+</a>
 
-    <h3>@Model.TeaserTitle</h3>
-    <article>
-        @Html.Raw(Model.TeaserText)
-    </article>
-    <a href="@Model.Link.Url" target="@Model.Link.Target">
-        @Current.UmbracoHelper.GetDictionaryValue("readMore")
-    </a>
-</div>

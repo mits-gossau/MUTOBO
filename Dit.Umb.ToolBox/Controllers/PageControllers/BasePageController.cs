@@ -3,6 +3,8 @@ using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Dit.Umb.ToolBox.Services;
 using System.Web.Mvc;
+using Dit.Umb.MKulturProzent.Classics.Models.Pages;
+using Dit.Umb.ToolBox.Common.ActionFilters;
 using Dit.Umb.Toolbox.Common.ContentExtensions;
 using Dit.Umb.ToolBox.Common.Exceptions;
 using Dit.Umb.ToolBox.Common.Extensions;
@@ -16,6 +18,8 @@ using Umbraco.Web.Mvc;
 
 namespace Dit.Umb.ToolBox.Controllers.PageControllers
 {
+    [CompressionCleaner]
+    [LanguageRedirector]
     public class BasePageController : RenderMvcController
     {
         protected readonly IPageLayoutService _pageLayoutService;
@@ -29,6 +33,7 @@ namespace Dit.Umb.ToolBox.Controllers.PageControllers
             _themeService = (IThemeService) DependencyResolver.Current.GetService(typeof(IThemeService));
             _pageLayoutService = (IPageLayoutService)DependencyResolver.Current.GetService(typeof(IPageLayoutService));
         }
+
 
 
         public ActionResult Index<T>(BasePage basePage) where T : BasePage
@@ -50,11 +55,8 @@ namespace Dit.Umb.ToolBox.Controllers.PageControllers
             {
                 basePage.HeaderConfiguration = _pageLayoutService.GetHeaderConfiguration(CurrentPage);
                 basePage.FooterConfiguration = _pageLayoutService.GetFooterConfiguration(CurrentPage);
+                basePage.FooterConfiguration.HomePageLogo = basePage.HeaderConfiguration.Logo;
                 basePage.Theme = _themeService.GetTheme(basePage.Content);
-
-
-
-
             }
             catch(AppSettingsException e)
             {

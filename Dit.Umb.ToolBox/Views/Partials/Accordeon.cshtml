@@ -1,0 +1,22 @@
+﻿@using Dit.Umb.MKulturProzent.Classics.Models.Constants
+@using Umbraco.Web.Composing
+@model Dit.Umb.MKulturProzent.Classics.Models.Poco.Accordeon
+<m-details>
+    @if (Current.UmbracoHelper.AssignedContentItem.ContentType.Alias == DocumentTypes.ConcertPage.Alias)
+    {
+        <style>
+            :host {
+                --padding: 0;
+            }
+        </style>
+    }
+    <details >
+        <summary>
+            @Model.Summary.ToUpper()
+        </summary>
+        <p>
+            @Html.Raw(Model.Details)
+            <a href="#" class="close">@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.ConcertPage.CloseButton).ToUpper()</a>
+        </p>
+    </details>
+</m-details>

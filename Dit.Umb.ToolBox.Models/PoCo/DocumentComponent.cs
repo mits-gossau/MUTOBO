@@ -9,6 +9,9 @@ namespace Dit.Umb.ToolBox.Models.PoCo
 {
     public class DocumentComponent : MutoboContentModule
     {
+
+
+
         public DocumentComponent(IPublishedElement content) : base(content)
         {
         }

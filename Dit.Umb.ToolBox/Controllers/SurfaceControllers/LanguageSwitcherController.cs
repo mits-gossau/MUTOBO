@@ -34,7 +34,8 @@ namespace Dit.Umb.ToolBox.Controllers.SurfaceControllers
             {
                 ISO = l.IsoCode,
                 Name = l.CultureInfo.NativeName.Split(' ')[0].ToUpperInvariant(),
-                Url = Umbraco.Content(CurrentPage.Id).Url(l.IsoCode, UrlMode.Absolute)
+                Url = Umbraco.Content(CurrentPage.Id).Url(l.IsoCode, UrlMode.Absolute),
+                CultureName = l.CultureInfo.Name
 
             });
 

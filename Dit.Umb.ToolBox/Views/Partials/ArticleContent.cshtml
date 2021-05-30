@@ -1,4 +1,8 @@
-﻿@model Dit.Umb.ToolBox.Models.PageModels.ArticlePage
+﻿@using Dit.Umb.MKulturProzent.Classics.Models.Constants
+@using Dit.Umb.ToolBox.Models.Enum
+@using Dit.Umb.ToolBox.Models.PoCo
+@using Dit.Umb.ToolBox.Services
+@model Dit.Umb.ToolBox.Models.PageModels.ArticlePage
 
 
 @if (!string.IsNullOrEmpty(Model.PageTitle))
@@ -7,9 +11,29 @@
 }
 @if (Model.EmotionImages != null && Model.EmotionImages.Any())
 {
-    @Html.Partial("~/Views/Partials/Slider.cshtml", Model.EmotionImages)
+    if (Model.EmotionImages.Count() < 2)
+    {
+        var image = Model.EmotionImages.FirstOrDefault();
+
+        if (image != null)
+        {
+            @image.RenderWcPictureTag()
+        }
+    }
+    else
+    {
+        var configService = (IConfigurationService) DependencyResolver.Current.GetService(typeof(IConfigurationService));
+        @Html.Partial("~/Views/Partials/Slider.cshtml", new EmptySliderComponent()
+        {
+            Width = configService.GetAppSettingIntValue(AppsettingsKeys.Classics.Images.ImageDefaultWidth),
+            Height = configService.GetAppSettingIntValue(AppsettingsKeys.Classics.Images.ImageDefaultHeight),
+            Slides = Model.EmotionImages,
+            GalleryType = EGalleryType.FullWidth
+        })
+        ;
+    }
 }
-@if (!string.IsNullOrEmpty(Model.Abstract))
+@if (!Model.HideAbstract && !string.IsNullOrEmpty(Model.Abstract))
 {
     <p>@Model.Abstract</p>
 }

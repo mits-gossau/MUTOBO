@@ -38,9 +38,5 @@
   {
     "name": "Find all logs that the message that starts with 'end' in it with SQL like",
     "query": "@Message like 'end%'"
-  },
-  {
-    "name": "A",
-    "query": "@Level='Warning'"
   }
 ]

@@ -1,6 +1,5 @@
 ﻿using System;
 using Dit.Umb.ToolBox.Models.Configuration;
-using Dit.Umb.ToolBox.Models.Constants;
 using System.Configuration;
 using Dit.Umb.ToolBox.Common.Exceptions;
 using Dit.Umb.ToolBox.Common.Extensions;
@@ -12,74 +11,56 @@ using Current = Umbraco.Web.Composing.Current;
 using System.Collections.Generic;
 using System.Linq;
 using Dit.Umb.Toolbox.Common.ContentExtensions;
+using DocumentTypes = Dit.Umb.ToolBox.Models.Constants.DocumentTypes;
 
 namespace Dit.Umb.ToolBox.Services.Impl
 {
     public class ConfigurationService :  BaseService, IConfigurationService
     {
-        public SeoConfiguration GetSeoConfiguration(IPublishedContent content)
+
+        private string _keyWords = String.Empty;
+        private ILoggingService _loggingService;
+
+        public ConfigurationService(ILoggingService loggingService)
         {
-
-            return new SeoConfiguration
-            {
-                MetaTitle = GetMetaDataValue(DocumentTypes.BasePage.Fields.MetaTitle, content),
-                MetaDescription = GetMetaDataValue(DocumentTypes.BasePage.Fields.MetaDescription, content),
-                MetaKeywords = GetMetaDataValue(DocumentTypes.BasePage.Fields.MetaKeywords, content),
-                ThumbNailWidth = 300,
-                ThumbNailHeight = 300,
-                ThumbnailUrl = content.GetImage(DocumentTypes.BasePage.Fields.Thumbnail, 300, 300, ImageCropMode.Crop)?
-                    .DefaultSource?.Src ?? String.Empty
-            };
-
-        }
-
- 
-
-
-
-
-
-        private string GetMetaDataValue(string fieldName, IPublishedContent content)
-        {
-            var nodes = content.AncestorsOrSelf();
-
-            foreach (var node in nodes)
-            {
-                var result = node.Value<string>(fieldName);
-
-                if (!string.IsNullOrEmpty(result))
-                    return result;
-            }
-
-            return string.Empty;
+            _loggingService = loggingService;
         }
 
 
 
 
-        public string GetAppSettingValue(string key)
+
+        public string GetAppSettingValue(string key, bool essential = true)
         {
             if (ConfigurationManager.AppSettings[key] != null)
                 return ConfigurationManager.AppSettings[key];
+            if (essential)
+                throw new AppSettingsException("Missing config/AppSettings.config or config entry: " + key);
 
-            throw new AppSettingsException("Missing config/AppSettings.config or config entry");
+            _loggingService.Warn(this.GetType(), "Missing config/AppSettings.config or config entry: " + key);
+            return String.Empty;
         }
 
-        public int? GetAppSettingIntValue(string key)
+        public int? GetAppSettingIntValue(string key, bool essential = true)
         {
             if (int.TryParse(ConfigurationManager.AppSettings[key], out var result))
                 return result;
-
-            throw new AppSettingsException("Missing config/AppSettings.config or config entry");
+            if (essential)
+                throw new AppSettingsException("Missing config/AppSettings.config or config entry: " + key);
+            
+            _loggingService.Warn(this.GetType(), "Missing config/AppSettings.config or config entry: " + key);
+            return null;
         }
 
-        public bool? GetAppSettingBoolValue(string key)
+        public bool? GetAppSettingBoolValue(string key, bool essential = true)
         {
             if (bool.TryParse(ConfigurationManager.AppSettings[key], out var result))
                 return result;
-
-            throw new AppSettingsException("Missing config/AppSettings.config or config entry");
+            if (essential)
+                throw new AppSettingsException("Missing config/AppSettings.config or config entry: " + key);
+            
+            _loggingService.Warn(this.GetType(), "Missing config/AppSettings.config or config entry: " + key);
+            return null;
         }
-
     }
 }

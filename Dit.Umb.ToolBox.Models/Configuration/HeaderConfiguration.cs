@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Dit.Umb.ToolBox.Models.Constants;
+using Dit.Umb.ToolBox.Models.Interfaces;
 using Dit.Umb.ToolBox.Models.PoCo;
 using Microsoft.Ajax.Utilities;
 using Umbraco.Core.Models.PublishedContent;
@@ -10,7 +11,7 @@ using Link = Umbraco.Web.Models.Link;
 
 namespace Dit.Umb.ToolBox.Models.Configuration
 {
-    public class HeaderConfiguration : PublishedElementModel
+    public class HeaderConfiguration : PublishedElementModel, IHeaderConfiguration
     {
 
         public Slogan GlobalSlogan { get; set; }

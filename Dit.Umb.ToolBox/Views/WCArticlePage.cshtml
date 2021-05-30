@@ -25,7 +25,8 @@
             ['m-teaser', Teaser],
             ['o-teaser-wrapper', TeaserWrapper],
             ['m-wide-teaser', WideTeaser],
-            ['a-arrow', Arrow]
+            ['a-arrow', Arrow],
+            ['a-form', Form]
         ].forEach(element => {
             // don't define already existing customElements
             if (element && !customElements.get(element[0])) customElements.define(...element)

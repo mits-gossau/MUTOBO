@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\uSync.8.8.3\build\uSync.props" Condition="Exists('..\packages\uSync.8.8.3\build\uSync.props')" />
-  <Import Project="..\packages\UmbracoCms.8.11.1\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.8.11.1\build\UmbracoCms.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\uSync.8.9.1\build\uSync.props" Condition="Exists('..\packages\uSync.8.9.1\build\uSync.props')" />
+  <Import Project="..\packages\UmbracoCms.8.13.0\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.8.13.0\build\UmbracoCms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,8 +63,8 @@
     <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
     </Reference>
-    <Reference Include="Examine, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Examine.1.0.2\lib\net452\Examine.dll</HintPath>
+    <Reference Include="Examine, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Examine.1.1.0\lib\net452\Examine.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -75,14 +75,14 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="ImageProcessor, Version=2.8.0.152, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageProcessor.2.8.0\lib\net452\ImageProcessor.dll</HintPath>
+    <Reference Include="ImageProcessor, Version=2.9.1.225, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.9.1\lib\net452\ImageProcessor.dll</HintPath>
     </Reference>
     <Reference Include="ImageProcessor.Plugins.WebP, Version=1.3.0.152, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageProcessor.Plugins.WebP.1.3.0\lib\net452\ImageProcessor.Plugins.WebP.dll</HintPath>
     </Reference>
-    <Reference Include="ImageProcessor.Web, Version=4.11.0.152, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageProcessor.Web.4.11.0\lib\net452\ImageProcessor.Web.dll</HintPath>
+    <Reference Include="ImageProcessor.Web, Version=4.12.1.216, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.Web.4.12.1\lib\net452\ImageProcessor.Web.dll</HintPath>
     </Reference>
     <Reference Include="ImageProcessor.Web.Plugins.AzureBlobCache, Version=1.7.1.219, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageProcessor.Web.Plugins.AzureBlobCache.1.7.1\lib\net452\ImageProcessor.Web.Plugins.AzureBlobCache.dll</HintPath>
@@ -108,26 +108,8 @@
     <Reference Include="Markdown, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1b320cc08ad5aa89, processorArchitecture=MSIL">
       <HintPath>..\packages\Markdown.2.2.1\lib\net451\Markdown.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\lib\net452\Microsoft.AI.DependencyCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\lib\net452\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.15.0.44798, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.15.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\lib\net452\Microsoft.AI.WindowsServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.15.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.17.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.17.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -156,11 +138,14 @@
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=3.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.3.0.5\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Storage.Blob, Version=11.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Azure.Storage.Blob.11.2.2\lib\net452\Microsoft.Azure.Storage.Blob.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Storage.Blob, Version=11.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Storage.Blob.11.2.3\lib\net452\Microsoft.Azure.Storage.Blob.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Storage.Common, Version=11.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Azure.Storage.Common.11.2.2\lib\net452\Microsoft.Azure.Storage.Common.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Storage.Common, Version=11.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Storage.Common.11.2.3\lib\net452\Microsoft.Azure.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -232,14 +217,17 @@
     <Reference Include="OpenHtmlToPdf, Version=1.12.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenHtmlToPdf.1.12.0.0\lib\net45\OpenHtmlToPdf.dll</HintPath>
     </Reference>
-    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=2.0.0.399, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.2.0.0\lib\net472\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
+    <Reference Include="Our.Umbraco.FileSystemProviders.Azure, Version=2.0.1.417, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.2.0.1\lib\net472\Our.Umbraco.FileSystemProviders.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Our.Umbraco.FileSystemProviders.Azure.Media, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.Media.2.0.0\lib\net472\Our.Umbraco.FileSystemProviders.Azure.Media.dll</HintPath>
+      <HintPath>..\packages\UmbracoFileSystemProviders.Azure.Media.2.0.1\lib\net472\Our.Umbraco.FileSystemProviders.Azure.Media.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PDFsharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharpNetStandard2.1.51.4845\lib\netstandard2.0\PDFsharp.dll</HintPath>
     </Reference>
     <Reference Include="Semver, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Semver.2.0.4\lib\net452\Semver.dll</HintPath>
@@ -296,10 +284,13 @@
     <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Umbraco.SqlServerCE.4.0.0.1\lib\net472\System.Data.SqlServerCe.Entity.dll</HintPath>
     </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.6.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO" />
     <Reference Include="System.Linq.Expressions" />
     <Reference Include="System.Management" />
@@ -316,13 +307,16 @@
     </Reference>
     <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Spatial, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.7.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
@@ -392,26 +386,53 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="UglyToad.PdfPig, Version=0.1.3.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Core, Version=0.1.3.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.DocumentLayoutAnalysis, Version=0.1.3.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.DocumentLayoutAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Fonts, Version=0.1.3.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Package, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.Package.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokenization, Version=0.1.3.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.Tokenization.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokens, Version=0.1.3.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Umbraco.Core, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.8.11.1\lib\net472\Umbraco.Core.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.8.13.0\lib\net472\Umbraco.Core.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Examine, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.11.1\lib\net472\Umbraco.Examine.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Web.8.13.0\lib\net472\Umbraco.Examine.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.11.1\lib\net472\Umbraco.ModelsBuilder.Embedded.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Web.8.13.0\lib\net472\Umbraco.ModelsBuilder.Embedded.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Web, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.11.1\lib\net472\Umbraco.Web.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Web.8.13.0\lib\net472\Umbraco.Web.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Web.UI, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.11.1\lib\net472\Umbraco.Web.UI.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Web.8.13.0\lib\net472\Umbraco.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="uSync8.BackOffice, Version=8.8.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\uSync.8.8.3\lib\net472\uSync8.BackOffice.dll</HintPath>
+    <Reference Include="UmbracoExamine.PDF, Version=0.8.7634.9991, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.UmbracoExamine.PDF.2.1.0\lib\net472\UmbracoExamine.PDF.dll</HintPath>
     </Reference>
-    <Reference Include="uSync8.Core, Version=8.8.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\uSync.Core.8.8.3\lib\net472\uSync8.Core.dll</HintPath>
+    <Reference Include="uSync8.BackOffice, Version=8.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.8.9.1\lib\net472\uSync8.BackOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.Core, Version=8.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.Core.8.9.1\lib\net472\uSync8.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.History.8.9.1\lib\net472\uSync8.HistoryView.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -435,21 +456,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Components\ApiConfigurationComponent.cs" />
     <Compile Include="Components\CustomDropDownPopulateComponent.cs" />
+    <Compile Include="Components\CustomIndexComponent.cs" />
     <Compile Include="Components\SearchConfigurationComponent.cs" />
     <Compile Include="Composer\AppComposer.cs" />
+    <None Include="config\appSettings.config" />
     <Compile Include="Controllers\ApiControllers\HelloWorldController.cs" />
+    <Compile Include="Controllers\PageControllers\BlogPageController.cs" />
     <Compile Include="Controllers\PageControllers\ContentPageController.cs" />
     <Compile Include="Controllers\PageControllers\FormPageController.cs" />
+    <Compile Include="Controllers\PageControllers\SearchResultsController.cs" />
     <Compile Include="Controllers\SurfaceControllers\ArtistListController.cs" />
     <Compile Include="Controllers\SurfaceControllers\GoogleAnalyticsController.cs" />
     <Compile Include="Controllers\NonUmbraco\WCRenderController.cs" />
@@ -467,9 +487,17 @@
     <Compile Include="Controllers\SurfaceControllers\SearchFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SeoController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SimpleContactFormController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\NewsletterFormController.cs" />
     <Compile Include="Controllers\XmlSitemapController.cs" />
     <Compile Include="Mutobo\ModuleRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Plugins\uSync8\backoffice\uSync8\dashboard.html" />
@@ -491,8 +519,22 @@
     <Content Include="App_Plugins\uSync8\usync.css" />
     <Content Include="App_Plugins\uSync8\uSyncHub.js" />
     <Content Include="App_Plugins\uSync8\uSyncService.js" />
-    <Content Include="App_Plugins\uSync8\usync_883.css" />
-    <Content Include="App_Plugins\uSync8\uSync_883.js" />
+    <Content Include="App_Plugins\uSync8\usync_891.css" />
+    <Content Include="App_Plugins\uSync8\uSync_891.js" />
+    <Content Include="App_Plugins\uSyncHistory\history.html" />
+    <Content Include="App_Plugins\uSyncHistory\historyDialog.html" />
+    <Content Include="App_Plugins\uSyncHistory\syncHistoryController.js" />
+    <Content Include="App_Plugins\uSyncHistory\syncHistoryDialogController.js" />
+    <Content Include="App_Plugins\uSyncHistory\syncHistoryService.js" />
+    <Content Include="assets\img\cyan\LOGO_D.svg" />
+    <Content Include="assets\img\cyan\LOGO_EN.svg" />
+    <Content Include="assets\img\cyan\LOGO_FR.svg" />
+    <Content Include="assets\img\cyan\LUPE.svg" />
+    <Content Include="assets\img\white\LUPE.svg" />
+    <Content Include="assets\img\yellow\LUPE.svg" />
+    <Content Include="assets\img\cyan\TICKET.svg" />
+    <Content Include="assets\img\white\TICKET.svg" />
+    <Content Include="assets\img\yellow\TICKET.svg" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -527,20 +569,12 @@
     <Content Include="config\imageprocessor\cache.config" />
     <Content Include="config\umbracoSettings.config" />
     <Content Include="config\serilog.user.config" />
-    <Content Include="config\ClientDependency.config" />
-    <Content Include="config\uSync8.config" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
     <Content Include="scripts\main.js" />
     <Content Include="scripts\WebComponentsLoader\articlePage.js" />
     <Content Include="scripts\WebComponentsLoader\homePage.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    <Content Include="Views\Partials\TextImageTeaser.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\ArticlePage.cshtml" />
     <Content Include="Views\BasePage.cshtml" />
@@ -548,15 +582,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ArtistList\" />
-    <Folder Include="Views\ContentPage\" />
-    <Folder Include="Views\CookieBanner\" />
-    <Folder Include="Views\CssVariables\" />
-    <Folder Include="Views\FormPage\" />
-    <Folder Include="Views\GoogleAnalytics\" />
-    <Folder Include="Views\LanguageSwitcher\" />
-    <Folder Include="Views\PdfGenerator\" />
-    <Folder Include="Views\SimpleContactForm\" />
+    <Folder Include="Views\AnchorModulePage\" />
+    <Folder Include="Views\BlogPage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -567,7 +594,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="config\connectionStrings.config" />
     <Content Include="config\imageprocessor\cache.config.dev.env" />
     <Content Include="config\imageprocessor\security.config.dev.env" />
     <Content Include="ApplicationInsights.config" />
@@ -575,17 +601,21 @@
     <Content Include="config\imageprocessor\security.config.dev2.env" />
     <Content Include="config\imageprocessor\cache.config.dev1.env" />
     <Content Include="config\imageprocessor\security.config.dev1.env" />
-    <Content Include="config\HealthChecks.config" />
     <Content Include="config\tinyMceConfig.config" />
-    <Content Include="App_Plugins\uSync8\package.manifest" />
-    <Content Include="App_Plugins\uSync8\addons.json" />
     <Content Include="config\imageprocessor\cache.config.admin.env" />
     <Content Include="config\imageprocessor\cache.config.www1.env" />
     <Content Include="config\imageprocessor\cache.config.www2.env" />
     <Content Include="config\imageprocessor\security.config.admin.env" />
     <Content Include="config\imageprocessor\security.config.www1.env" />
     <Content Include="config\imageprocessor\security.config.www2.env" />
+    <Content Include="App_Plugins\uSyncHistory\package.manifest" />
+    <Content Include="App_Plugins\uSync8\package.manifest" />
+    <Content Include="App_Plugins\uSync8\addons.json" />
     <Content Include="config\serilog.config" />
+    <Content Include="config\HealthChecks.config" />
+    <Content Include="config\uSync8.config" />
+    <Content Include="config\connectionStrings.config" />
+    <Content Include="config\ClientDependency.config" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\Header.cshtml" />
     <Content Include="Views\Partials\Teaser.cshtml" />
@@ -600,18 +630,9 @@
     <Content Include="Views\Partials\SEOConfiguration.cshtml" />
     <Content Include="Views\XmlSiteMap.cshtml" />
     <Content Include="Views\Partials\LanguageSwitcher.cshtml" />
-    <Content Include="Views\Partials\Flyer.cshtml" />
+    <Content Include="Views\Partials\Flyer_left.cshtml" />
     <Content Include="Views\NonUmbraco\WCScriptsView.cshtml" />
     <Content Include="Views\Partials\WideTeaser.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Macro.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Embed.cshtml" />
-    <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
-    <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
-    <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
-    <Content Include="Views\Partials\BlockList\Default.cshtml" />
     <Content Include="Views\Partials\HighLightList.cshtml" />
     <Content Include="Views\ClubConcertHome.cshtml" />
     <Content Include="Views\WCClubConcertHomePage.cshtml" />
@@ -643,14 +664,47 @@
     <Content Include="Views\WCClassicsArticlePage.cshtml" />
     <Content Include="Views\Partials\ArticleContent.cshtml" />
     <Content Include="Views\Partials\SeasonProgramComponent.cshtml" />
+    <Content Include="Views\Partials\TourEvent.cshtml" />
+    <Content Include="Views\Partials\ConcertDetails.cshtml" />
+    <Content Include="Views\Partials\ConcertDetailElement.cshtml" />
+    <Content Include="Views\Partials\OrchestraList.cshtml" />
+    <Content Include="Views\Partials\ConductorList.cshtml" />
+    <Content Include="Views\Partials\SoloistList.cshtml" />
+    <Content Include="Views\Partials\LocationTicketList.cshtml" />
+    <Content Include="Views\WCClassicsTicketPage.cshtml" />
+    <Content Include="Views\Partials\ClassicsFooter.cshtml" />
+    <Content Include="Views\Partials\ClassicsHeader.cshtml" />
+    <Content Include="Views\Partials\IntersectionFlyer_left.cshtml" />
+    <Content Include="Views\Partials\Newsletter.cshtml" />
+    <Content Include="Views\Partials\Flyer_right.cshtml" />
+    <Content Include="Views\Partials\IntersectionFlyer_right.cshtml" />
+    <Content Include="Views\Partials\Stamp.cshtml" />
+    <Content Include="Views\Partials\SearchResults.cshtml" />
+    <Content Include="Views\WCClassicsBlogPage.cshtml" />
+    <Content Include="Views\Partials\BlogEntry.cshtml" />
+    <Content Include="Views\WCClassicsAnchorModulePage.cshtml" />
+    <Content Include="Views\Partials\NewsletterForm.cshtml" />
+    <Content Include="Views\Partials\DoubleSlider.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Macro.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Embed.cshtml" />
+    <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
+    <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
+    <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
+    <Content Include="Views\Partials\BlockList\Default.cshtml" />
+    <Content Include="Views\Partials\ClassicsHomePageFooter.cshtml" />
+    <Content Include="Views\Partials\Accordeon.cshtml" />
+    <Content Include="Views\Partials\ProgramArchive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj">
-      <Project>{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}</Project>
+      <Project>{63e7bef0-7bd7-4cb0-bb41-d6b19c949225}</Project>
       <Name>Dit.Umb.Toolbox.Common.ContentExtensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common\Dit.Umb.ToolBox.Common.csproj">
-      <Project>{6688F7E3-0FA5-4CAC-8256-805DACAF2C57}</Project>
+      <Project>{6688f7e3-0fa5-4cac-8256-805dacaf2c57}</Project>
       <Name>Dit.Umb.ToolBox.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dit.Umb.ToolBox.Models\Dit.Umb.ToolBox.Models.csproj">
@@ -662,7 +716,7 @@
       <Name>Dit.Umb.ToolBox.Services.Impl</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dit.Umb.ToolBox.Services\Dit.Umb.ToolBox.Services.csproj">
-      <Project>{927618A5-ACDB-4580-8562-20700C724919}</Project>
+      <Project>{927618a5-acdb-4580-8562-20700c724919}</Project>
       <Name>Dit.Umb.ToolBox.Services</Name>
     </ProjectReference>
   </ItemGroup>
@@ -698,17 +752,12 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
-    <Error Condition="!Exists('..\packages\UmbracoCms.8.11.1\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.11.1\build\UmbracoCms.props'))" />
-    <Error Condition="!Exists('..\packages\UmbracoCms.8.11.1\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.11.1\build\UmbracoCms.targets'))" />
-    <Error Condition="!Exists('..\packages\uSync.8.8.3\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.8.3\build\uSync.props'))" />
-    <Error Condition="!Exists('..\packages\uSync.8.8.3\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.8.3\build\uSync.targets'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.8.13.0\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.13.0\build\UmbracoCms.props'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.8.13.0\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.13.0\build\UmbracoCms.targets'))" />
+    <Error Condition="!Exists('..\packages\uSync.8.9.1\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.9.1\build\uSync.props'))" />
+    <Error Condition="!Exists('..\packages\uSync.8.9.1\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.9.1\build\uSync.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
@@ -752,11 +801,6 @@
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
-  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
-  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
-  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
-  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
-  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets')" />
-  <Import Project="..\packages\UmbracoCms.8.11.1\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.8.11.1\build\UmbracoCms.targets')" />
-  <Import Project="..\packages\uSync.8.8.3\build\uSync.targets" Condition="Exists('..\packages\uSync.8.8.3\build\uSync.targets')" />
+  <Import Project="..\packages\UmbracoCms.8.13.0\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.8.13.0\build\UmbracoCms.targets')" />
+  <Import Project="..\packages\uSync.8.9.1\build\uSync.targets" Condition="Exists('..\packages\uSync.8.9.1\build\uSync.targets')" />
 </Project>

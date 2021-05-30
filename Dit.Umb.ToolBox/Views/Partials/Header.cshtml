@@ -1,14 +1,19 @@
-﻿@model Dit.Umb.ToolBox.Models.Configuration.HeaderConfiguration
-<o-header namespace="header-">
+﻿@model Dit.Umb.ToolBox.Models.Interfaces.IHeaderConfiguration
+<o-header mobile-breakpoint="100vw" no-scroll="nav-open" menu-icon="true" namespace="header-">
     @if (Model.GlobalSlogan != null)
     {
-        <h1>@Model.GlobalSlogan.Title.ToUpper()</h1>
-        <h2>@Model.GlobalSlogan.SubTitle</h2>
+        // TODO only show on home-page
+        <a-title namespace="header-title-">
+            <h1>
+                <span>@Model.GlobalSlogan.Title.ToUpper()</span>
+                <span class="secondary-color">@Model.GlobalSlogan.SubTitle</span>
+            </h1>
+        </a-title>
     }
 
     @if (Model.NavigationItems != null && Model.NavigationItems.Any())
     {
-        <m-navigation hover="true" namespace="navigation-">
+        <m-navigation hover="false" namespace="navigation-" mobile-breakpoint="0vw" no-scroll="nav-open">
             <ul>
                 @foreach (var navItem in Model.NavigationItems)
                 {
@@ -25,6 +30,7 @@
                         }
                     </li>
                 }
+
             </ul>
         </m-navigation>
     }

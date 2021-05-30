@@ -13,7 +13,7 @@
             {
                 <p class="date">@Html.Raw($"{highlight.Date.ToClassicsDateString()} <br /> {highlight.City.Location}")</p>
             }
-            @if (!string.IsNullOrEmpty(highlight.Abstract))
+            @if (!highlight.HideAbstract && !string.IsNullOrEmpty(highlight.Abstract))
             {
                 <p>@highlight.Abstract</p>
             }

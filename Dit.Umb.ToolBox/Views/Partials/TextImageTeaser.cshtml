@@ -1,0 +1,23 @@
+@using Dit.Umb.ToolBox.Models.Constants
+@using Umbraco.Web.Composing
+@model Dit.Umb.MKulturProzent.Classics.Models.Poco.TextImageSlide
+
+
+<div style="display:flex;flex-direction: column;">
+    @if (Model.Image != null)
+    {
+        @Model.Image.RenderWcPictureTag()
+    }
+    @if (!string.IsNullOrEmpty(Model.Title))
+    {
+        <h3>@Model.Title</h3>
+    }
+    @if (!string.IsNullOrEmpty(Model.Text))
+    {
+        @Model.Text
+    }
+    @if (Model.Link != null && !string.IsNullOrEmpty(Model.Link.Url))
+    {
+        <a href="@Model.Link.Url" target="@Model.Link.Target">@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.Global.ReadMore)</a>
+    }
+</div>

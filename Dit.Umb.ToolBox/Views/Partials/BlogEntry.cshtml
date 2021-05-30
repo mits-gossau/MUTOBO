@@ -1,0 +1,27 @@
+﻿@using Dit.Umb.ToolBox.Mutobo
+@model Dit.Umb.MKulturProzent.Classics.Models.Pages.ContentPage
+
+
+
+
+<h2 id="@Model.Content.Name">@Model.PageTitle</h2>
+
+<p>
+    @Model.Abstract
+</p>
+
+
+@if (!string.IsNullOrEmpty(Model.MainContent))
+{
+    @Html.Raw(Model.MainContent)
+}
+
+
+@if (Model.Modules != null && Model.Modules.Any())
+{
+    @Html.RenderModules(Model.Modules)
+}
+
+<br />
+<br />
+

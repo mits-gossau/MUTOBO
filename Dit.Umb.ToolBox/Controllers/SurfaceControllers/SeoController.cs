@@ -6,18 +6,18 @@ namespace Dit.Umb.ToolBox.Controllers.SurfaceControllers
 {
     public class SeoController : SurfaceController
     {
-        private readonly IConfigurationService _configurationService;
+        private readonly ISeoService _seoService;
 
-        public SeoController(IConfigurationService configurationService)
+        public SeoController(ISeoService seoService)
         {
-            _configurationService = configurationService;
+            _seoService = seoService;
         }
 
         // GET: Seo
         public ActionResult Index()
         {
             return View("~/Views/Partials/SEOConfiguration.cshtml",
-                _configurationService.GetSeoConfiguration(CurrentPage));
+                _seoService.GetSeoConfiguration(CurrentPage));
         }
     }
 }

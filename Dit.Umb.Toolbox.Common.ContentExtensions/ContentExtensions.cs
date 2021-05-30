@@ -68,26 +68,26 @@ namespace Dit.Umb.Toolbox.Common.ContentExtensions
                 : null;
         }
 
-        public static Image GetImage(this IPublishedElement element, string field, int? width = null, int? height = null, ImageCropMode imageCropMode = ImageCropMode.Crop)
+        public static Image GetImage(this IPublishedElement element, string field, int? width = null, int? height = null, ImageCropMode imageCropMode = ImageCropMode.Crop, bool useSources = false)
         {
 
             var imageService = (IImageService)DependencyResolver.Current.GetService(typeof(IImageService));
 
             return element.HasValue(field)
-                ? imageService.GetImage(element.Value<IPublishedContent>(field), width, height, imageCropMode)
+                ? imageService.GetImage(element.Value<IPublishedContent>(field), width, height, imageCropMode, isGoldenRatio:useSources)
                 : null;
         }
 
 
        
 
-        public static IEnumerable<Image> GetImages(this IPublishedContent content, string field, int? width = null, int? height = null, ImageCropMode imageCropMode = ImageCropMode.Crop)
+        public static IEnumerable<Image> GetImages(this IPublishedContent content, string field, int? width = null, int? height = null, ImageCropMode imageCropMode = ImageCropMode.Crop, bool useSources = false)
         {
 
             var imageService = (IImageService)DependencyResolver.Current.GetService(typeof(IImageService));
 
             return content.HasValue(field)
-                ? imageService.GetImages(content.Value<IEnumerable<IPublishedContent>>(field), width, height, imageCropMode)
+                ? imageService.GetImages(content.Value<IEnumerable<IPublishedContent>>(field), width, height, imageCropMode, isGoldenRatio: useSources)
                 : null;
         }
 

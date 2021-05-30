@@ -1,6 +1,8 @@
 ﻿ @inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.BasePage>
 @using System.Globalization
 @using ClientDependency.Core.Mvc
+@using Dit.Umb.ToolBox.Models.Configuration
+@using Dit.Umb.ToolBox.Models.Interfaces
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = null;
@@ -24,7 +26,7 @@
     @Html.Action("Index", "Seo")
     @if (Model.Theme != null)
     {
-        @Html.Action("Index", "CssVariables", new { Theme = Model.Theme })
+        @Html.Action("Index", "CssVariables", new { Theme = Model.Theme as ITheme })
     }
 
 </head>
@@ -32,7 +34,7 @@
     <p-general>
         @Html.Partial("~/Views/Partials/Header.cshtml", Model.HeaderConfiguration)
         @RenderBody()
-        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration)
+        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration as FooterConfiguration)
     </p-general>
 @Html.Action("Index", "WcRender")
 @RenderSection("CustomElementsDefine", required: false)

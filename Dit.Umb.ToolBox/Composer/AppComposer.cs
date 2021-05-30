@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using Dit.Umb.ToolBox.Components;
 using Dit.Umb.ToolBox.Services.Impl;
 using Dit.Umb.ToolBox.Services;
 using MissingCode.Umbraco.HtmlMinifier;
 using Umbraco.Core;
 using Umbraco.Core.Composing;
-using Umbraco.Core.Services;
-using Umbraco.Core.Services.Implement;
+using Dit.Umb.ToolBox.Services.Proxy;
+using Dit.Umb.ToolBox.Services.Impl.Proxy;
 
 namespace Dit.Umb.ToolBox.Composer
 {
@@ -26,8 +23,8 @@ namespace Dit.Umb.ToolBox.Composer
             RegisterServices(composition);
   
             AddComponents(composition);
-            
 
+            RegisterComponents(composition);
         }
 
         /// <summary>
@@ -39,6 +36,11 @@ namespace Dit.Umb.ToolBox.Composer
             composition.Components().Append<SearchConfigurationComponent>();
             composition.Components().Append<HtmlMinifierComponent>();
             //composition.Components().Append<CustomDropDownPopulateComponent>();
+            composition.Components().Append<CustomIndexComponent>();
+        }
+
+        private void RegisterComponents(Composition composition)
+        {
 
         }
 
@@ -58,15 +60,19 @@ namespace Dit.Umb.ToolBox.Composer
             composition.Register(typeof(IXmlSitemapServicecs), typeof(XmlSitemapService), Lifetime.Scope);
             composition.Register(typeof(IFlyerService), typeof(FlyerService), Lifetime.Scope);
             composition.Register(typeof(IPageLayoutService), typeof(PageLayoutService), Lifetime.Scope);
-          
             composition.Register(typeof(IPictureLinkService), typeof(PictureLinkService), Lifetime.Scope);
-            composition.Register(typeof(IThemeService), typeof(ThemeService), Lifetime.Scope);
-          
             composition.Register(typeof(IMutoboContentService), typeof(MutoboContentService), Lifetime.Singleton);
             composition.Register(typeof(IMailService), typeof(MailService), Lifetime.Singleton);
             composition.Register(typeof(IFormPageService), typeof(FormPageService), Lifetime.Singleton);
             composition.Register(typeof(IVideoService), typeof(VideoService), Lifetime.Singleton);
-			composition.Register(typeof(IPdfService), typeof(PdfService), Lifetime.Singleton);
+            composition.Register(typeof(IPdfService), typeof(PdfService), Lifetime.Singleton);
+            composition.Register(typeof(ISliderService), typeof(SliderService), Lifetime.Singleton);
+            composition.Register(typeof(ILoggingService), typeof(LoggingService), Lifetime.Singleton);
+            composition.Register(typeof(IProxyFactory), typeof(ProxyFactory), Lifetime.Singleton);
+            composition.Register(typeof(IProxyService), typeof(ProxyService), Lifetime.Singleton);
+            composition.Register(typeof(IProxySettings), typeof(ProxySettings), Lifetime.Singleton);
+            composition.Register(typeof(ISeoService), typeof(SeoService), Lifetime.Singleton);
+
         }
     }
 }

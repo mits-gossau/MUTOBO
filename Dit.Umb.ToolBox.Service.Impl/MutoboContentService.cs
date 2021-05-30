@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Dit.Umb.Toolbox.Common.ContentExtensions;
 using Dit.Umb.ToolBox.Common.Extensions;
-using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
+using Umbraco.Web.Models;
+using DocumentTypes = Dit.Umb.ToolBox.Models.Constants.DocumentTypes;
+using Link = Umbraco.Web.Models.Link;
 
 namespace Dit.Umb.ToolBox.Services.Impl
 {
@@ -14,10 +17,18 @@ namespace Dit.Umb.ToolBox.Services.Impl
     {
 
         private readonly IImageService _imageService;
+        private readonly ISliderService _sliderService;
+        private readonly IConfigurationService _configurationService;
 
-        public MutoboContentService(IImageService imageService)
+
+        public MutoboContentService(
+            IImageService imageService,
+            ISliderService sliderService,
+            IConfigurationService configurationService)
         {
             _imageService = imageService;
+            _sliderService = sliderService;
+            _configurationService = configurationService;
         }
 
 
@@ -32,7 +43,8 @@ namespace Dit.Umb.ToolBox.Services.Impl
                 var elements =
                     content.Value<IEnumerable<IPublishedElement>>(fieldName);
 
-              
+    
+
 
                 foreach (var element in elements)
                 {
@@ -52,22 +64,50 @@ namespace Dit.Umb.ToolBox.Services.Impl
                         case DocumentTypes.Flyer.Alias:
                             result.Add(new Flyer(element)
                             {
-                                Image = element.GetImage(DocumentTypes.Flyer.Fields.FlyerImage, 
-                                    element.Value<int?>(DocumentTypes.Flyer.Fields.Width), 
-                                    element.Value<int?>(DocumentTypes.Flyer.Fields.Height)),
+                                Image = element.GetImage(DocumentTypes.Flyer.Fields.FlyerImage,
+                                    width: 900, imageCropMode: ImageCropMode.Max),
                                 TeaserText = element.Value<string>(DocumentTypes.Flyer.Fields.FlyerTeaserText),
+                                Link = element.Value<Umbraco.Web.Models.Link>(DocumentTypes.Flyer.Fields.Link)
+
                             });
                             break;
 
                         case DocumentTypes.Teaser.Alias:
                             result.Add(GetTeaser(element));
                             break;
+                        case DocumentTypes.SliderComponent.Alias:
+                            var sliderModule = new SliderComponent(element);
 
-                      
+                            var useGoldenRatio = (sliderModule.Height == null && sliderModule.Width == null);
+
+
+                            sliderModule.Slides = _sliderService.GetSlides(element,
+                                DocumentTypes.SliderComponent.Fields.Slides, sliderModule.Width);
+                            result.Add(sliderModule);
+                            break;
+
+
+             
+                        case DocumentTypes.PictureModule.Alias:
+                            var picModule = new PictureModule(element)
+                            {
+                                
+                         
+                            };
+                            var isGoldenRatio = (picModule.Height == null && picModule.Width == null);
+                            picModule.Image = element.HasValue(DocumentTypes.Picture.Fields.Image)
+                                ? _imageService.GetImage(
+                                    element.Value<IPublishedContent>(DocumentTypes.Picture.Fields.Image), 
+                                    height: picModule.Height, 
+                                    width: picModule.Width )
+                                : null;
+                            result.Add(picModule);
+                            break;
+
+                        case DocumentTypes.Newsletter.Alias:
+                            result.Add(new Newsletter(element));
+                            break;
                     }
-
-
-
                 }
 
                 return result;
@@ -79,7 +119,7 @@ namespace Dit.Umb.ToolBox.Services.Impl
 
         private Teaser GetTeaser(IPublishedElement element)
         {
-            
+
             var teaser = new Teaser(element);
 
 
@@ -91,7 +131,10 @@ namespace Dit.Umb.ToolBox.Services.Impl
                 if (article == null)
                     throw new Exception($"Please make sure that you have a linked article page when using article data.");
 
-              
+                teaser.Images = GetHighlightImages(article.Content);
+
+                teaser.TeaserText = GetHighlightText(article.Content);
+                teaser.TeaserTitle = GetHighlightTitle(article.Content);
             }
             else
             {
@@ -111,7 +154,37 @@ namespace Dit.Umb.ToolBox.Services.Impl
 
         }
 
+        private IEnumerable<Image> GetHighlightImages(IPublishedContent content)
+        {
+            var result = new List<Image>();
+            
+                if (content.HasValue(ToolBox.Models.Constants.DocumentTypes.ArticlePage.Fields.EmotionImages))
+                    result.AddRange(_imageService.GetImages(content.Value<IEnumerable<IPublishedContent>>(ToolBox.Models.Constants.DocumentTypes.ArticlePage.Fields.EmotionImages)));
+        
+            return result;
+        }
 
+        private string GetHighlightText(IPublishedContent content)
+        {
+            string result = null;
+
+                if (content.HasValue(ToolBox.Models.Constants.DocumentTypes.ArticlePage.Fields.Abstract))
+                    result = content.Value<string>(ToolBox.Models.Constants.DocumentTypes.ArticlePage.Fields.Abstract);
+ 
+
+            return result;
+        }
+
+        private string GetHighlightTitle(IPublishedContent content)
+        {
+            string result = null;
+
+
+                if (content.HasValue(ToolBox.Models.Constants.DocumentTypes.BasePage.Fields.PageTitle))
+                    result = content.Value<string>(ToolBox.Models.Constants.DocumentTypes.BasePage.Fields.PageTitle);
+       
+            return result;
+        }
 
     }
 }

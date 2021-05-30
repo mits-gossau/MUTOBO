@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Dit.Umb.ToolBox.Models.PoCo;
+using Microsoft.SqlServer.Server;
 
 namespace Dit.Umb.ToolBox.Models.Constants
 {
@@ -35,10 +36,27 @@ namespace Dit.Umb.ToolBox.Models.Constants
                 public const string FooterConfiguration = "footerConfiguration";
                 public const string GoogleAnalyticsKey = "googleAnalyticsKey";
                 public const string Thumbnail = "thumbnail";
-              
+                public const string ExcludeFromSearch = "excludeFromSearch";
 
             }
         }
+
+
+        public static class SearchResults
+        {
+            public static string Alias = "searchResults";
+
+
+            public static class Fields
+            {
+                // BasePage
+                public const string PageTitle = "pageTitle";
+
+
+
+            }
+        }
+
 
 
         public static class HomePage
@@ -61,6 +79,7 @@ namespace Dit.Umb.ToolBox.Models.Constants
             public static class Fields
             {
                 public const string Abstract = "abstract";
+                public const string HideAbstract = "hideAbstract";
                 public const string MainContent = "mainContent";
                 public const string EmotionImages = "emotionImages";
                 public const string TeaserImageHeight = "teaserImageHeight";
@@ -89,7 +108,7 @@ namespace Dit.Umb.ToolBox.Models.Constants
             {
                 public const string BackgroundColor = "backgroundColor";
                 public const string ColorHover = "colorHover";
-                public const string ColorSecondary = "colorSecundary";
+                public const string ColorSecondary = "colorSecondary";
                 public const string Color = "color";
                 public const string FontFamily = "fontFamily";
                 public const string FooterBackgroundColor = "footerBackgroundColor";
@@ -102,6 +121,7 @@ namespace Dit.Umb.ToolBox.Models.Constants
                 public const string NavigationColor = "navigationColor";
                 public const string NavigationHrColor = "navigationHrColor";
                 public const string HrColor = "hrColor";
+                public const string PageTheme = "pageTheme";
 
             }
         }
@@ -143,6 +163,7 @@ namespace Dit.Umb.ToolBox.Models.Constants
                 public const string NavigationArea = "navigationArea";
                 public const string ContactArea = "contactArea";
                 public const string Links = "footerLinks";
+                public const string BlockLinks = "blockLinks";
                 public const string PictureLinks = "pictureLinks";
                 public const string CopyRight = "copyRight";
             }
@@ -178,6 +199,10 @@ namespace Dit.Umb.ToolBox.Models.Constants
                 public const string FlyerImage = "flyerImage";
                 public const string FlyerTeaserText = "flyerTeaserText";
                 public const string FlyerLink = "website";
+                public const string MarginTop = "marginTop";
+                public const string MarginSide = "marginSide";
+                public const string TextHeight = "textHeight";
+                public const string TextWidth = "textWidth";
             }
 
 
@@ -192,8 +217,14 @@ namespace Dit.Umb.ToolBox.Models.Constants
             {
                 public const string Image = "image";
                 public const string Link = "link";
+                public const string LogoLink = "logoLink";
                 public const string Text = "text";
-            }
+                public const string MaxHeight = "maxHeight";
+                public const string PaddingTop = "paddingTop";
+                public const string PaddingRight = "paddingRight";
+                public const string PaddingBottom = "paddingBottom";
+                public const string PaddingLeft = "paddingLeft";
+            }                       
         }
 
         public static class FormPage
@@ -239,6 +270,9 @@ namespace Dit.Umb.ToolBox.Models.Constants
             {
                 public const string VideoFile = "videoFile";
                 public const string Embedded = "embedded";
+                public const string Text = "text";
+                public const string Height = "height";
+                public const string Width = "width";
             }
         }
 
@@ -253,6 +287,18 @@ namespace Dit.Umb.ToolBox.Models.Constants
             }
         }
 
+        public static class TourEvent
+        {
+            public const string Alias = "locationsOfEvents";
+            public static class Fields
+            {
+                public const string Location = "eventLocation";
+                public const string Eventdate = "dateOfEvent";
+                public const string Ticket = "ticket";
+
+            }
+        }
+
         public static class Heading
         {
             public const string Alias = "heading";
@@ -260,6 +306,8 @@ namespace Dit.Umb.ToolBox.Models.Constants
             public static class Fields
             {
                 public const string Text = "text";
+                public const string RenderAs = "renderAs";
+                public const string NavigationAnchor = "navigationAnchor";
             }
         }
 
@@ -290,5 +338,82 @@ namespace Dit.Umb.ToolBox.Models.Constants
                 public const string Modules = "modules";
             }
         }
+
+
+
+
+
+        public static class SliderComponent
+        {
+            public const string Alias = "sliderComponent";
+
+            public static class Fields
+            {
+                public const string Slides = "slides";
+                public const string Height = "height";
+                public const string Width = "width";
+                public const string Interval = "interval";
+                public const string DisplayType = "displayType";
+            }
+        }
+
+
+        public static class Picture
+        {
+            public const string Alias = "picture";
+
+            public static class Fields
+            {
+                public const string Image = "image";
+            }
+        }
+
+
+        public static class PictureModule
+        {
+            public const string Alias = "pictureModule";
+
+            public static class Fields
+            {
+                public const string Image = "image";
+                public const string Height = "height";
+                public const string Width = "width";
+            }
+        }
+
+        public static class Interpretors
+        {
+            public static class Conductor
+            {
+                public const string Alias = "conductor";
+            }
+            public static class Composer
+            {
+                public const string Alias = "composer";
+            }
+            public static class Orchestra
+            {
+                public const string Alias = "orchestra";
+            }
+            public static class Soloist
+            {
+                public const string Alias = "soloist";
+            }
+        }
+
+        public static class Newsletter
+        {
+            public const string Alias = "newsletter";
+
+            public static class Fields
+            {
+                public const string Information = "information";
+                public const string Frequency = "frequency";
+                public const string MessageSuccess = "messagesuccess";
+                public const string MessageError = "messageerror";
+                
+            }
+        }
+
     }
 }

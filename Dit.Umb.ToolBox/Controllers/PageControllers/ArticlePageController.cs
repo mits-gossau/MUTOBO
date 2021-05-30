@@ -18,9 +18,7 @@ namespace Dit.Umb.ToolBox.Controllers.PageControllers
 
         protected readonly IImageService _imageService;
 
-        public ArticlePageController()
-        {
-        }
+
 
         public ArticlePageController(IImageService imageService)
         {

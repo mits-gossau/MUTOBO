@@ -1,6 +1,6 @@
 ﻿namespace Dit.Umb.ToolBox.Models.PoCo
 {
-    public class Video
+    public class Video 
     {
         public int? Height { get; set; }
         public int? Width { get; set; }

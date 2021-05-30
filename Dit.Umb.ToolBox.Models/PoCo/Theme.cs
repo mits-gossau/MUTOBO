@@ -5,13 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Dit.Umb.ToolBox.Models.Constants;
+using Dit.Umb.ToolBox.Models.Enum;
+using Dit.Umb.ToolBox.Models.Interfaces;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
 namespace Dit.Umb.ToolBox.Models.PoCo
 {
-    public class Theme : PublishedElementModel
+    public class Theme : PublishedElementModel, ITheme
     {
+
+
+        public EPageTheme PageTheme => this.HasValue(DocumentTypes.Theme.Fields.PageTheme)
+            ? (EPageTheme) System.Enum.Parse(typeof(EPageTheme),
+                this.Value<string>(DocumentTypes.Theme.Fields.PageTheme))
+            : EPageTheme.Cyan;
 
         public string BackgroundColor => this.HasValue(DocumentTypes.Theme.Fields.BackgroundColor)
             ? this.Value<string>(DocumentTypes.Theme.Fields.BackgroundColor) : null;
@@ -57,65 +65,68 @@ namespace Dit.Umb.ToolBox.Models.PoCo
                 stringBuilder.AppendLine($"--background-color: #{BackgroundColor};");
             }
 
-            if (!string.IsNullOrEmpty(ColorSecondary))
-            {
-                stringBuilder.AppendLine($"--color-secondary: #{ColorSecondary};");
-            }
+            //if (!string.IsNullOrEmpty(ColorSecondary))
+            //{
+            //    stringBuilder.AppendLine($"--color-secondary: #{ColorSecondary};");
+            //}
 
             if (!string.IsNullOrEmpty(ColorHover))
             {
                 stringBuilder.AppendLine($"--color-hover: #{ColorHover};");
             }
 
-            if (!string.IsNullOrEmpty(FooterBackgroundColor))
-            {
-                stringBuilder.AppendLine($"--footer-background-color: #{FooterBackgroundColor};");
-            }
+            //if (!string.IsNullOrEmpty(FooterBackgroundColor))
+            //{
+            //    stringBuilder.AppendLine($"--footer-background-color: #{FooterBackgroundColor};");
+            //}
 
-            if (!string.IsNullOrEmpty(HeaderBackgroundColor))
-            {
-                stringBuilder.AppendLine($"--header-background-color: #{HeaderBackgroundColor};");
-            }
+            //if (!string.IsNullOrEmpty(HeaderBackgroundColor))
+            //{
+            //    stringBuilder.AppendLine($"--header-background-color: #{HeaderBackgroundColor};");
+            //}
 
-            if (!string.IsNullOrEmpty(FooterColorHover))
-            {
-                stringBuilder.AppendLine($"--footer-color-hover: #{FooterColorHover};");
-            }
+            //if (!string.IsNullOrEmpty(FooterColorHover))
+            //{
+            //    stringBuilder.AppendLine($"--footer-color-hover: #{FooterColorHover};");
+            //}
 
-            if (!string.IsNullOrEmpty(FooterColor))
-            {
-                stringBuilder.AppendLine($"--footer-color: #{FooterColor};");
-            }
+            //if (!string.IsNullOrEmpty(FooterColor))
+            //{
+            //    stringBuilder.AppendLine($"--footer-color: #{FooterColor};");
+            //}
 
-            if (!string.IsNullOrEmpty(HeaderColor))
-            {
-                stringBuilder.AppendLine($"--header-color: #{HeaderColor};");
-            }
+            //if (!string.IsNullOrEmpty(HeaderColor))
+            //{
+            //    stringBuilder.AppendLine($"--header-color: #{HeaderColor};");
+            //}
 
-            if (!string.IsNullOrEmpty(NavigationBackgroundColor))
-            {
-                stringBuilder.AppendLine($"--navigation-background-color: #{NavigationBackgroundColor};");
-            }
+            //if (!string.IsNullOrEmpty(NavigationBackgroundColor))
+            //{
+            //    stringBuilder.AppendLine($"--navigation-background-color: #{NavigationBackgroundColor};");
+            //}
 
-            if (!string.IsNullOrEmpty(NavigationColor))
-            {
-                stringBuilder.AppendLine($"--navigation-color: #{NavigationColor};");
-            }
+            //if (!string.IsNullOrEmpty(NavigationColor))
+            //{
+            //    stringBuilder.AppendLine($"--navigation-color: #{NavigationColor};");
+            //}
 
-            if (!string.IsNullOrEmpty(NavigationColorHover))
-            {
-                stringBuilder.AppendLine($"--navigation-color-hover: #{NavigationColorHover};");
-            }
+            //if (!string.IsNullOrEmpty(NavigationColorHover))
+            //{
+            //    stringBuilder.AppendLine($"--navigation-color-hover: #{NavigationColorHover};");
+            //}
 
-            if (!string.IsNullOrEmpty(NavigationHrColor))
-            {
-                stringBuilder.AppendLine($"--navigation-color-hover: #{NavigationHrColor};");
-            }
+            //if (!string.IsNullOrEmpty(NavigationHrColor))
+            //{
+            //    stringBuilder.AppendLine($"--navigation-color-hover: #{NavigationHrColor};");
+            //}
 
-            if (!string.IsNullOrEmpty(HrColor))
-            {
-                stringBuilder.AppendLine($"--hr-color: #{HrColor};");
-            }
+            //if (!string.IsNullOrEmpty(HrColor))
+            //{
+            //    stringBuilder.AppendLine($"--hr-color: #{HrColor};");
+            //}
+
+            stringBuilder.AppendLine($"--playlist-item-a-text-decoration: none;");
+            stringBuilder.AppendLine($"--playlist-item-a-text-decoration-hover: underline;");
 
             stringBuilder.Append("}</style>");
             return new HtmlString(stringBuilder.ToString());

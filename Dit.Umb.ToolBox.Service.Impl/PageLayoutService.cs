@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using Dit.Umb.Toolbox.Common.ContentExtensions;
-using Dit.Umb.ToolBox.Common.Exceptions;
-using Dit.Umb.ToolBox.Common.Extensions;
 using Dit.Umb.ToolBox.Models.Configuration;
 using Dit.Umb.ToolBox.Models.Constants;
-using Dit.Umb.ToolBox.Models.PageModels;
+using Dit.Umb.ToolBox.Models.Interfaces;
 using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Core.Services;
@@ -37,12 +34,16 @@ namespace Dit.Umb.ToolBox.Services.Impl
             _pictureLinkService = pictureLinkService;
         }
 
-        public HeaderConfiguration GetHeaderConfiguration(IPublishedContent content = null)
+        /// <summary>
+        /// Returns the first found IHeaderConfiguration recursively upwards 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public IHeaderConfiguration GetHeaderConfiguration(IPublishedContent content = null)
         {
             HeaderConfiguration headerConfig = null;
             var branch = content?.AncestorsOrSelf().ToList();
             var index = 0;
-
 
             if (branch != null)
             {
@@ -51,44 +52,43 @@ namespace Dit.Umb.ToolBox.Services.Impl
                     headerConfig = branch[index].HasValue(DocumentTypes.BasePage.Fields.HeaderConfiguration)
                         ? new HeaderConfiguration(branch[index].Value<IEnumerable<IPublishedElement>>(DocumentTypes.BasePage.Fields.HeaderConfiguration).FirstOrDefault()) : null;
                     index++;
+
                 } while (index < branch.Count() && headerConfig == null);
             }
 
-
-
-
-
-
-
             if (headerConfig != null)
+            {
                 return new HeaderConfiguration(headerConfig)
                 {
                     NavigationItems = _navigationService.GetNavigation(),
                     Logo = _imageService.GetImage(headerConfig.Value<IPublishedContent>(DocumentTypes.Configuration.Logo), height: 100),
                     Languages = _localizationService.GetAllLanguages()
-                            .Where(l => !Equals(l.CultureInfo, CultureInfo.CurrentCulture))
-                            .Select(a => new Language()
-                            {
-                                Name = a.CultureInfo.NativeName.Split(' ')[0],
-                                ISO = a.CultureInfo.TwoLetterISOLanguageName
-                            }),
+                        .Where(l => !Equals(l.CultureInfo, CultureInfo.CurrentCulture))
+                        .Select(a => new Language()
+                        {
+                            Name = a.CultureInfo.NativeName.Split(' ')[0],
+                            ISO = a.CultureInfo.TwoLetterISOLanguageName
+                        }),
                     GlobalSlogan = GetGlobalSlogan()
 
                 };
-
-            return null;
-
-
+            }
+            else
+            {
+                return new EmptyHeaderConfiguration();
+            }
         }
 
-        public FooterConfiguration GetFooterConfiguration(IPublishedContent content = null)
+        /// <summary>
+        /// Returns the first found IFooterConfiguration recursively upwards 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public IFooterConfiguration GetFooterConfiguration(IPublishedContent content = null)
         {
-
-
             FooterConfiguration footerConfig = null;
             var branch = content?.AncestorsOrSelf().ToList();
             var index = 0;
-
 
             if (branch != null)
             {
@@ -108,8 +108,6 @@ namespace Dit.Umb.ToolBox.Services.Impl
     : new List<IPublishedElement>();
                 var linkBlocks = new List<FooterNavBlock>();
 
-
-
                 foreach (var node in nodes)
                 {
                     var contentNode = Current.UmbracoHelper.Content(node.Value<IPublishedContent>(DocumentTypes.FooterNavBlock.StartNode).Id);
@@ -118,16 +116,12 @@ namespace Dit.Umb.ToolBox.Services.Impl
 
                 var footerLinks = footerConfig.Value<IEnumerable<Umbraco.Web.Models.Link>>(DocumentTypes.FooterConfiguration.Fields.Links) ??
                                   new List<Umbraco.Web.Models.Link>();
-
                 var contactNode = footerConfig.HasValue(DocumentTypes.FooterConfiguration.Fields.ContactArea) ?
                     footerConfig.Value<IEnumerable<IPublishedElement>>(DocumentTypes.FooterConfiguration.Fields.ContactArea)
                         .Select(e => new FooterContactArea(e))
                     : new List<FooterContactArea>();
-
-
                 var langs = _localizationService.GetAllLanguages().ToList();
-
-
+                var headerConfiguration = GetHeaderConfiguration(content);
                 return new FooterConfiguration(footerConfig)
                 {
                     FooterNavBlocks = linkBlocks,
@@ -137,17 +131,17 @@ namespace Dit.Umb.ToolBox.Services.Impl
                         .Select(a => new Language()
                         {
                             Name = a.CultureInfo.NativeName.Split(' ')[0],
-                            ISO = a.CultureInfo.TwoLetterISOLanguageName
+                            ISO = a.CultureInfo.TwoLetterISOLanguageName,
+                            CultureName = a.CultureInfo.Name
                         }),
                     PictureLinks = footerConfig.HasValue(DocumentTypes.FooterConfiguration.Fields.PictureLinks) ?
                         _pictureLinkService.GetPictureLinks(footerConfig.Value<IEnumerable<IPublishedElement>>(DocumentTypes.FooterConfiguration.Fields.PictureLinks)) :
-                        new List<PictureLink>()
+                        new List<PictureLink>(),
+                    HomePageLogo = headerConfiguration?.Logo
                 };
             }
 
-
-            return null;
-
+            return new EmptyFooterConfiguration();
         }
 
         private Slogan GetGlobalSlogan()
@@ -157,7 +151,11 @@ namespace Dit.Umb.ToolBox.Services.Impl
                 .FirstOrDefault(c => c.ContentType.Alias == DocumentTypes.HomePage.Alias);
 
             if (homePage == null)
-                throw new Exception("No Page with the document type homePage found!");
+                return new Slogan()
+                {
+                    SubTitle = String.Empty,
+                    Title = String.Empty
+                };
 
             return new Slogan()
             {

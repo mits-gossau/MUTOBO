@@ -2,6 +2,7 @@
 using Dit.Umb.ToolBox.Models.PoCo;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using Dit.Umb.ToolBox.Common.Exceptions;
 using Dit.Umb.ToolBox.Common.Extensions;
 using Dit.Umb.ToolBox.Models.Enum;
@@ -14,9 +15,9 @@ namespace Dit.Umb.ToolBox.Services.Impl
     public class ImageService : BaseService, IImageService
     {
         public Image GetImage(IPublishedContent node, int? width = null, int? height = null,
-            ImageCropMode imageCropMode = ImageCropMode.Crop, string nameSpace = "picture")
-        
-        {
+            ImageCropMode imageCropMode = ImageCropMode.Crop, string nameSpace = "picture", bool isGoldenRatio = false)
+
+        { 
 
             if (node == null)
             {
@@ -35,7 +36,8 @@ namespace Dit.Umb.ToolBox.Services.Impl
                 Height = height.HasValue ? $"{height}px" : null,
                 Width = width.HasValue ? $"{width}px" : null,
                 Namespace = nameSpace,
-                ImageNode = node
+                ImageNode = node,
+                IsGoldenRatio = isGoldenRatio
             };
         }
 
@@ -53,39 +55,43 @@ namespace Dit.Umb.ToolBox.Services.Impl
 
                 switch (dimension)
                 {
+                    // 400px
                     case EImageDimension.Small:
-                        calculatedHeight = height.HasValue ? (int?)(height.Value * 0.2) : null;
-                        calculatedWidth = width.HasValue ? (int?) (width.Value * 0.2) : height.HasValue ? null : (int?)600;
+                        calculatedHeight = (int?)(height * 0.45);
+                        calculatedWidth = (int?)(width * 0.45);
                         break;
+                    // 600px;
                     case EImageDimension.Medium:
-                        calculatedHeight = height.HasValue ? (int?)(height.Value * 0.5) : null;
-                        calculatedWidth = width.HasValue ? (int?)(width.Value * 0.5) : height.HasValue ? null : (int?)985;
+                        calculatedHeight = (int?)(height * 0.67);
+                        calculatedWidth = (int?)(width * 0.67);
                         break;
+                    // 1200px
                     case EImageDimension.Large:
-                        calculatedHeight = height.HasValue ? (int?)(height.Value * 1.2) : null;
-                        calculatedWidth = width.HasValue ? (int?)(width.Value * 1.2) : height.HasValue ? null : (int?)1150;
+                        calculatedHeight = (int?)(height * 1.34);
+                        calculatedWidth = (int?)(width * 1.34);
                         break;
+                    // 2250px
                     case EImageDimension.ExtraLarge:
-                        calculatedHeight = height.HasValue ? (int?)(height.Value * 1.5) : null;
-                        calculatedWidth = width.HasValue ? (int?)(width.Value * 1.5) : height.HasValue ? null : (int?)1600;
+                        calculatedHeight = (int?)(height * 2.5);
+                        calculatedWidth = (int?)(width * 2.5);
                         break;
                     default:
+                        result.Add(new ImageSource()
+                        {
+                            Size = EImageDimension.Default,
+                            Type = "image/png",
+                            Src = HttpUtility.HtmlDecode(media.GetCropUrl(width, height, imageCropMode: imageCropMode, furtherOptions: "&format=png&quality=80"))  
+                        });
                         calculatedHeight = height;
                         calculatedWidth = width;
                         break;
 
                 }
 
-
-
-                //var mimeType = media.HasProperty("umbracoExtension") && media.HasValue("umbracoExtension")
-                //    ? $"image/{media.Value<string>("umbracoExtension")}".Replace("jpg", "jpeg")
-                //    : string.Empty;
-
                 result.Add(new ImageSource()
                 {
                     Size = dimension,
-                    Src = media.GetCropUrl(width: calculatedWidth, height: calculatedHeight, imageCropMode: imageCropMode, furtherOptions: "&format=webp&quality=80"),
+                    Src = HttpUtility.HtmlDecode(media.GetCropUrl(width: calculatedWidth, height: calculatedHeight, imageCropMode: imageCropMode, furtherOptions: "&format=webp&quality=80")) ,
                     Type = "image/webp" 
                 });   
             }
@@ -95,7 +101,7 @@ namespace Dit.Umb.ToolBox.Services.Impl
         }
 
         public IEnumerable<Image> GetImages(IEnumerable<IPublishedContent> contentNodes, int? width = null, int? height = null,
-            ImageCropMode imageCropMode = ImageCropMode.Crop, string nameSpace = "picture")
+            ImageCropMode imageCropMode = ImageCropMode.Crop, string nameSpace = "picture", bool isGoldenRatio = false)
         {
             return contentNodes?.Select(n => new Image()
             {
@@ -104,7 +110,8 @@ namespace Dit.Umb.ToolBox.Services.Impl
                 Height = height.HasValue ? $"{height}px" : null,
                 Width = width.HasValue ? $"{width}px" : null,
                 Namespace = nameSpace,
-                ImageNode = n
+                ImageNode = n,
+                IsGoldenRatio = isGoldenRatio
             }) ?? new List<Image>();
         }
 

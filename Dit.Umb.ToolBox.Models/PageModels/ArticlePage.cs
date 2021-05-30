@@ -14,10 +14,12 @@ namespace Dit.Umb.ToolBox.Models.PageModels
     {
 
         public string Abstract => Content.Value<string>(DocumentTypes.ArticlePage.Fields.Abstract);
+        public bool HideAbstract => Content.Value<bool>(DocumentTypes.ArticlePage.Fields.HideAbstract);
         public string MainContent => Content.Value<string>(DocumentTypes.ArticlePage.Fields.MainContent);
+
+
+
         public IEnumerable<Image> EmotionImages  { get; set; }
-        public int? Height => Content.Value<int>(DocumentTypes.ArticlePage.Fields.TeaserImageHeight);
-        public int? Width => Content.Value<int>(DocumentTypes.ArticlePage.Fields.TeaserImageWidth);
 
 
         public ArticlePage(IPublishedContent content) : base(content)

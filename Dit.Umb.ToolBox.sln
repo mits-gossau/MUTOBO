@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox", "Dit.Umb.ToolBox\Dit.Umb.ToolBox.csproj", "{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox.Models", "Dit.Umb.ToolBox.Models\Dit.Umb.ToolBox.Models.csproj", "{7025291E-B26A-45DA-9502-E689527C1C5B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox.Services", "Dit.Umb.ToolBox.Services\Dit.Umb.ToolBox.Services.csproj", "{927618A5-ACDB-4580-8562-20700C724919}"
@@ -26,16 +24,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox.Common", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.Toolbox.Common.ContentExtensions", "Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj", "{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox", "Dit.Umb.ToolBox\Dit.Umb.ToolBox.csproj", "{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7025291E-B26A-45DA-9502-E689527C1C5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7025291E-B26A-45DA-9502-E689527C1C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7025291E-B26A-45DA-9502-E689527C1C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,17 +52,21 @@ Global
 		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7} = {AE672E16-A211-4D16-BAF2-FC4BF22048A6}
 		{7025291E-B26A-45DA-9502-E689527C1C5B} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 		{927618A5-ACDB-4580-8562-20700C724919} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 		{1A49FC73-FB47-4C22-BCBF-3E37FE566703} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 		{6688F7E3-0FA5-4CAC-8256-805DACAF2C57} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
+		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7} = {AE672E16-A211-4D16-BAF2-FC4BF22048A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70340767-2600-46EC-8C6C-78B7C59BEA16}

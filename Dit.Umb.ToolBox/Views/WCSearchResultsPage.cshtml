@@ -1,8 +1,10 @@
 ﻿@using ClientDependency.Core.Mvc
+@using Dit.Umb.MKulturProzent.Classics.Models.Constants
+@using Umbraco.Web.Composing
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.SearchResultModel>
 
 @{
-    Layout = "WCBasePage.cshtml";
+    Layout = "WCClassicsBasePage.cshtml";
 
 }
 @section CustomElementsDefine {
@@ -19,7 +21,12 @@
             ['o-footer', Footer],
             ['m-flyer', Flyer],
             ['m-teaser', Teaser],
-            ['o-teaser-wrapper', TeaserWrapper],
+            ['a-input', Input],
+            ['a-button', Button],
+            ['a-title', Title],
+            ['m-form', Form],
+            ['o-teaser-wrapper', TeaserWrapper]
+
         ].forEach(element => {
             // don't define already existing customElements
             if (element && !customElements.get(element[0])) customElements.define(...element)
@@ -28,21 +35,42 @@
 }
 <o-body>
     @Html.Action("Index", "SearchForm")
-    <h3>@Umbraco.GetDictionaryValue("SearchResultsPageTitle")</h3>
-    @if (Model.Results.Any())
+    
+    @if (!string.IsNullOrEmpty(Model.Term))
     {
-        //TODO: Texte in Dictionary
-        <p>Ihre Suche nach "@Model.Term" lieferte @Model.Results.Count() Treffer</p>
-
-        foreach (var searchResults in Model.Results)
+        <h3>@Umbraco.GetDictionaryValue("SearchResultsPageTitle")</h3>
+        if (Model.Results.Any())
         {
-            <h4>@searchResults.Title</h4>
-            <p>@searchResults.Abstract</p>
-            <a href="@searchResults.Url">@searchResults.UrlTitle</a>
+            //TODO: Texte in DictionaryKeys
+            <p>@string.Format(Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.SearchPage.IntroText), Model.Term, Model.Results.Count())</p>
+
+            foreach (var searchResults in Model.Results)
+            {
+                <div>
+                    <h4>@searchResults.Title</h4>
+                    <p>@Html.Raw(searchResults.Abstract)</p>
+                    @*Uncomment this to reenable PDF-Results *@
+                    @*@if (searchResults.Documents != null && searchResults.Documents.Any())
+                    {
+
+                        <p>
+                            @(string.Format(Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.SearchPage.PdfResultText), Model.Term)) 
+                            <ul>
+                                @foreach (var doc in searchResults.Documents)
+                                {
+                                    <li><a href="@doc.Url" target="">@doc.Name</a></li>
+
+                                }
+                            </ul>
+                        </p>
+                    }*@
+                        <a href="@searchResults.Url">@searchResults.UrlTitle</a>
+                </div>
+            }
         }
-    }
-    else
-    {
-        <p>@Umbraco.GetDictionaryValue("SearchResultsPageNoResults") @Model.Term</p>
+        else
+        {
+            <p>@Umbraco.GetDictionaryValue("SearchResultsPageNoResults") "@Model.Term"</p>
+        }
     }
 </o-body>

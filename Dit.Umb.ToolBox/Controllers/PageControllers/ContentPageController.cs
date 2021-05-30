@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Dit.Umb.MKulturProzent.Classics.Models.Pages;
 using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Dit.Umb.ToolBox.Models.PoCo;
@@ -19,8 +20,9 @@ namespace Dit.Umb.ToolBox.Controllers.PageControllers
         private readonly IMutoboContentService _mutoboContentService;
 
 
-        public ContentPageController(IMutoboContentService mutoboContentService)
+        public ContentPageController(IMutoboContentService mutoboContentService, IImageService imageService) : base(imageService)
         {
+         
             _mutoboContentService = mutoboContentService;
         }
 

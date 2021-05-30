@@ -1,5 +1,8 @@
+uSync/v8/Content
+uSync/v8/Media
+uSync/v8/Domains
 App_Data/
 Media/
 Umbraco/
 config/appSettings.config
-config/connectionString.config
+config/connectionStrings.config

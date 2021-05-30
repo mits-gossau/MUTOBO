@@ -22,6 +22,12 @@ namespace Dit.Umb.ToolBox.Models.PoCo
         public string Phone { get; set; }
         public string Message { get; set; }
 
+        public bool? success = null;
+
+        public string Gender { get; set; }
+        public string Zip { get; set; }
+        public string Place { get; set; }
+        public bool Policy { get; set; }
 
 
         public MailConfiguration Customer { get; set; }

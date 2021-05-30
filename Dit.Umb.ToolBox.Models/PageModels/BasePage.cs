@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Schema;
 using Dit.Umb.ToolBox.Models.Configuration;
 using Dit.Umb.ToolBox.Models.Constants;
+using Dit.Umb.ToolBox.Models.Interfaces;
 using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
@@ -17,8 +18,8 @@ namespace Dit.Umb.ToolBox.Models.PageModels
     public class BasePage : ContentModel
     {
         public Slogan GlobalSlogan { get; set; }
-        public HeaderConfiguration HeaderConfiguration { get; set; }
-        public FooterConfiguration FooterConfiguration { get; set; }
+        public IHeaderConfiguration HeaderConfiguration { get; set; }
+        public IFooterConfiguration FooterConfiguration { get; set; }
         public string PageTitle => Content.Value<string>(DocumentTypes.BasePage.Fields.PageTitle);
 
         public bool HideFromNavigation => Content.Value<bool>(DocumentTypes.BasePage.Fields.HideFromNavigation);
@@ -36,7 +37,8 @@ namespace Dit.Umb.ToolBox.Models.PageModels
         public string GoogleAnalyticsKey => Content.HasValue(DocumentTypes.BasePage.Fields.GoogleAnalyticsKey)
             ? Content.Value<string>(DocumentTypes.BasePage.Fields.GoogleAnalyticsKey)
             : string.Empty;
-        public Theme Theme { get; set; }
+        public ITheme Theme { get; set; }
+        public bool ExcludeFromSearch => Content.Value<bool>(DocumentTypes.BasePage.Fields.ExcludeFromSearch);
 
 
         public BasePage(IPublishedContent content) : base(content)

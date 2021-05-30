@@ -1,0 +1,16 @@
+﻿@using Dit.Umb.ToolBox.Models.Constants
+@using Dit.Umb.ToolBox.Models.PoCo
+@model Dit.Umb.ToolBox.Models.PoCo.Newsletter
+
+@*<a>@Model.Information</a>
+<a>@Model.Frequency</a>*@
+
+
+
+<br  />
+<m-form type="newsletter" namespace="search-" namespace-children="search-field-" use-html-submit>
+    @Html.Partial("~/Views/Partials/NewsletterForm.cshtml", new NewsletterForm())
+</m-form>
+
+
+

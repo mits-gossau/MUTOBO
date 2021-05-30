@@ -1,15 +1,48 @@
 ﻿@model Dit.Umb.ToolBox.Models.PoCo.CookieBannerModel
 @using System.Globalization
+@using Dit.Umb.MKulturProzent.Classics.Common.Extensions
+@using Dit.Umb.ToolBox.Models.Constants
+@using Dit.Umb.ToolBox.Models.PageModels
 @using Umbraco.Web.Composing
-<msrc-cookie-banner
+
+@{
+    var page = new Dit.Umb.ToolBox.Models.PageModels.BasePage(Current.UmbracoHelper.AssignedContentItem);
+
+    var attr = page.Content.ContentType.Alias == DocumentTypes.HomePage.Alias ? "flyer-transitionend" : string.Empty; // nur auf home classics
+    var attr2 =  page.IsInClubConcertTree() ? string.Empty : "timeout=\"1000\""; // alle classics Seiten
+}
+
+
+
+<msrc-cookie-banner @attr @attr2
     props="{'env': '@Model.Environment', 'language': '@CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToLower()', 'theme': '@Model.Theme', 'webAPIKey': '@Model.ApiKey'}"
-    mobile-breakpoint="1000px"
->
+    mobile-breakpoint="1000px">
     
-    <style>
-        #msrc-widget {
-            --font-size: 0.8rem;
-        }
-    </style>
+    
+    @*CLassics*@
+    
+    @if (page.IsInClubConcertTree())
+    {
+            @*Club*@
+        <style>
+            #msrc-widget {
+                --font-size: 0.8rem;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            #msrc-widget{
+                --font-size:0.6rem;
+                --font-size-mobile:0.6rem;
+                --box-shadow-color: white 0px -2px 2px;
+            }
+
+        </style>  
+    }
+
+
+
 
 </msrc-cookie-banner>

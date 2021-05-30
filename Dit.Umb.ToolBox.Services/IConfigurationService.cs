@@ -11,12 +11,8 @@ namespace Dit.Umb.ToolBox.Services
 {
     public interface IConfigurationService
     {
-        SeoConfiguration GetSeoConfiguration(IPublishedContent content);
-
-
-        string GetAppSettingValue(string key);
-        int? GetAppSettingIntValue(string key);
-        bool? GetAppSettingBoolValue(string key);
-
+        string GetAppSettingValue(string key, bool essential = true);
+        int? GetAppSettingIntValue(string key, bool essential = true);
+        bool? GetAppSettingBoolValue(string key, bool essential = true);
     }
 }

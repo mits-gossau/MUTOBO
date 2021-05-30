@@ -1,9 +1,33 @@
-﻿@model IEnumerable<Dit.Umb.ToolBox.Models.PoCo.Image>
-<third-party-macro-carousel pagination loop height="1000px"  interval="5000" >
-    @foreach (var image in Model)
-    {
-        @*@image.RenderWcPictureTag(width: "1200px")*@
+﻿@using Dit.Umb.MKulturProzent.Classics.Models.Poco
+@using Dit.Umb.ToolBox.Models.Interfaces
+@using Dit.Umb.ToolBox.Models.PoCo
 
-        <a-picture defaultSource="@image.DefaultSource" alt="@image.Alt" sources='@image.GetSourcesAsJSON()'></a-picture>
+
+
+
+@model  Dit.Umb.ToolBox.Models.Interfaces.ISliderComponent
+
+<third-party-macro-carousel pagination loop height="@(Model.Height != null ? $"{Model.Height}px" : "auto")"  namespace="carousel-" interval="@(Model.Interval ?? 5000)">
+    @foreach (var media in Model.Slides)
+    {
+        if (media is Dit.Umb.ToolBox.Models.PoCo.Image image)
+        {
+            @image.RenderWcPictureTag(nameSpace: Model.GetPictureNameSpace(), useSources: true)
+        }
+        else if (media is Dit.Umb.ToolBox.Models.PoCo.Picture picture)
+        {
+            @picture.Image.RenderWcPictureTag(nameSpace: Model.GetPictureNameSpace(), useSources: true)
+        }
+        else if (media is IVideoComponent video)
+        {
+        
+                @Html.Partial("~/Views/Partials/VideoComponent.cshtml", video)
+    
+
+        }
+        @*else if (media is Dit.Umb.MKulturProzent.Classics.Models.Poco.TextImageSlide textImageTeaser)
+            {
+                @Html.Partial("~/Views/Partials/TextImageTeaser.cshtml", textImageTeaser)
+            }*@
     }
 </third-party-macro-carousel>

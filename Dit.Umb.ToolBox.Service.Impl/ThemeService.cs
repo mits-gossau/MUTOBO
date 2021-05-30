@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Dit.Umb.ToolBox.Models.Constants;
+using Dit.Umb.ToolBox.Models.Interfaces;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
@@ -24,7 +25,7 @@ namespace Dit.Umb.ToolBox.Services.Impl
 
 
 
-        public Theme GetTheme(IPublishedContent content)
+        public virtual ITheme GetTheme(IPublishedContent content)
         {
             
             var theme = content?.AncestorsOrSelf()?

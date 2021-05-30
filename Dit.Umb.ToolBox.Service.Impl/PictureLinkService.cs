@@ -27,8 +27,7 @@ namespace Dit.Umb.ToolBox.Services.Impl
             return elements.Select(e => new PictureLink(e)
             {
                 Image = e.HasValue(DocumentTypes.PictureLink.Fields.Image) ? 
-                    _imageService.GetImage(e.Value<IPublishedContent>(DocumentTypes.PictureLink.Fields.Image), 
-                        width: 200, height: 50) 
+                    _imageService.GetImage(e.Value<IPublishedContent>(DocumentTypes.PictureLink.Fields.Image)) 
                     : null
             });
         }

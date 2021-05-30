@@ -1,15 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+
+
 using Dit.Umb.ToolBox.Models.Constants;
+
 using Examine;
+using Examine.LuceneEngine.Providers;
 using Examine.Providers;
+using Newtonsoft.Json;
+using Umbraco.Core;
 using Umbraco.Core.Composing;
+using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Examine;
 using Umbraco.Web;
+using Umbraco.Web.Composing;
+using UmbracoExamine.PDF;
 
 namespace Dit.Umb.ToolBox.Components
 {
-    
+    [ComposeAfter(typeof(ExaminePdfComposer))]
+    public class RegisterPDFMultiSearcherComposer : ComponentComposer<SearchConfigurationComponent>, IUserComposer
+    {
+    }
+
     public class SearchConfigurationComponent : IComponent
     {
 
@@ -31,13 +45,18 @@ namespace Dit.Umb.ToolBox.Components
         public void Initialize()
         {
             IIndex externalIndex = null;
+            IIndex pdfIndex = null;
 
-            if (_examineManager.TryGetIndex("ExternalIndex", out externalIndex))
+            if (_examineManager.TryGetIndex("ExternalIndex", out externalIndex)
+                && _examineManager.TryGetIndex(PdfIndexConstants.PdfIndexName, out pdfIndex))
             {
-
                 // FieldDefinitionCollection contains all indexed fields 
                 externalIndex.FieldDefinitionCollection.AddOrUpdate(new FieldDefinition("contents", FieldDefinitionTypes.FullText));
-                ((BaseIndexProvider)externalIndex).TransformingIndexValues += OnTransformingIndexValues; 
+                ((BaseIndexProvider)externalIndex).TransformingIndexValues += OnTransformingIndexValues;
+
+                //register multisearcher
+                var multisearch = new MultiIndexSearcher("MultiSearcher", new IIndex[] { externalIndex, pdfIndex });
+                _examineManager.AddSearcher(multisearch);
 
             }
             else
@@ -48,23 +67,42 @@ namespace Dit.Umb.ToolBox.Components
 
         private void OnTransformingIndexValues(object sender, IndexingItemEventArgs e)
         {
-            var combinedField = new StringBuilder();
-
-            if (e.ValueSet.Category == IndexTypes.Content && e.ValueSet.ItemType == "articlePage")
-            {
-
-                foreach (var fieldValues in e.ValueSet.Values)
+            if (int.TryParse(e.ValueSet.Id, out var nodeId))
+                switch (e.ValueSet.ItemType)
                 {
-                    foreach (var value in fieldValues.Value)
-                    {
-                        if (value != null)
+
+                    case "contentPage":
+                        using (var umbracoContext = _contextFactory.EnsureUmbracoContext())
                         {
-                            combinedField.AppendLine(value.ToString());
+                            IPublishedContent contentNode = umbracoContext.UmbracoContext.Content.GetById(nodeId);
+                            IPublishedElement element = umbracoContext.UmbracoContext.Content.GetById(nodeId);
+
+                            if (contentNode != null)
+                            {
+                                var contentRichtext = string.Empty;
+                                if (element.Value<IEnumerable<IPublishedElement>>(DocumentTypes.ContentPage.Fields.Modules) != null)
+                                {
+                                    foreach (var item in element.Value<IEnumerable<IPublishedElement>>(DocumentTypes.ContentPage.Fields.Modules))
+                                    {
+
+                                        if (item.HasProperty("richText"))
+                                        {
+                                            var ncRichtext = item.GetProperty("richText").GetValue();
+                                            contentRichtext += " " + ncRichtext;
+                                        }
+                                        
+                                    }
+
+                                    e.ValueSet.Set("modules", contentRichtext);
+                                }
+                                
+                            }
+
                         }
-                    }
+                        break;
                 }
-                e.ValueSet.Add("contents", combinedField.ToString());
-            }
+
+
         }
 
         public void Terminate()

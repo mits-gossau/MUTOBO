@@ -23,8 +23,9 @@ namespace Dit.Umb.ToolBox.Models.PoCo
         // Attributes for Frontend
         public string Color => this.Value<string>(DocumentTypes.Flyer.Fields.Color);
 
-        public EDirection Direction =>
-            (EDirection) System.Enum.Parse(typeof(EDirection), this.Value<string>(DocumentTypes.Flyer.Fields.Direction));
+        public EDirection Direction => this.HasValue(DocumentTypes.Flyer.Fields.Direction) ?
+            (EDirection) System.Enum.Parse(typeof(EDirection), this.Value<string>(DocumentTypes.Flyer.Fields.Direction)) :
+            (EDirection)System.Enum.Parse(typeof(EDirection), "Undefined");
 
         public int Timer => this.Value<int>(DocumentTypes.Flyer.Fields.Timer);
 
@@ -34,6 +35,12 @@ namespace Dit.Umb.ToolBox.Models.PoCo
         public int Height => this.Value<int>(DocumentTypes.Flyer.Fields.Height);
         public int Width => this.Value<int>(DocumentTypes.Flyer.Fields.Width);
         public int Rotation => this.Value<int>(DocumentTypes.Flyer.Fields.Rotation);
+        public int MarginTop => this.Value<int>(DocumentTypes.Flyer.Fields.MarginTop);
+        public int MarginSide => this.Value<int>(DocumentTypes.Flyer.Fields.MarginSide);
+        public int? TextHeight => this.Value<int?>(DocumentTypes.Flyer.Fields.TextHeight);
+        public int? TextWidth => this.Value<int?>(DocumentTypes.Flyer.Fields.TextWidth);
+
+
 
         public Image Image { get; set; }
         public string TeaserText { get; set; }

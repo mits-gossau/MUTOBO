@@ -1,6 +1,16 @@
-﻿@model Dit.Umb.ToolBox.Models.PoCo.SearchFormModel
-@using(Html.BeginUmbracoForm("PostData", "SearchForm", FormMethod.Post)) {
-    @Html.Label("Suche")
-    @Html.TextBoxFor(m => m.SearchTerm)
-    <button type="submit">Suchen</button>
-}
+﻿@using Dit.Umb.MKulturProzent.Classics.Models.Constants
+@using Umbraco.Web.Composing
+@model Dit.Umb.ToolBox.Models.PoCo.SearchFormModel
+<m-form type="search" namespace="search-">
+    @using (Html.BeginUmbracoForm("PostData", "SearchForm", FormMethod.Post))
+    {
+        <a-input type="text" namespace="search-field-">
+            @Html.Label(Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.SearchPage.ButtonAndLabelText))
+            @Html.TextBoxFor(m => m.SearchTerm, new { placeholder = Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.SearchPage.SearchHintText)})
+        </a-input>
+        <a-button src="~/assets/img/yellow/LUPE.svg" namespace="search-button-">
+            <button type="submit" aria-label="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.SearchPage.ButtonAndLabelText)">
+            </button>
+        </a-button>
+    }
+</m-form>

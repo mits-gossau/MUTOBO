@@ -16,8 +16,6 @@ namespace Dit.Umb.ToolBox.Services.Impl
 
         public IEnumerable<BasePage> GetXmlSitemap(IPublishedContent model)
         {
-            
-
             var homePage = Helper.AssignedContentItem.AncestorsOrSelf().FirstOrDefault(c =>
                 c.ContentType.Alias == DocumentTypes.HomePage.Alias);
             

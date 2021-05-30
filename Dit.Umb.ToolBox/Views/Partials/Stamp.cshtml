@@ -1,0 +1,67 @@
+﻿@model Dit.Umb.MKulturProzent.Classics.Models.Poco.StampModel
+
+
+<a-stamp show="true">
+    <style>
+        :host {
+            --opacity: 0.9;
+        }
+        :host * {
+            color:var(--background-color);
+            font-size:var(--font-size);
+            line-height:var(--line-height,normal);
+            font-family:var(--font-family-bold);
+            text-transform:uppercase;
+
+        }
+        :host > * {
+            text-decoration:none;
+            background-color:var(--color);
+            padding:0 5% 3px;
+            position: relative;
+        }
+        :host > * > p {
+            margin: 0;
+        }
+        :host > * > p > span.close {
+            position: absolute;
+            right: 1%;
+            top: -2%;
+            font-size: calc(0.6 * var(--font-size));
+        }
+        @@media only screen and (max-width:600px){
+            :host * {
+                font-size:var(--font-size-mobile,var(--font-size));
+                line-height:var(--line-height-mobile,var(--line-height,normal));
+            }
+            :host > * > p > span.close {
+                font-size: calc(0.6 * var(--font-size-mobile,var(--font-size)));
+                right: 1%;
+                top: -10%;
+            }
+        }</style>
+    
+@if (!Model.Modal)
+{
+    <a href="#" class="close">
+        <p>
+            <span href="#" class="close">
+                X
+            </span>
+            @Html.Raw(Model.Label)
+        </p>
+    </a>
+}
+else
+{
+    <div>
+        <p>
+            <span href="#" class="close">
+                X
+            </span>
+            @Html.Raw(Model.Label)
+        </p>
+    </div>
+}
+</a-stamp>
+
