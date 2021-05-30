@@ -6,29 +6,38 @@
 @{
     Layout = "WCBasePage.cshtml";
 
-    Html.RequiresCss("~/web-components-cms-template/src/css/variablesClassics.css");
-    Html.RequiresCss($"~/web-components-cms-template/src/css/misc.css");
-    Html.RequiresCss($"~/web-components-cms-template/src/css/fonts.css");
+
 }
 @section CustomElementsDefine {
     <script>
-    [
-        ['p-general', General],
-        ['o-header', Header],
-        ['a-logo', Logo],
-        ['m-navigation', Navigation],
-        ['o-body', Body],
-        ['o-stage', Stage],
-        ['o-highlight-list', HighlightList],
-        ['m-highlight', Highlight],
-        ['o-footer', Footer],
-        ['m-flyer', Flyer],
-        ['m-teaser', Teaser],
-        ['o-teaser-wrapper', TeaserWrapper],
-    ].forEach(element => {
-        // don't define already existing customElements
-        if (element && !customElements.get(element[0])) customElements.define(...element)
-    })
+        [
+            ['a-button', Button]
+            ['a-input', Input],
+            ['a-logo', Logo],
+            ['a-picture', Picture],
+            ['a-stamp', Stamp],
+            ['a-title', Title],
+            ['a-video', Video],
+            ['m-flyer', Flyer],
+            ['m-form', Form],
+            ['m-highlight', Highlight],
+            ['m-navigation', Navigation],
+            ['m-playlist-item', PlaylistItem],
+            ['m-teaser', Teaser],
+            ['o-body', Body],
+            ['o-footer', Footer],
+            ['o-header', Header],
+            ['o-highlight-list', HighlightList],
+            ['o-intersection-scroll-effect', IntersectionScrollEffect],
+            ['o-playlist', Playlist],
+            ['o-stage', Stage],
+            ['o-teaser-wrapper', TeaserWrapper],
+            ['p-general', General],
+            ['third-party-macro-carousel', MacroCarousel],
+        ].forEach(element => {
+            // don't define already existing customElements
+            if (element && !customElements.get(element[0])) customElements.define(...element)
+        })
     </script>
 }
 <o-body>
