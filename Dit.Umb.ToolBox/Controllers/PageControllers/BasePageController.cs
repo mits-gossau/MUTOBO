@@ -3,7 +3,6 @@ using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Dit.Umb.ToolBox.Services;
 using System.Web.Mvc;
-using Dit.Umb.MKulturProzent.Classics.Models.Pages;
 using Dit.Umb.ToolBox.Common.ActionFilters;
 using Dit.Umb.Toolbox.Common.ContentExtensions;
 using Dit.Umb.ToolBox.Common.Exceptions;
@@ -56,7 +55,7 @@ namespace Dit.Umb.ToolBox.Controllers.PageControllers
                 basePage.HeaderConfiguration = _pageLayoutService.GetHeaderConfiguration(CurrentPage);
                 basePage.FooterConfiguration = _pageLayoutService.GetFooterConfiguration(CurrentPage);
                 basePage.FooterConfiguration.HomePageLogo = basePage.HeaderConfiguration.Logo;
-                basePage.Theme = _themeService.GetTheme(basePage.Content);
+                //basePage.Theme = _themeService.GetTheme(basePage.Content);
             }
             catch(AppSettingsException e)
             {

@@ -162,11 +162,18 @@ namespace Dit.Umb.ToolBox.Mutobo
 
                             if (picture.Image != null)
                             {
-                                bld.Append(imageService.GetImage(picture.Image.ImageNode, width, height, isGoldenRatio: (picture.Width == null && picture.Height == null)).RenderWcPictureTag(nameSpace: "picture-"));
+                                bld.Append(imageService.GetImage(picture.Image.ImageNode, width, height).RenderWcPictureTag(nameSpace: "picture-"));
                             }
                             
                           
                         }
+                        break;
+                    case DocumentTypes.BlogModule.Alias:
+                        if (module is BlogModule blogModule)
+                        {
+                            bld.Append(helper.Partial("~/Views/Partials/BlogList.cshtml", blogModule));
+                        }
+
                         break;
 
                 }

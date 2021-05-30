@@ -287,17 +287,6 @@ namespace Dit.Umb.ToolBox.Models.Constants
             }
         }
 
-        public static class TourEvent
-        {
-            public const string Alias = "locationsOfEvents";
-            public static class Fields
-            {
-                public const string Location = "eventLocation";
-                public const string Eventdate = "dateOfEvent";
-                public const string Ticket = "ticket";
-
-            }
-        }
 
         public static class Heading
         {
@@ -415,5 +404,14 @@ namespace Dit.Umb.ToolBox.Models.Constants
             }
         }
 
+        public static class BlogModule
+        {
+            public const string Alias = "blogModule";
+            public static class Fields
+            {
+                public const string ParentPage = "parentPage";
+            }
+
+        }
     }
 }

@@ -492,6 +492,9 @@
     <Compile Include="Mutobo\ModuleRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Web.config" />
+    <None Include="Properties\PublishProfiles\mutobo.ch - Web Deploy %28hostfactory%29.pubxml" />
+    <Content Include="Views\WCContentPage.cshtml" />
+    <Content Include="Views\Partials\BlogList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -526,15 +529,6 @@
     <Content Include="App_Plugins\uSyncHistory\syncHistoryController.js" />
     <Content Include="App_Plugins\uSyncHistory\syncHistoryDialogController.js" />
     <Content Include="App_Plugins\uSyncHistory\syncHistoryService.js" />
-    <Content Include="assets\img\cyan\LOGO_D.svg" />
-    <Content Include="assets\img\cyan\LOGO_EN.svg" />
-    <Content Include="assets\img\cyan\LOGO_FR.svg" />
-    <Content Include="assets\img\cyan\LUPE.svg" />
-    <Content Include="assets\img\white\LUPE.svg" />
-    <Content Include="assets\img\yellow\LUPE.svg" />
-    <Content Include="assets\img\cyan\TICKET.svg" />
-    <Content Include="assets\img\white\TICKET.svg" />
-    <Content Include="assets\img\yellow\TICKET.svg" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -576,14 +570,10 @@
     <Content Include="scripts\WebComponentsLoader\homePage.js" />
     <Content Include="Views\Partials\TextImageTeaser.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\ArticlePage.cshtml" />
-    <Content Include="Views\BasePage.cshtml" />
-    <Content Include="Views\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AnchorModulePage\" />
-    <Folder Include="Views\BlogPage\" />
+    <Folder Include="assets\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -594,20 +584,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="config\imageprocessor\cache.config.dev.env" />
-    <Content Include="config\imageprocessor\security.config.dev.env" />
     <Content Include="ApplicationInsights.config" />
-    <Content Include="config\imageprocessor\cache.config.dev2.env" />
-    <Content Include="config\imageprocessor\security.config.dev2.env" />
-    <Content Include="config\imageprocessor\cache.config.dev1.env" />
-    <Content Include="config\imageprocessor\security.config.dev1.env" />
     <Content Include="config\tinyMceConfig.config" />
-    <Content Include="config\imageprocessor\cache.config.admin.env" />
-    <Content Include="config\imageprocessor\cache.config.www1.env" />
-    <Content Include="config\imageprocessor\cache.config.www2.env" />
-    <Content Include="config\imageprocessor\security.config.admin.env" />
-    <Content Include="config\imageprocessor\security.config.www1.env" />
-    <Content Include="config\imageprocessor\security.config.www2.env" />
     <Content Include="App_Plugins\uSyncHistory\package.manifest" />
     <Content Include="App_Plugins\uSync8\package.manifest" />
     <Content Include="App_Plugins\uSync8\addons.json" />
@@ -619,7 +597,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Partials\Header.cshtml" />
     <Content Include="Views\Partials\Teaser.cshtml" />
-    <Content Include="Views\TeaserPage.cshtml" />
     <Content Include="Views\WCArticlePage.cshtml" />
     <Content Include="Views\WCBasePage.cshtml" />
     <Content Include="Views\WCHomePage.cshtml" />
@@ -630,29 +607,13 @@
     <Content Include="Views\Partials\SEOConfiguration.cshtml" />
     <Content Include="Views\XmlSiteMap.cshtml" />
     <Content Include="Views\Partials\LanguageSwitcher.cshtml" />
-    <Content Include="Views\Partials\Flyer_left.cshtml" />
     <Content Include="Views\NonUmbraco\WCScriptsView.cshtml" />
     <Content Include="Views\Partials\WideTeaser.cshtml" />
     <Content Include="Views\Partials\HighLightList.cshtml" />
-    <Content Include="Views\ClubConcertHome.cshtml" />
-    <Content Include="Views\WCClubConcertHomePage.cshtml" />
-    <Content Include="Views\Partials\ClubConcertList.cshtml" />
-    <Content Include="Views\WCImpressumPage.cshtml" />
-    <Content Include="Views\WCClubConcertBasePage.cshtml" />
-    <Content Include="Views\Partials\ClubConcertHeader.cshtml" />
-    <Content Include="Views\WCClubConcertArticlePage.cshtml" />
-    <Content Include="Views\WCClubConcertDetailPage.cshtml" />
     <Content Include="Views\Partials\ArtistList.cshtml" />
     <Content Include="Views\Partials\CssVariables.cshtml" />
     <Content Include="Views\Partials\FontFaces.cshtml" />
-    <Content Include="Views\WCClassicsBasePage.cshtml" />
-    <Content Include="Views\WCClassicsHomePage.cshtml" />
-    <Content Include="Views\Partials\CookieBanner.cshtml" />
     <Content Include="Views\Partials\GoogleAnalytics.cshtml" />
-    <Content Include="Views\WCClassicsConcertList.cshtml" />
-    <Content Include="Views\WCClassicsConcertPage.cshtml" />
-    <Content Include="Views\WCClassicsArtistList.cshtml" />
-    <Content Include="Views\Partials\PlayList.cshtml" />
     <Content Include="Views\Partials\Slider.cshtml" />
     <Content Include="Views\Partials\GalleryTeaser.cshtml" />
     <Content Include="Views\Partials\NestedTeaser.cshtml" />
@@ -660,29 +621,11 @@
     <Content Include="Views\WCFormPage.cshtml" />
     <Content Include="Views\Partials\SimpleContactForm.cshtml" />
     <Content Include="Views\Partials\VideoComponent.cshtml" />
-    <Content Include="Views\WCClassicsContentPage.cshtml" />
-    <Content Include="Views\WCClassicsArticlePage.cshtml" />
     <Content Include="Views\Partials\ArticleContent.cshtml" />
-    <Content Include="Views\Partials\SeasonProgramComponent.cshtml" />
-    <Content Include="Views\Partials\TourEvent.cshtml" />
-    <Content Include="Views\Partials\ConcertDetails.cshtml" />
-    <Content Include="Views\Partials\ConcertDetailElement.cshtml" />
-    <Content Include="Views\Partials\OrchestraList.cshtml" />
-    <Content Include="Views\Partials\ConductorList.cshtml" />
-    <Content Include="Views\Partials\SoloistList.cshtml" />
-    <Content Include="Views\Partials\LocationTicketList.cshtml" />
-    <Content Include="Views\WCClassicsTicketPage.cshtml" />
-    <Content Include="Views\Partials\ClassicsFooter.cshtml" />
-    <Content Include="Views\Partials\ClassicsHeader.cshtml" />
-    <Content Include="Views\Partials\IntersectionFlyer_left.cshtml" />
     <Content Include="Views\Partials\Newsletter.cshtml" />
-    <Content Include="Views\Partials\Flyer_right.cshtml" />
-    <Content Include="Views\Partials\IntersectionFlyer_right.cshtml" />
     <Content Include="Views\Partials\Stamp.cshtml" />
     <Content Include="Views\Partials\SearchResults.cshtml" />
-    <Content Include="Views\WCClassicsBlogPage.cshtml" />
     <Content Include="Views\Partials\BlogEntry.cshtml" />
-    <Content Include="Views\WCClassicsAnchorModulePage.cshtml" />
     <Content Include="Views\Partials\NewsletterForm.cshtml" />
     <Content Include="Views\Partials\DoubleSlider.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
@@ -694,9 +637,7 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
-    <Content Include="Views\Partials\ClassicsHomePageFooter.cshtml" />
     <Content Include="Views\Partials\Accordeon.cshtml" />
-    <Content Include="Views\Partials\ProgramArchive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj">

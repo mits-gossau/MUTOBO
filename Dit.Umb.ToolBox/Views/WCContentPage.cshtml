@@ -1,7 +1,7 @@
 ﻿@using ClientDependency.Core.Mvc
-@using Dit.Umb.MKulturProzent.Classics.Models.Constants
 @using Dit.Umb.ToolBox.Models.PageModels
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.ArticlePage>
+@using Dit.Umb.ToolBox.Mutobo
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.ContentPage>
 @{
 
 
@@ -42,8 +42,18 @@
     </script>
 }
 <o-body>
+
+
+    
     @Html.Partial("~/Views/Partials/ArticleContent.cshtml", Model)
+
     <div>
         @Html.Raw(Model.MainContent)
     </div>
+    
+    @if (Model.Modules != null && Model.Modules.Any())
+    {
+        @Html.RenderModules(Model.Modules)
+    }
+
 </o-body>
