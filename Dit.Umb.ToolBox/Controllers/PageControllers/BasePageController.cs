@@ -3,7 +3,6 @@ using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Dit.Umb.ToolBox.Services;
 using System.Web.Mvc;
-using Dit.Umb.MKulturProzent.Classics.Models.Pages;
 using Dit.Umb.ToolBox.Common.ActionFilters;
 using Dit.Umb.Toolbox.Common.ContentExtensions;
 using Dit.Umb.ToolBox.Common.Exceptions;

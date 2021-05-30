@@ -30,7 +30,17 @@
         @Html.Action("Index", "CssVariables", new { Theme = Model.Theme as ITheme })
     }
     
-    
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
+        html {
+            --color-hover: #800080;
+            --color-secondary: black;
+            --color: #000080;
+            --background-color: #efefef;
+            --font-family: 'Wendy One', sans-serif;
+            --font-size: 1.3rem;
+        }
+    </style>
 
 </head>
 <body>

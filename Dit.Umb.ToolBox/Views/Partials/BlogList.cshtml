@@ -1,0 +1,34 @@
+﻿@using Umbraco.Core.Composing
+@model Dit.Umb.ToolBox.Models.PoCo.BlogModule
+
+
+@if (Model.BlogEntries != null && Model.BlogEntries.Any())
+{
+
+    <o-highlight-list>
+        @foreach (var highlight in Model.BlogEntries)
+        {
+            <m-highlight href="@highlight.Content.Url()">
+                <date>@highlight.Content.CreateDate.ToShortDateString()</date>
+                <h3>@highlight.PageTitle</h3>
+                <h6>@highlight.Content.CreatorName(Current.Services.UserService)</h6>
+                @if (!highlight.HideAbstract)
+                {
+                    <p>@highlight.Abstract</p>
+                }
+
+
+                @if (highlight.EmotionImages != null && highlight.EmotionImages.Any())
+                {
+                    var image = highlight.EmotionImages.FirstOrDefault();
+
+
+                    @(image?.RenderWcPictureTag())
+
+                }
+            </m-highlight>
+        }
+    </o-highlight-list>
+}
+
+

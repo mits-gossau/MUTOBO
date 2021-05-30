@@ -107,6 +107,9 @@ namespace Dit.Umb.ToolBox.Services.Impl
                         case DocumentTypes.Newsletter.Alias:
                             result.Add(new Newsletter(element));
                             break;
+                        case DocumentTypes.BlogModule.Alias:
+                            result.Add(new BlogModule(element));
+                            break;
                     }
                 }
 

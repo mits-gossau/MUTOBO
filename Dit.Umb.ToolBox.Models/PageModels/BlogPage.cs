@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Dit.Umb.MKulturProzent.Classics.Models.Pages;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 

@@ -168,6 +168,13 @@ namespace Dit.Umb.ToolBox.Mutobo
                           
                         }
                         break;
+                    case DocumentTypes.BlogModule.Alias:
+                        if (module is BlogModule blogModule)
+                        {
+                            bld.Append(helper.Partial("~/Views/Partials/BlogList.cshtml", blogModule));
+                        }
+
+                        break;
 
                 }
             }

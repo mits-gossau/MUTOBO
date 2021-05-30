@@ -297,6 +297,7 @@
     <Compile Include="PageModels\HomePage.cs" />
     <Compile Include="PageModels\ImpressumPage.cs" />
     <Compile Include="PageModels\TeaserPage.cs" />
+    <Compile Include="PoCo\BlogModule.cs" />
     <Compile Include="PoCo\ContactFormModel.cs" />
     <Compile Include="PoCo\CookieBannerModel.cs" />
     <Compile Include="PoCo\Document.cs" />
