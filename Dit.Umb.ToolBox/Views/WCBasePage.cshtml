@@ -6,10 +6,7 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = null;
-    Html.RequiresCss("~/web-components-cms-template/src/css/variablesM4music.css");
-    Html.RequiresCss($"~/web-components-cms-template/src/css/misc.css");
-    Html.RequiresCss($"~/web-components-cms-template/src/css/fonts.css");
-    Html.RequiresCssFolder("~/css");
+
 }
  <!DOCTYPE html>
 @*TODO: set the language attribute dynamically *@
@@ -34,7 +31,7 @@
     <p-general>
         @Html.Partial("~/Views/Partials/Header.cshtml", Model.HeaderConfiguration)
         @RenderBody()
-        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration as FooterConfiguration)
+        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration as Dit.Umb.ToolBox.Models.Configuration.FooterConfiguration)
     </p-general>
 @Html.Action("Index", "WcRender")
 @RenderSection("CustomElementsDefine", required: false)

@@ -17,29 +17,26 @@ namespace Dit.Umb.ToolBox.Controllers.PageControllers
     {
         private readonly IFlyerService _flyerService;
         private readonly ITeaserService _teaserService;
+        private readonly IMutoboContentService _contentService;
 
 
-        public HomePageController(IFlyerService flyerService, ITeaserService teaserService)
+        public HomePageController(IFlyerService flyerService, ITeaserService teaserService, IMutoboContentService contentService)
         {
             Logger.Info<HomePageController>("HomePageController initialized");
             _flyerService = flyerService;
             _teaserService = teaserService;
+            _contentService = contentService;
         }
 
 
         public override ActionResult Index(ContentModel model)
         {
-
             var basepage = new BasePage(model.Content);
 
 
             return base.Index<HomePage>(new HomePage(model.Content)
             {
-                FlyerList = _flyerService.GetFlyer(model.Content),
-                TeaserList = _teaserService.GetTeaser(
-                    model.Content.Children
-                        .Where(c => c.ContentType.Alias == DocumentTypes.ArticlePage.Alias), 320,
-                    cropMode: ImageCropMode.Max)
+                Modules = _contentService.GetContent(model.Content, "modules")
             });
         }
     }

@@ -56,7 +56,7 @@ namespace Dit.Umb.ToolBox.Controllers.PageControllers
                 basePage.HeaderConfiguration = _pageLayoutService.GetHeaderConfiguration(CurrentPage);
                 basePage.FooterConfiguration = _pageLayoutService.GetFooterConfiguration(CurrentPage);
                 basePage.FooterConfiguration.HomePageLogo = basePage.HeaderConfiguration.Logo;
-                basePage.Theme = _themeService.GetTheme(basePage.Content);
+                //basePage.Theme = _themeService.GetTheme(basePage.Content);
             }
             catch(AppSettingsException e)
             {
