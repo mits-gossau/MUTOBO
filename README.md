@@ -7,7 +7,7 @@ to run MUTOBO:
 2. Build the Repo with Visual Studio
 3. Make sure that you have the follwing settings:
 
-- web-project -> web.config appSettings\Umbraco.Core.ConfigurationStatus => set the value to emty string "" 
+- web-project -> web.config appSettings\Umbraco.Core.ConfigurationStatus => set the value to empty string "" 
 - web-project -> \config\connectionStrings.config => remove the whole tag:
   <add name="umbracoDbDSN" connectionString="Data Source=|DataDirectory|\Umbraco.sdf;Flush Interval=1;" providerName="System.Data.SqlServerCe.4.0" /> if it's present
   
