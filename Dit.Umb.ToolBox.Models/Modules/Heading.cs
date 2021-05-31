@@ -1,10 +1,9 @@
 ﻿using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Enum;
-using Microsoft.Ajax.Utilities;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
     public class Heading : MutoboContentModule
     {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dit.Umb.ToolBox.Models.Constants;
+using Dit.Umb.ToolBox.Models.Modules;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 

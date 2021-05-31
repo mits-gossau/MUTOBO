@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dit.Umb.ToolBox.Models.Constants;
+﻿using System.Collections.Generic;
 using Dit.Umb.ToolBox.Models.Enum;
 using Dit.Umb.ToolBox.Models.Interfaces;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
     public class EmptySliderComponent : ISliderComponent
     {

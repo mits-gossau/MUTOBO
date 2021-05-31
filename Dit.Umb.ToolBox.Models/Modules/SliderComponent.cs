@@ -5,7 +5,7 @@ using Dit.Umb.ToolBox.Models.Interfaces;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
     public class SliderComponent : MutoboContentModule, ISliderComponent
     {

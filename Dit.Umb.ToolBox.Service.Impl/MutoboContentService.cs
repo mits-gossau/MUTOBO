@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Dit.Umb.Toolbox.Common.ContentExtensions;
 using Dit.Umb.ToolBox.Common.Extensions;
+using Dit.Umb.ToolBox.Models.Modules;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
