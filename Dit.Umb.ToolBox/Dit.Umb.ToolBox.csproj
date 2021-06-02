@@ -489,7 +489,6 @@
     <Compile Include="Controllers\SurfaceControllers\SimpleContactFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\NewsletterFormController.cs" />
     <Compile Include="Controllers\XmlSitemapController.cs" />
-    <Compile Include="Mutobo\ModuleRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\mutobo.ch - Web Deploy %28hostfactory%29.pubxml" />
@@ -574,6 +573,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\" />
+    <Folder Include="Mutobo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

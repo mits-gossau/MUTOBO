@@ -14,12 +14,12 @@ namespace Dit.Umb.ToolBox.Models.Modules
             ? this.Value<string>(Compositions.Module.Fields.ModuleTitle) : null;
 
         public bool SpacerAfterModule => this.Value<bool>(Compositions.Module.Fields.SpacerAfterModule);
-        public IHtmlString RenderModule(HtmlHelper helper)
+        public virtual IHtmlString RenderModule(HtmlHelper helper)
         {
             throw new System.NotImplementedException();
         }
 
-        public MutoboContentModule(IPublishedElement content) : base(content)
+        public  MutoboContentModule(IPublishedElement content) : base(content)
         {
         }
     }

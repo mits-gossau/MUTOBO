@@ -92,7 +92,7 @@ namespace Dit.Umb.ToolBox.Services.Impl
                         case DocumentTypes.PictureModule.Alias:
                             var picModule = new PictureModule(element)
                             {
-                                
+                          
                          
                             };
                             var isGoldenRatio = (picModule.Height == null && picModule.Width == null);

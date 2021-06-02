@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Interfaces;
 using Dit.Umb.ToolBox.Models.PoCo;
@@ -9,7 +12,7 @@ using Umbraco.Web;
 
 namespace Dit.Umb.ToolBox.Models.Modules
 {
-    public class VideoComponent : MutoboContentModule, ISliderItem, IVideoComponent
+    public class VideoComponent : MutoboContentModule, ISliderItem, IVideoComponent, IModule
     {
         public Video Video => this.HasValue(DocumentTypes.VideoComponent.Fields.VideoFile)
             ? new Video()
@@ -58,6 +61,18 @@ namespace Dit.Umb.ToolBox.Models.Modules
             return new HtmlString(result);
         }
 
+        public override IHtmlString RenderModule(HtmlHelper helper)
+        {
+            var bld = new StringBuilder();
 
+            bld.Append(helper.Partial("~/Views/Partials/VideoComponent.cshtml", this));
+
+            if (SpacerAfterModule)
+            {
+                bld.Append("<div class=\"spacer\"></div>");
+            }
+
+            return new HtmlString(bld.ToString());
+        }
     }
 }

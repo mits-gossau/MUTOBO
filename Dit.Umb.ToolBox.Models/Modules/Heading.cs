@@ -1,11 +1,15 @@
-﻿using Dit.Umb.ToolBox.Models.Constants;
+﻿using System.Text;
+using System.Web;
+using System.Web.Mvc;
+using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Enum;
+using Dit.Umb.ToolBox.Models.Interfaces;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
 namespace Dit.Umb.ToolBox.Models.Modules
 {
-    public class Heading : MutoboContentModule
+    public class Heading : MutoboContentModule, IModule
     {
         public string Text => this.HasValue(DocumentTypes.Heading.Fields.Text)
             ? this.Value<string>(DocumentTypes.Heading.Fields.Text)
@@ -21,6 +25,37 @@ namespace Dit.Umb.ToolBox.Models.Modules
 
         public Heading(IPublishedElement content) : base(content)
         {
+        }
+
+        public override IHtmlString RenderModule(HtmlHelper helper)
+        {
+            var bld = new StringBuilder();
+
+                var anchor = $"id=\"{NavigationAnchor}\"" ?? string.Empty;
+
+                switch (RenderAs)
+                {
+                    case EHeadingRenderType.Heading1:
+                        bld.Append($"<h1 {anchor}>{Text.ToUpper()}</h1>");
+                        break;
+                    case EHeadingRenderType.Heading2:
+                        bld.Append($"<h2 {anchor}>{Text.ToUpper()}</h2>");
+                        break;
+                    case EHeadingRenderType.Heading3:
+                        bld.Append($"<h3 {anchor}>{Text.ToUpper()}</h3>");
+                        break;
+                    case EHeadingRenderType.Heading4:
+                        bld.Append($"<h4 {anchor}>{Text.ToUpper()}</h4>");
+                        break;
+                    case EHeadingRenderType.Heading5:
+                        bld.Append($"<h5 {anchor}>{Text.ToUpper()}</h5>");
+                        break;
+                    case EHeadingRenderType.Heading6:
+                        bld.Append($"<h6 {anchor}>{Text.ToUpper()}</h6>");
+                        break;
+                }
+
+            return new MvcHtmlString(bld.ToString());
         }
     }
 }
