@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+using System.Web;
+using System.Web.Mvc;
 using Dit.Umb.ToolBox.Models.Constants;
+using Dit.Umb.ToolBox.Models.Interfaces;
+using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
-    public class PictureModule : MutoboContentModule
+    public class PictureModule : MutoboContentModule, IModule
     {
 
         public Image Image { get; set; }
@@ -27,6 +27,17 @@ namespace Dit.Umb.ToolBox.Models.PoCo
 
         public PictureModule(IPublishedElement content) : base(content)
         {
+        }
+
+        public override IHtmlString RenderModule(HtmlHelper helper)
+        {
+            var bld = new StringBuilder();
+
+
+                bld.Append(Image.RenderWcPictureTag(nameSpace: "picture-"));
+  
+
+            return new HtmlString(bld.ToString());
         }
     }
 }

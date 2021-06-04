@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Dit.Umb.ToolBox.Models.Modules;
 using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
 

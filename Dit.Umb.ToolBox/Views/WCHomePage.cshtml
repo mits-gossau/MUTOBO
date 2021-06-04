@@ -1,6 +1,5 @@
 ﻿@using ClientDependency.Core.Mvc
 @using Dit.Umb.ToolBox.Models.PoCo
-@using Dit.Umb.ToolBox.Mutobo
 @using Umbraco.Web.Composing
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.HomePage>
 @{
@@ -41,5 +40,12 @@
     </script>
 }
 <o-body>
-    @Html.RenderModules(Model.Modules)
+
+    @if (Model.Modules != null && Model.Modules.Any())
+    {
+        foreach (var module in Model.Modules)
+        {
+            @module.RenderModule(this.Html)
+        }
+    }
 </o-body>

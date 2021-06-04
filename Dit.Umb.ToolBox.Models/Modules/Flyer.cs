@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Enum;
-using Dit.Umb.ToolBox.Models.PageModels;
+using Dit.Umb.ToolBox.Models.Interfaces;
+using Dit.Umb.ToolBox.Models.PoCo;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
-using Umbraco.Web.Models;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
 
     /// <summary>
     /// class for a flying teaser could be inhered from Teaser?
     /// </summary>
-    public class Flyer : MutoboContentModule
+    public class Flyer : MutoboContentModule, IModule
     {
         public string Title => this.Value<string>(DocumentTypes.Flyer.Fields.FlyerTitle);
 
@@ -49,5 +48,47 @@ namespace Dit.Umb.ToolBox.Models.PoCo
         public Flyer(IPublishedElement content) : base(content)
         {
         }
+
+
+        public override IHtmlString RenderModule(HtmlHelper helper)
+        {
+            var bld = new StringBuilder();
+
+            if (Timer > 0)
+            {
+                switch (Direction)
+                {
+                    case EDirection.Right:
+                        bld.Append(helper.Partial("~/Views/Partials/Flyer_right.cshtml",
+                            this));
+                        break;
+
+                    default:
+                    case EDirection.Left:
+                        bld.Append(helper.Partial("~/Views/Partials/Flyer_left.cshtml", this));
+                        break;
+                }
+            }
+            else
+            {
+                switch (Direction)
+                {
+                    case EDirection.Right:
+                        bld.Append(helper.Partial("~/Views/Partials/IntersectionFlyer_right.cshtml",
+                            this));
+                        break;
+
+                    default:
+                    case EDirection.Left:
+                        bld.Append(helper.Partial("~/Views/Partials/IntersectionFlyer_left.cshtml", this));
+                        break;
+                }
+
+            }
+
+            return new MvcHtmlString(bld.ToString());
+        }
+
+
     }
 }

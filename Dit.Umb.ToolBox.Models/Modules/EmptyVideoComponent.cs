@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Web;
 using Dit.Umb.ToolBox.Models.Interfaces;
+using Dit.Umb.ToolBox.Models.PoCo;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
     public class EmptyVideoComponent : IVideoComponent, ISliderItem
     {

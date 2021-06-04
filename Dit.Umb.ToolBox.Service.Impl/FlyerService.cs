@@ -7,6 +7,7 @@ using Dit.Umb.ToolBox.Common.Exceptions;
 using Dit.Umb.ToolBox.Common.Extensions;
 using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Enum;
+using Dit.Umb.ToolBox.Models.Modules;
 using Dit.Umb.ToolBox.Models.PageModels;
 using Newtonsoft.Json;
 using Umbraco.Core;

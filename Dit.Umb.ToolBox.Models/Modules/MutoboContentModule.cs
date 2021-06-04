@@ -1,9 +1,11 @@
-﻿using Dit.Umb.ToolBox.Models.Constants;
+﻿using System.Web;
+using System.Web.Mvc;
+using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Interfaces;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
     public class MutoboContentModule : PublishedElementModel, IModule
     {
@@ -12,7 +14,12 @@ namespace Dit.Umb.ToolBox.Models.PoCo
             ? this.Value<string>(Compositions.Module.Fields.ModuleTitle) : null;
 
         public bool SpacerAfterModule => this.Value<bool>(Compositions.Module.Fields.SpacerAfterModule);
-        public MutoboContentModule(IPublishedElement content) : base(content)
+        public virtual IHtmlString RenderModule(HtmlHelper helper)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public  MutoboContentModule(IPublishedElement content) : base(content)
         {
         }
     }

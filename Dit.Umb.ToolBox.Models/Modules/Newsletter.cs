@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using Dit.Umb.ToolBox.Models.Constants;
+using Dit.Umb.ToolBox.Models.Interfaces;
+using Dit.Umb.ToolBox.Models.PoCo;
+using ImageProcessor.Web.Services;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
-    public class Newsletter : MutoboContentModule
+    public class Newsletter : MutoboContentModule, IModule
     {
         public string Information => this.HasValue(DocumentTypes.Newsletter.Fields.Information)
             ? this.Value<string>(DocumentTypes.Newsletter.Fields.Information)
@@ -31,6 +33,18 @@ namespace Dit.Umb.ToolBox.Models.PoCo
 
         public Newsletter(IPublishedElement content) : base(content)
         {
+        }
+
+        public override IHtmlString RenderModule(HtmlHelper helper)
+        {
+            var bld = new StringBuilder();
+
+            var imageService =
+                (IImageService)DependencyResolver.Current.GetService(typeof(IImageService));
+
+            bld.Append(helper.Partial("~/Views/Partials/Newsletter.cshtml", this));
+
+            return new HtmlString(bld.ToString());
         }
     }
 }

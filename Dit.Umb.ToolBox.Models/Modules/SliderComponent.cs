@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Text;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using Dit.Umb.ToolBox.Models.Constants;
 using Dit.Umb.ToolBox.Models.Enum;
 using Dit.Umb.ToolBox.Models.Interfaces;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 
-namespace Dit.Umb.ToolBox.Models.PoCo
+namespace Dit.Umb.ToolBox.Models.Modules
 {
-    public class SliderComponent : MutoboContentModule, ISliderComponent
+    public class SliderComponent : MutoboContentModule, ISliderComponent, IModule
     {
 
         public IEnumerable<ISliderItem> Slides { get; set; }
@@ -42,6 +46,18 @@ namespace Dit.Umb.ToolBox.Models.PoCo
             return result;
         }
 
+        public override IHtmlString RenderModule(HtmlHelper helper)
+        {
+            var bld = new StringBuilder();
+            bld.Append(helper.Partial("~/Views/Partials/Slider.cshtml", this));
+
+            if (SpacerAfterModule)
+            {
+                bld.Append("<div class=\"spacer\"></div>");
+            }
+
+            return new HtmlString(bld.ToString());
+        }
 
         public SliderComponent(IPublishedElement content) : base(content)
         {
