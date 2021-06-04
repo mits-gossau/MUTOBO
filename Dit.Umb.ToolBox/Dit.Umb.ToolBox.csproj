@@ -574,6 +574,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\" />
     <Folder Include="Mutobo\" />
+    <Folder Include="uSync\v8\ContentTypes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
