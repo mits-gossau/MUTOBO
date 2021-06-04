@@ -258,18 +258,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dit.Umb.ToolBox.Models\Dit.Umb.ToolBox.Models.csproj">
-      <Project>{7025291E-B26A-45DA-9502-E689527C1C5B}</Project>
-      <Name>Dit.Umb.ToolBox.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dit.Umb.ToolBox.Services\Dit.Umb.ToolBox.Services.csproj">
-      <Project>{927618A5-ACDB-4580-8562-20700C724919}</Project>
-      <Name>Dit.Umb.ToolBox.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -459,36 +459,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Components\ApiConfigurationComponent.cs" />
-    <Compile Include="Components\CustomDropDownPopulateComponent.cs" />
-    <Compile Include="Components\CustomIndexComponent.cs" />
-    <Compile Include="Components\SearchConfigurationComponent.cs" />
-    <Compile Include="Composer\AppComposer.cs" />
     <None Include="config\appSettings.config" />
-    <Compile Include="Controllers\ApiControllers\HelloWorldController.cs" />
-    <Compile Include="Controllers\PageControllers\BlogPageController.cs" />
-    <Compile Include="Controllers\PageControllers\ContentPageController.cs" />
-    <Compile Include="Controllers\PageControllers\FormPageController.cs" />
-    <Compile Include="Controllers\PageControllers\SearchResultsController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\ArtistListController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\GoogleAnalyticsController.cs" />
-    <Compile Include="Controllers\NonUmbraco\WCRenderController.cs" />
-    <Compile Include="Controllers\PageControllers\ArticlePageController.cs" />
-    <Compile Include="Controllers\PageControllers\BasePageController.cs" />
-    <Compile Include="Controllers\PageControllers\HomePageController.cs" />
-    <Compile Include="Controllers\PageControllers\ImpressumPageController.cs" />
-    <Compile Include="Controllers\PageControllers\TeaserPageController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\CookieBannerController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\CssVariablesController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\FooterController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\HeaderController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\LanguageSwitcherController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\PdfGeneratorController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\SearchFormController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\SeoController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\SimpleContactFormController.cs" />
-    <Compile Include="Controllers\SurfaceControllers\NewsletterFormController.cs" />
-    <Compile Include="Controllers\XmlSitemapController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\mutobo.ch - Web Deploy %28hostfactory%29.pubxml" />
@@ -573,7 +544,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\" />
-    <Folder Include="Mutobo\" />
     <Folder Include="uSync\v8\ContentTypes\" />
   </ItemGroup>
   <ItemGroup>
@@ -640,6 +610,10 @@
     <Content Include="Views\Partials\Accordeon.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dit.Umb.Mutobo\Dit.Umb.Mutobo.csproj">
+      <Project>{2147941A-3725-4B64-84BB-7FDA22DE4066}</Project>
+      <Name>Dit.Umb.Mutobo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj">
       <Project>{63e7bef0-7bd7-4cb0-bb41-d6b19c949225}</Project>
       <Name>Dit.Umb.Toolbox.Common.ContentExtensions</Name>
@@ -647,18 +621,6 @@
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common\Dit.Umb.ToolBox.Common.csproj">
       <Project>{6688f7e3-0fa5-4cac-8256-805dacaf2c57}</Project>
       <Name>Dit.Umb.ToolBox.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dit.Umb.ToolBox.Models\Dit.Umb.ToolBox.Models.csproj">
-      <Project>{7025291E-B26A-45DA-9502-E689527C1C5B}</Project>
-      <Name>Dit.Umb.ToolBox.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dit.Umb.ToolBox.Service.Impl\Dit.Umb.ToolBox.Services.Impl.csproj">
-      <Project>{1a49fc73-fb47-4c22-bcbf-3e37fe566703}</Project>
-      <Name>Dit.Umb.ToolBox.Services.Impl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dit.Umb.ToolBox.Services\Dit.Umb.ToolBox.Services.csproj">
-      <Project>{927618a5-acdb-4580-8562-20700c724919}</Project>
-      <Name>Dit.Umb.ToolBox.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
