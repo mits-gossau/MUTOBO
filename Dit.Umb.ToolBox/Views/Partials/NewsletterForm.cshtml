@@ -14,33 +14,7 @@
         display: inline !important;
     }
 </style>
-<form action="https://nlink.migros-kulturprozent-classics.ch/dispatcher/service" method="post" id="online_form">
-    <input type="hidden" name="ac" value="reg">
-    <input type="hidden" name="clientCode" value="ASrrB9ASTmKaGVqEBe">
-    <input type="hidden" name="doubleOptin" value="1">
-    <input type="hidden" name="xp_sendBackParams" value="0">
-    <input type="hidden" name="trackId" value="null" id="trackId">
-    <input type="hidden" name="Sprache" value="@CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToUpper()" id="Sprache">
-    <label for="anrede1" >@Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Herr)</label>
-    <input id="anrede1" required=""  name="Anrede" type="radio" value="2"/>
-    <label for="anrede2">@Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Frau)</label>
-    <input id="anrede2" required="" name="Anrede" type="radio" value="1"/>
-    <label for="anrede0">@Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.None)</label>
-    <input id="anrede0" required="" checked=""  name="Anrede" type="radio" value="0"/>
-    <label for="Name">@Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Name)</label>
-    <input id="Name" type="text" required="" value="" name="Name" autocomplete="off" validation-message="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.ValidationMessages.Lastname)" placeholder="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Placeholders.Lastname)">
-    <label for="Firstname">@Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Vorname)</label>
-    <input id="Firstname" type="text" required="" value="" name="Vorname"autocomplete="off" validation-message="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.ValidationMessages.Firstame)" placeholder="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Placeholders.Firstame)">
-    <label for="Email">@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Mail)</label>
-    <input id="Email" type="email" required="" value="" name="Email" autocomplete="off" validation-message="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.ValidationMessages.Email)" placeholder="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Placeholders.Email)">
-    <label class="normal" for="Policy">@Html.Raw(Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.Newsletter.PrivacyStatement))</label>
-    <input reverse id="Policy" name="Policy" required="" type="checkbox" value="false" validation-message="@Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.ValidationMessages.Policy).ToUpper()"/>
-    <button type="submit">@Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.NewsletterForm.Buttons.Register)</button>
-    <div class="form-group fusp" style="visibility: hidden">
-        <label for="FuSb">Website</label>
-        <input type="text" name="FuSb" id="FuSb" value=""/>
-    </div>
-</form>
+
 
 
 
