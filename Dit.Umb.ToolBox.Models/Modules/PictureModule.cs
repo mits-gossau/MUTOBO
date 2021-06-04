@@ -32,11 +32,7 @@ namespace Dit.Umb.ToolBox.Models.Modules
         public override IHtmlString RenderModule(HtmlHelper helper)
         {
             var bld = new StringBuilder();
-
-
-                bld.Append(Image.RenderWcPictureTag(nameSpace: "picture-"));
-  
-
+            bld.Append($"<div>{Image.RenderWcPictureTag(nameSpace: "picture-", width: $"{Image.Width}", height: $"{Image.Height}")}</div>");
             return new HtmlString(bld.ToString());
         }
     }

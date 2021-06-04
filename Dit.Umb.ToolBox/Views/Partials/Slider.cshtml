@@ -1,10 +1,5 @@
-﻿@using Dit.Umb.MKulturProzent.Classics.Models.Poco
-@using Dit.Umb.ToolBox.Models.Interfaces
+﻿@using Dit.Umb.ToolBox.Models.Interfaces
 @using Dit.Umb.ToolBox.Models.PoCo
-
-
-
-
 @model  Dit.Umb.ToolBox.Models.Interfaces.ISliderComponent
 
 <third-party-macro-carousel pagination loop height="@(Model.Height != null ? $"{Model.Height}px" : "auto")"  namespace="carousel-" interval="@(Model.Interval ?? 5000)">
@@ -25,9 +20,6 @@
     
 
         }
-        @*else if (media is Dit.Umb.MKulturProzent.Classics.Models.Poco.TextImageSlide textImageTeaser)
-            {
-                @Html.Partial("~/Views/Partials/TextImageTeaser.cshtml", textImageTeaser)
-            }*@
+ 
     }
 </third-party-macro-carousel>

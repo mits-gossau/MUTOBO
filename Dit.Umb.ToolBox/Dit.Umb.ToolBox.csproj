@@ -610,7 +610,6 @@
     <Content Include="Views\NonUmbraco\WCScriptsView.cshtml" />
     <Content Include="Views\Partials\WideTeaser.cshtml" />
     <Content Include="Views\Partials\HighLightList.cshtml" />
-    <Content Include="Views\Partials\ArtistList.cshtml" />
     <Content Include="Views\Partials\CssVariables.cshtml" />
     <Content Include="Views\Partials\FontFaces.cshtml" />
     <Content Include="Views\Partials\GoogleAnalytics.cshtml" />

@@ -11,6 +11,44 @@ namespace Dit.Umb.ToolBox.Models.Constants
 {
     public static class DocumentTypes
     {
+        public static class Accordeon
+        {
+            public const string Alias = "accordeon";
+            public static class Fields
+            {
+                public const string Summary = "summary";
+                public const string Details = "details";
+            }
+        }
+        public static class DoubleSliderComponent
+        {
+
+            public const string Alias = "doubleSlider";
+
+            public static class Fields
+            {
+                public const string Slides = "slides";
+                public const string Height = "height";
+                public const string Width = "width";
+                public const string Interval = "interval";
+                public const string DisplayType = "displayType";
+
+            }
+        }
+        public static class TextImageSlide
+        {
+            public const string Alias = "textImageSlide";
+
+            public static class Fields
+            {
+                public const string Link = "link";
+                public const string Image = "image";
+                public const string Text = "text";
+                public const string Title = "title";
+            }
+
+        }
+
         public static class BasePage
         {
             public static string Alias = "basePage";

@@ -1,4 +1,4 @@
-﻿@using Dit.Umb.MKulturProzent.Classics.Models.Constants
+﻿
 @using Umbraco.Web.Composing
 @model Dit.Umb.ToolBox.Models.PoCo.SearchResultModel
 
@@ -8,7 +8,7 @@
     if (Model.Results.Any())
     {
 
-<p>@string.Format(Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.SearchPage.IntroText), Model.Term, Model.Results.Count())</p>
+<p>@string.Format("TRANSLATE", Model.Term, Model.Results.Count())</p>
     
         foreach (var searchResults in Model.Results)
         {
