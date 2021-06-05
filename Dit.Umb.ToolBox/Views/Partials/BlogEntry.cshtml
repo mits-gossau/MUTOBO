@@ -1,5 +1,5 @@
-﻿@using Dit.Umb.ToolBox.Mutobo
-@model Dit.Umb.ToolBox.Models.PageModels.ContentPage
+﻿@using Dit.Umb.Mutobo
+@model Dit.Umb.Mutobo.PageModels.ContentPage
 
 
 
@@ -19,7 +19,10 @@
 
 @if (Model.Modules != null && Model.Modules.Any())
 {
-    @Html.RenderModules(Model.Modules)
+    foreach (var module in Model.Modules)
+    {
+        @module.RenderModule(Html)
+    }
 }
 
 <br />

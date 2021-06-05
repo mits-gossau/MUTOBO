@@ -1,6 +1,7 @@
 ﻿@using Umbraco.Web.Composing
-@using Dit.Umb.ToolBox.Models.Constants
-@model Dit.Umb.ToolBox.Models.Modules.Teaser
+@using Dit.Umb.Mutobo.Constants
+@using Dit.Umb.Mutobo.Modules
+@model Dit.Umb.Mutobo.Modules.Teaser
 
 @if (Model.Images != null && Model.Images.Any())
 {
@@ -15,7 +16,7 @@
     }
     else
     {
-        @Html.Partial("~/Views/Partials/Slider.cshtml", Model.Images)
+        @Html.Partial("~/Views/Partials/Slider.cshtml", new EmptySliderComponent(){ Slides = Model.Images })
     }
 }
 <h3>@Model.TeaserTitle</h3>

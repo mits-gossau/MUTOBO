@@ -1,15 +1,15 @@
-﻿@using Dit.Umb.ToolBox.Models.Interfaces
-@using Dit.Umb.ToolBox.Models.PoCo
-@model  Dit.Umb.ToolBox.Models.Interfaces.ISliderComponent
+﻿@using Dit.Umb.Mutobo.Interfaces
+@using Dit.Umb.Mutobo.PoCo
+@model  Dit.Umb.Mutobo.Interfaces.ISliderComponent
 
 <third-party-macro-carousel pagination loop height="@(Model.Height != null ? $"{Model.Height}px" : "auto")"  namespace="carousel-" interval="@(Model.Interval ?? 5000)">
     @foreach (var media in Model.Slides)
     {
-        if (media is Dit.Umb.ToolBox.Models.PoCo.Image image)
+        if (media is Dit.Umb.Mutobo.PoCo.Image image)
         {
             @image.RenderWcPictureTag(nameSpace: Model.GetPictureNameSpace(), useSources: true)
         }
-        else if (media is Dit.Umb.ToolBox.Models.PoCo.Picture picture)
+        else if (media is Dit.Umb.Mutobo.PoCo.Picture picture)
         {
             @picture.Image.RenderWcPictureTag(nameSpace: Model.GetPictureNameSpace(), useSources: true)
         }

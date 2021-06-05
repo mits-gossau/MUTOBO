@@ -1,44 +1,49 @@
 ﻿
-@using Dit.Umb.ToolBox.Models.Enum
-@using Dit.Umb.ToolBox.Models.Modules
-@using Dit.Umb.ToolBox.Models.PoCo
-@using Dit.Umb.ToolBox.Services
-@model Dit.Umb.ToolBox.Models.PageModels.ArticlePage
+@using Dit.Umb.Mutobo.Enum
+@using Dit.Umb.Mutobo.Interfaces
+@using Dit.Umb.Mutobo.Modules
+@using Dit.Umb.Mutobo.PoCo
 
+@model Dit.Umb.Mutobo.PageModels.ArticlePage
 
-@if (!string.IsNullOrEmpty(Model.PageTitle))
-{
-    <h2>@Model.PageTitle.ToUpper()</h2>
-}
-@if (Model.EmotionImages != null && Model.EmotionImages.Any())
-{
-    if (Model.EmotionImages.Count() < 2)
+<div>
+    @if (!string.IsNullOrEmpty(Model.PageTitle))
     {
-        var image = Model.EmotionImages.FirstOrDefault();
-
-        if (image != null)
+        <h2>@Model.PageTitle.ToUpper()</h2>
+    }
+    @if (Model.EmotionImages != null && Model.EmotionImages.Any())
+    {
+        if (Model.EmotionImages.Count() < 2)
         {
-            @image.RenderWcPictureTag()
+            var image = Model.EmotionImages.FirstOrDefault();
+
+            if (image != null)
+            {
+                @image.RenderWcPictureTag()
+            }
+        }
+        else
+        {
+            var configService = (IConfigurationService) DependencyResolver.Current.GetService(typeof(IConfigurationService));
+            @Html.Partial("~/Views/Partials/Slider.cshtml", new EmptySliderComponent()
+            {
+                Slides = Model.EmotionImages,
+                GalleryType = EGalleryType.Boxed,
+                Width = 800,
+                Height = 450,
+            })
+            ;
         }
     }
-    else
+    @if (!Model.HideAbstract && !string.IsNullOrEmpty(Model.Abstract))
     {
-        var configService = (IConfigurationService) DependencyResolver.Current.GetService(typeof(IConfigurationService));
-        @Html.Partial("~/Views/Partials/Slider.cshtml", new EmptySliderComponent()
-        {
-            Slides = Model.EmotionImages,
-            GalleryType = EGalleryType.FullWidth
-        })
-        ;
+        <p>@Model.Abstract</p>
     }
-}
-@if (!Model.HideAbstract && !string.IsNullOrEmpty(Model.Abstract))
-{
-    <p>@Model.Abstract</p>
-}
-@if (!string.IsNullOrEmpty(Model.MainContent))
-{
-    <div>
-        @Html.Raw(Model.MainContent)
-    </div>
-}
+    @if (!string.IsNullOrEmpty(Model.MainContent))
+    {
+        <div>
+            @Html.Raw(Model.MainContent)
+        </div>
+    }
+</div>
+
