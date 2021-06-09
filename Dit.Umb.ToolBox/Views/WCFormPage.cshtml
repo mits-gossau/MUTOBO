@@ -5,28 +5,6 @@
     Layout = "WCBasePage.cshtml";
 }
 
-@section CustomElementsDefine {
-    <script>
-        [
-            ['p-general', General],
-            ['o-header', Header],
-            ['a-logo', Logo],
-            ['m-navigation', Navigation],
-            ['o-body', Body],
-            ['o-stage', Stage],
-            ['o-highlight-list', HighlightList],
-            ['m-highlight', Highlight],
-            ['o-footer', Footer],
-            ['m-flyer', Flyer],
-            ['m-teaser', Teaser],
-            ['a-picture', Picture],
-            ['o-teaser-wrapper', TeaserWrapper],
-        ].forEach(element => {
-            // don't define already existing customElements
-            if (element && !customElements.get(element[0])) customElements.define(...element)
-        })
-    </script>
-}
 
 <o-body>
     <h1>@Model.PageTitle</h1>

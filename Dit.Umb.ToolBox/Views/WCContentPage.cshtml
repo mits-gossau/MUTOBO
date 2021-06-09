@@ -8,42 +8,8 @@
     Layout = "WCBasePage.cshtml";
 
 }
-@section CustomElementsDefine {
-    <script>
-        [
-            ['a-button', Button]
-            ['a-input', Input],
-            ['a-logo', Logo],
-            ['a-picture', Picture],
-            ['a-stamp', Stamp],
-            ['a-title', Title],
-            ['a-video', Video],
-            ['m-flyer', Flyer],
-            ['m-form', Form],
-            ['m-highlight', Highlight],
-            ['m-navigation', Navigation],
-            ['m-playlist-item', PlaylistItem],
-            ['m-teaser', Teaser],
-            ['o-body', Body],
-            ['o-footer', Footer],
-            ['o-header', Header],
-            ['o-highlight-list', HighlightList],
-            ['o-intersection-scroll-effect', IntersectionScrollEffect],
-            ['o-playlist', Playlist],
-            ['o-stage', Stage],
-            ['o-teaser-wrapper', TeaserWrapper],
-            ['p-general', General],
-            ['third-party-macro-carousel', MacroCarousel],
-        ].forEach(element => {
-            // don't define already existing customElements
-            if (element && !customElements.get(element[0])) customElements.define(...element)
-        })
-    </script>
-}
+
 <o-body>
-
-
-    
     @Html.Partial("~/Views/Partials/ArticleContent.cshtml", Model)
 
     <div>
@@ -57,5 +23,4 @@
             @module.RenderModule(this.Html)
         }
     }
-
 </o-body>
