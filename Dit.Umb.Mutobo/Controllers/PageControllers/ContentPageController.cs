@@ -13,7 +13,7 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
     public class ContentPageController : ArticlePageController
     {
 
-        private readonly IMutoboContentService _mutoboContentService;
+        protected readonly IMutoboContentService _mutoboContentService;
 
 
         public ContentPageController(IMutoboContentService mutoboContentService, IImageService imageService) : base(imageService)

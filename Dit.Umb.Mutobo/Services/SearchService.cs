@@ -47,7 +47,7 @@ namespace Dit.Umb.Mutobo.Services
             }
             catch (AppSettingsException e)
             {
-                _logger.Error(this.GetType(), e, $"{AppConstants.LoggingPrefix} {e.Message}");
+                Logger.Error(this.GetType(), e, $"{AppConstants.LoggingPrefix} {e.Message}");
                 throw e;
             }
 

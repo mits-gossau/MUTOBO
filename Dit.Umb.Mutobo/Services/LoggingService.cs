@@ -9,25 +9,25 @@ namespace Dit.Umb.Mutobo.Services
         //no Exception
         public void Error(Type type, string message)
         {
-            _logger.Error(type, $"{AppConstants.LoggingPrefix + message}");
+            Logger.Error(type, $"{AppConstants.LoggingPrefix + message}");
         }
         public void Info(Type type, string message)
         {
-            _logger.Info(type, $"{AppConstants.LoggingPrefix + message}");
+            Logger.Info(type, $"{AppConstants.LoggingPrefix + message}");
         }
         public void Warn(Type type, string message)
         {
-            _logger.Warn(type, $"{AppConstants.LoggingPrefix + message}");
+            Logger.Warn(type, $"{AppConstants.LoggingPrefix + message}");
         }
 
         //with Exception
         public void Error(Type type, Exception exception, string message)
         {
-            _logger.Error(type, exception, $"{AppConstants.LoggingPrefix + message}");
+            Logger.Error(type, exception, $"{AppConstants.LoggingPrefix + message}");
         }
         public void Warn(Type type, Exception exception, string message)
         {
-            _logger.Warn(type, exception, $"{AppConstants.LoggingPrefix + message}");
+            Logger.Warn(type, exception, $"{AppConstants.LoggingPrefix + message}");
 
         }
     }

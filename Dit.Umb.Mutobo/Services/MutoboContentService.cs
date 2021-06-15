@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Dit.Umb.Mutobo.Common;
 using Dit.Umb.Mutobo.Interfaces;
 using Dit.Umb.Mutobo.Modules;
@@ -15,9 +16,9 @@ namespace Dit.Umb.Mutobo.Services
     public class MutoboContentService : BaseService, IMutoboContentService
     {
 
-        private readonly IImageService _imageService;
-        private readonly ISliderService _sliderService;
-        private readonly IConfigurationService _configurationService;
+        protected readonly IImageService _imageService;
+        protected readonly ISliderService _sliderService;
+        protected readonly IConfigurationService _configurationService;
 
 
         public MutoboContentService(
@@ -31,7 +32,7 @@ namespace Dit.Umb.Mutobo.Services
         }
 
 
-        public IEnumerable<MutoboContentModule> GetContent(IPublishedContent content, string fieldName)
+        public virtual IEnumerable<MutoboContentModule> GetContent(IPublishedContent content, string fieldName)
         {
 
 
@@ -42,45 +43,53 @@ namespace Dit.Umb.Mutobo.Services
                 var elements =
                     content.Value<IEnumerable<IPublishedElement>>(fieldName);
 
-    
-
-
-                foreach (var element in elements)
+                foreach (var element in elements.Select((value, index) => new {index, value}))
                 {
-
-                    switch (element.ContentType.Alias)
+                    switch (element.value.ContentType.Alias)
                     {
                         case DocumentTypes.Heading.Alias:
-                            result.Add(new Heading(element));
+                            result.Add(new Heading(element.value)
+                            {
+                                SortOrder = element.index
+                            });
                             break;
                         case DocumentTypes.VideoComponent.Alias:
-                            result.Add(new VideoComponent(element));
+                            result.Add(new VideoComponent(element.value)
+                            {
+                                SortOrder = element.index
+                            });
                             break;
                         case DocumentTypes.RichTextComponent.Alias:
-                            result.Add(new RichtextComponent(element));
-                            break;
-
-                        case DocumentTypes.Flyer.Alias:
-                            result.Add(new Flyer(element)
+                            result.Add(new RichtextComponent(element.value)
                             {
-                                Image = element.GetImage(DocumentTypes.Flyer.Fields.FlyerImage,
+                                SortOrder = element.index
+                            });
+                            break;
+                        case DocumentTypes.Flyer.Alias:
+                            result.Add(new Flyer(element.value)
+                            {
+                                SortOrder = element.index,
+                                Image = element.value.GetImage(DocumentTypes.Flyer.Fields.FlyerImage,
                                     width: 900, imageCropMode: ImageCropMode.Max),
-                                TeaserText = element.Value<string>(DocumentTypes.Flyer.Fields.FlyerTeaserText),
-                                Link = element.Value<Umbraco.Web.Models.Link>(DocumentTypes.Flyer.Fields.Link)
+                                TeaserText = element.value.Value<string>(DocumentTypes.Flyer.Fields.FlyerTeaserText),
+                                Link = element.value.Value<Umbraco.Web.Models.Link>(DocumentTypes.Flyer.Fields.Link)
 
                             });
                             break;
 
                         case DocumentTypes.Teaser.Alias:
-                            result.Add(GetTeaser(element));
+                            result.Add(GetTeaser(element.value, element.index));
                             break;
                         case DocumentTypes.SliderComponent.Alias:
-                            var sliderModule = new SliderComponent(element);
+                            var sliderModule = new SliderComponent(element.value)
+                            {
+                                SortOrder = element.index
+                            };
 
                             var useGoldenRatio = (sliderModule.Height == null && sliderModule.Width == null);
 
 
-                            sliderModule.Slides = _sliderService.GetSlides(element,
+                            sliderModule.Slides = _sliderService.GetSlides(element.value,
                                 DocumentTypes.SliderComponent.Fields.Slides, sliderModule.Width);
                             result.Add(sliderModule);
                             break;
@@ -88,15 +97,14 @@ namespace Dit.Umb.Mutobo.Services
 
              
                         case DocumentTypes.PictureModule.Alias:
-                            var picModule = new PictureModule(element)
+                            var picModule = new PictureModule(element.value)
                             {
-                          
-                         
+                                SortOrder = element.index
                             };
                             var isGoldenRatio = (picModule.Height == null && picModule.Width == null);
-                            picModule.Image = element.HasValue(DocumentTypes.Picture.Fields.Image)
+                            picModule.Image = element.value.HasValue(DocumentTypes.Picture.Fields.Image)
                                 ? _imageService.GetImage(
-                                    element.Value<IPublishedContent>(DocumentTypes.Picture.Fields.Image), 
+                                    element.value.Value<IPublishedContent>(DocumentTypes.Picture.Fields.Image), 
                                     height: picModule.Height, 
                                     width: picModule.Width )
                                 : null;
@@ -104,10 +112,16 @@ namespace Dit.Umb.Mutobo.Services
                             break;
 
                         case DocumentTypes.Newsletter.Alias:
-                            result.Add(new Newsletter(element));
+                            result.Add(new Newsletter(element.value)
+                            {
+                                SortOrder = element.index
+                            });
                             break;
                         case DocumentTypes.BlogModule.Alias:
-                            result.Add(new BlogModule(element));
+                            result.Add(new BlogModule(element.value)
+                            {
+                                SortOrder = element.index
+                            });
                             break;
                     }
                 }
@@ -119,10 +133,13 @@ namespace Dit.Umb.Mutobo.Services
         }
 
 
-        private Teaser GetTeaser(IPublishedElement element)
+        private Teaser GetTeaser(IPublishedElement element, int index)
         {
 
-            var teaser = new Teaser(element);
+            var teaser = new Teaser(element)
+            {
+                SortOrder = index
+            };
 
 
             if (teaser.UseArticleData)

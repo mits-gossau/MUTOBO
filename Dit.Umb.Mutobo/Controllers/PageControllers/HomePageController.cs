@@ -9,7 +9,7 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
 {
     public class HomePageController : BasePageController
     {
-        private readonly IMutoboContentService _contentService;
+        protected readonly IMutoboContentService _contentService;
 
 
         public HomePageController(IMutoboContentService contentService)

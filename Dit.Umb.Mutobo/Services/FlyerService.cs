@@ -63,7 +63,7 @@ namespace Dit.Umb.Mutobo.Services
                     //fly.Image = _imageService.GetImage(element.Value<IPublishedContent>(DocumentTypes.Flyer.Fields.FlyerImage), width: 500, imageCropMode: ImageCropMode.Max, nameSpace: "picture", isGoldenRatio:false);
                     fly.Link = element.HasValue(DocumentTypes.Flyer.Fields.FlyerLink) ? 
                         element.Value<Link>(DocumentTypes.Flyer.Fields.FlyerLink) : null;
-                    _logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Keine ArtikelSeite auf dem Flyer verlinkt");
+                    Logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Keine ArtikelSeite auf dem Flyer verlinkt");
                 }
                 else //Check if flyer has the property or get it from the ArtikelPage
                 {
@@ -88,11 +88,11 @@ namespace Dit.Umb.Mutobo.Services
 
                 // check if null and warn if so
                 if (fly.TeaserText == null)
-                    _logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Auf dem Flyer gibt es keinen Teaser Text");
+                    Logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Auf dem Flyer gibt es keinen Teaser Text");
                 if (fly.Image == null)
-                    _logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Auf dem Flyer gibt es kein Foto");
+                    Logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Auf dem Flyer gibt es kein Foto");
                 if (fly.Link == null)
-                    _logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Auf dem Flyer gibt es keinen Link");
+                    Logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Auf dem Flyer gibt es keinen Link");
 
                 result.Add(fly);
             }

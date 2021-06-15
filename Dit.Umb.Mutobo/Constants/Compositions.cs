@@ -11,5 +11,14 @@
                 public static string SpacerAfterModule = "spacerAfterModule";
             }
         }
+
+        public static class PushNews
+        {
+            public const string Alias = "pushNews";
+            public static class Fields
+            {
+                public const string IsPushNews = "isPushNews";
+            }
+        }
     }
 }
