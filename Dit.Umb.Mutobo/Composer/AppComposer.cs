@@ -69,7 +69,7 @@ namespace Dit.Umb.Mutobo.Composer
             composition.Register(typeof(ISliderService), typeof(SliderService), Lifetime.Singleton);
             composition.Register(typeof(ILoggingService), typeof(LoggingService), Lifetime.Singleton);
             composition.Register(typeof(ISeoService), typeof(SeoService), Lifetime.Singleton);
-
+            composition.Register(typeof(ICardService), typeof(CardService), Lifetime.Scope);
         }
     }
 }
