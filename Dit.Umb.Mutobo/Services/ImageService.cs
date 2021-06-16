@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Dit.Umb.Mutobo.Common.Exceptions;
 using Dit.Umb.Mutobo.Enum;
 using Dit.Umb.Mutobo.Interfaces;
@@ -23,6 +24,9 @@ namespace Dit.Umb.Mutobo.Services
             {
                 return null;
             }
+
+            var configService =
+                (IConfigurationService)DependencyResolver.Current.GetService(typeof(IConfigurationService));
 
             var media = Helper.Media(node.Id);
 
