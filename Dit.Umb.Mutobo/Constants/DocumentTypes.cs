@@ -443,5 +443,53 @@
             }
 
         }
+
+        public static class Quote
+        {
+            public const string Alias = "quote";
+
+            public static class Fields
+            {
+                public const string QuoteText = "quoteText";
+                public const string SpellerName = "spellerName";
+                public const string SpellerFunction = "spellerFunction";
+            }
+        }
+
+        public static class CardContainer
+        {
+            public const string Alias = "cardContainer";
+
+            public static class Fields
+            {
+                public const string Cards = "cards";
+            }
+        }
+
+        public static class Card
+        {
+            public const string Alias = "card";
+
+            public static class Fields
+            {
+                public const string DetailPageLink = "detailPageLink";
+                public const string Image = "image";
+            }
+        }
+
+        public static class PersonnelCard
+        {
+            public const string Alias = "personnelCard";
+
+            public static class Fields
+            {
+
+                public const string Lastname = "lastname";
+                public const string Firstname = "firstname";
+                public const string Function = "function";
+            }
+        }
+
+
     }
 }

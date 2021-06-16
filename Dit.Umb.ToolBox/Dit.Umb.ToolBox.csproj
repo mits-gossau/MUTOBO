@@ -465,6 +465,10 @@
     <None Include="Properties\PublishProfiles\mutobo.ch - Web Deploy %28hostfactory%29.pubxml" />
     <Content Include="Views\WCContentPage.cshtml" />
     <Content Include="Views\Partials\BlogList.cshtml" />
+    <Content Include="Views\Partials\Modules\CallForIdeas.cshtml" />
+    <Content Include="Views\Partials\Modules\CallToActionButton.cshtml" />
+    <Content Include="Views\Partials\Modules\CardContainer.cshtml" />
+    <Content Include="Views\Partials\Modules\Quote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

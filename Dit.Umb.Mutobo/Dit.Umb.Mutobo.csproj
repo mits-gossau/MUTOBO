@@ -313,6 +313,12 @@
     <Compile Include="Common\Extensions\ElementTypeExtensions.cs" />
     <Compile Include="Common\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Common\Helpers\LayoutHelper.cs" />
+    <Compile Include="Interfaces\ICardService.cs" />
+    <Compile Include="Modules\CardContainer.cs" />
+    <Compile Include="PoCo\PersonnelCard.cs" />
+    <Compile Include="Services\CardService.cs" />
+    <Compile Include="Modules\Quote.cs" />
+    <Compile Include="PoCo\Card.cs" />
     <Compile Include="PoCo\ImageSize.cs" />
     <Compile Include="Components\ApiConfigurationComponent.cs" />
     <Compile Include="Components\CustomDropDownPopulateComponent.cs" />
@@ -468,7 +474,6 @@
     <None Include="app.config" />
     <None Include="Controllers\PageControllers\SearchResultsController.cs.bak" />
     <None Include="packages.config" />
-    <None Include="Services\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj">

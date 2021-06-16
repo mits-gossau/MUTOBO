@@ -16,19 +16,22 @@ namespace Dit.Umb.Mutobo.Services
     public class MutoboContentService : BaseService, IMutoboContentService
     {
 
-        protected readonly IImageService _imageService;
-        protected readonly ISliderService _sliderService;
-        protected readonly IConfigurationService _configurationService;
+        protected readonly IImageService ImageService;
+        protected readonly ISliderService SliderService;
+        protected readonly IConfigurationService ConfigurationService;
+        private readonly ICardService _cardService;
 
 
         public MutoboContentService(
             IImageService imageService,
             ISliderService sliderService,
-            IConfigurationService configurationService)
+            IConfigurationService configurationService,
+            ICardService cardService)
         {
-            _imageService = imageService;
-            _sliderService = sliderService;
-            _configurationService = configurationService;
+            _cardService = cardService;
+            ImageService = imageService;
+            SliderService = sliderService;
+            ConfigurationService = configurationService;
         }
 
 
@@ -89,7 +92,7 @@ namespace Dit.Umb.Mutobo.Services
                             var useGoldenRatio = (sliderModule.Height == null && sliderModule.Width == null);
 
 
-                            sliderModule.Slides = _sliderService.GetSlides(element.value,
+                            sliderModule.Slides = SliderService.GetSlides(element.value,
                                 DocumentTypes.SliderComponent.Fields.Slides, sliderModule.Width);
                             result.Add(sliderModule);
                             break;
@@ -103,7 +106,7 @@ namespace Dit.Umb.Mutobo.Services
                             };
                             var isGoldenRatio = (picModule.Height == null && picModule.Width == null);
                             picModule.Image = element.value.HasValue(DocumentTypes.Picture.Fields.Image)
-                                ? _imageService.GetImage(
+                                ? ImageService.GetImage(
                                     element.value.Value<IPublishedContent>(DocumentTypes.Picture.Fields.Image), 
                                     height: picModule.Height, 
                                     width: picModule.Width )
@@ -120,6 +123,26 @@ namespace Dit.Umb.Mutobo.Services
                         case DocumentTypes.BlogModule.Alias:
                             result.Add(new BlogModule(element.value)
                             {
+                                SortOrder = element.index
+                            });
+                            break;
+                        case DocumentTypes.Accordeon.Alias:
+                            result.Add(new Accordeon(element.value)
+                            {
+                                SortOrder   = element.index
+                            });
+                            break;
+                        case DocumentTypes.Quote.Alias:
+                            result.Add(new Quote(element.value)
+                            {
+                                SortOrder = element.index
+                            });
+                            break;
+                        case DocumentTypes.CardContainer.Alias:
+                            result.Add(new CardContainer(element.value)
+                            {
+                                Cards = _cardService.GetCards(element.value, Constants.DocumentTypes.CardContainer.Fields.Cards),
+                                // set the sort order of the module to ensure the module order
                                 SortOrder = element.index
                             });
                             break;
@@ -158,7 +181,7 @@ namespace Dit.Umb.Mutobo.Services
             else
             {
                 teaser.Images = element.HasValue(DocumentTypes.Teaser.Fields.Images)
-                    ? _imageService.GetImages(
+                    ? ImageService.GetImages(
                         element.Value<IEnumerable<IPublishedContent>>(DocumentTypes.Teaser.Fields.Images))
                     : null;
                 teaser.TeaserText = element.HasValue(DocumentTypes.Teaser.Fields.TeaserText) ?
@@ -178,7 +201,7 @@ namespace Dit.Umb.Mutobo.Services
             var result = new List<Image>();
             
                 if (content.HasValue(DocumentTypes.ArticlePage.Fields.EmotionImages))
-                    result.AddRange(_imageService.GetImages(content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages)));
+                    result.AddRange(ImageService.GetImages(content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages)));
         
             return result;
         }

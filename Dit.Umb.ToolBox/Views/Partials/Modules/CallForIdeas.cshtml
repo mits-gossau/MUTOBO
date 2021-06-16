@@ -1,0 +1,24 @@
+﻿@model Dit.Umb.Sparx.Modules.CallForIdeas
+
+
+<div>
+    <h2>@Model.Title</h2>
+    <article>
+        @Model.Description
+    </article>
+    
+    <a href="@Model.RegisterLink.Url" target="@Model.RegisterLink.Target">
+        @Model.RegisterLink.Name
+    </a>
+    
+    <h3>@Model.FormTitle</h3>
+    <div>
+        @foreach (var link in Model.FormLinks)
+        {
+            <a href="@link.Url" target="@link.Target">@link.Name</a>
+        }
+    </div>
+</div>
+
+
+

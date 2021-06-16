@@ -1,0 +1,34 @@
+﻿@using Dit.Umb.Mutobo.PoCo
+@using Dit.Umb.Sparx.Constants
+@model Dit.Umb.Mutobo.Modules.CardContainer
+
+<o-teaser-wrapper>
+    @*TODO: Remove this CRAP! *@ 
+    <style>
+        :host {
+            --min-width: 0;
+        }
+    </style>
+
+    @foreach (var card in Model.Cards)
+    {
+        var target = card.DetailPageLink != null && !string.IsNullOrEmpty(card.DetailPageLink.Url) ? 
+            $"target={card.DetailPageLink.Target}" : string.Empty;
+        var href = card.DetailPageLink != null && !string.IsNullOrEmpty(card.DetailPageLink.Url)
+            ? $"href={card.DetailPageLink.Url}" : string.Empty;
+        ;
+        <m-teaser>
+            <a @($"{href} {target}")>
+                @card.Image.RenderWcPictureTag(height: $"{card.Image.Height}px", width: $"{card.Image.Width}px")
+                @if (card is Dit.Umb.Mutobo.PoCo.PersonnelCard personnelCard)
+                {
+                    <br/>
+                    <div>
+                        <h3>@personnelCard.Firstname &nbsp; @personnelCard.Lastname</h3>
+                        <p>@personnelCard.Function</p>
+                    </div>
+                }
+            </a>
+        </m-teaser>
+    }
+</o-teaser-wrapper>
