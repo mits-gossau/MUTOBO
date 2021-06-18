@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.ToolBox", "Dit.Umb.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dit.Umb.Mutobo", "Dit.Umb.Mutobo\Dit.Umb.Mutobo.csproj", "{2147941A-3725-4B64-84BB-7FDA22DE4066}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "waldlaeufer", "waldlaeufer", "{546BED15-60F2-494D-ADA2-208E7943CFD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sss.Waldlaeufer", "Sss.Waldlaeufer\Sss.Waldlaeufer.csproj", "{35B694B8-6469-4606-8ABD-57BD599679B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,10 @@ Global
 		{2147941A-3725-4B64-84BB-7FDA22DE4066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2147941A-3725-4B64-84BB-7FDA22DE4066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2147941A-3725-4B64-84BB-7FDA22DE4066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B694B8-6469-4606-8ABD-57BD599679B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B694B8-6469-4606-8ABD-57BD599679B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B694B8-6469-4606-8ABD-57BD599679B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B694B8-6469-4606-8ABD-57BD599679B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,7 @@ Global
 		{63E7BEF0-7BD7-4CB0-BB41-D6B19C949225} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
 		{3C82A4E6-2B14-42DD-AC62-7122AB878AD7} = {AE672E16-A211-4D16-BAF2-FC4BF22048A6}
 		{2147941A-3725-4B64-84BB-7FDA22DE4066} = {0560A3A4-E8F0-4328-B9D3-B5EC1865D56C}
+		{35B694B8-6469-4606-8ABD-57BD599679B7} = {546BED15-60F2-494D-ADA2-208E7943CFD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70340767-2600-46EC-8C6C-78B7C59BEA16}

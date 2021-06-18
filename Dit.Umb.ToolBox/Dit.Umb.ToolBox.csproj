@@ -622,6 +622,10 @@
       <Project>{6688f7e3-0fa5-4cac-8256-805dacaf2c57}</Project>
       <Name>Dit.Umb.ToolBox.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sss.Waldlaeufer\Sss.Waldlaeufer.csproj">
+      <Project>{35b694b8-6469-4606-8abd-57bd599679b7}</Project>
+      <Name>Sss.Waldlaeufer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
