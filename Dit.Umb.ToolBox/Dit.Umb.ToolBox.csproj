@@ -461,10 +461,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <None Include="config\appSettings.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="assets\img\terminalia-catappa-2137221_1920.png" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\mutobo.ch - Web Deploy %28hostfactory%29.pubxml" />
     <Content Include="Views\WCContentPage.cshtml" />
     <Content Include="Views\Partials\BlogList.cshtml" />
+    <None Include="Properties\PublishProfiles\wuwi.schenk-smart-solutions.ch - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -543,7 +545,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\img\" />
     <Folder Include="uSync\v8\ContentTypes\" />
   </ItemGroup>
   <ItemGroup>
@@ -613,14 +614,6 @@
     <ProjectReference Include="..\Dit.Umb.Mutobo\Dit.Umb.Mutobo.csproj">
       <Project>{2147941A-3725-4B64-84BB-7FDA22DE4066}</Project>
       <Name>Dit.Umb.Mutobo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj">
-      <Project>{63e7bef0-7bd7-4cb0-bb41-d6b19c949225}</Project>
-      <Name>Dit.Umb.Toolbox.Common.ContentExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dit.Umb.Toolbox.Common\Dit.Umb.ToolBox.Common.csproj">
-      <Project>{6688f7e3-0fa5-4cac-8256-805dacaf2c57}</Project>
-      <Name>Dit.Umb.ToolBox.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sss.Waldlaeufer\Sss.Waldlaeufer.csproj">
       <Project>{35b694b8-6469-4606-8abd-57bd599679b7}</Project>

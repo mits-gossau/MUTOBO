@@ -31,17 +31,44 @@
         @Html.Action("Index", "CssVariables", new { Theme = Model.Theme as ITheme })
     }
     
-    <style>
-        @@import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
-        html {
-            --color-hover: #800080;
-            --color-secondary: black;
-            --color: #000080;
-            --background-color: #efefef;
-            --font-family: 'Wendy One', sans-serif;
-            --font-size: 1.3rem;
+<style>
+        @@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Reggae+One&display=swap');
+
+    html {
+        --color-hover: #02bd35;
+        --color-secondary: black;
+        --color: #2b3025;
+        --background-color: rgba(223, 235, 209, 0.5);
+        --font-family: 'Reggae One', cursive;
+        --font-family-secondary: 'Nanum Gothic', sans-serif;
+        --font-size: 1.3rem;
+        --footer-color: #dfebd1;
+        --footer-background-color: rgba(62, 79, 42, 0.8);
+        --header-background-color: rgba(62, 79, 42, 0.8);
+        --footer-content-width: 100vw;
+        --footer-content-width-mobile: 100vw;
+        --footer-padding: 2.5em;
+        --footer-padding-mobile: 3em;
+        --header-height: 15vw;
+        --header-color: #dfebd1;
+        --navigation-color: #dfebd1;
+        --navigation-color-hover: #02bd35;
+    }
+
+        body {
+            background: url(/assets/img/terminalia-catappa-2137221_1920.png) repeat-y;
+            background-size: cover;
         }
-    </style>
+
+        .bar1, .bar2, .bar3 {
+            background-color: #dfebd1 !important;
+        }
+    @@media only screen and (min-width: 1000px) {
+        html {
+            --navigation-background-color: transparent;
+        }
+    }
+</style>
 
 </head>
 <body>

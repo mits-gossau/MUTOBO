@@ -1,30 +1,28 @@
 ﻿@model Dit.Umb.Mutobo.Interfaces.IHeaderConfiguration
-<o-header mobile-breakpoint="100vw" no-scroll="nav-open" menu-icon="true" namespace="header-">
-    @if (Model.GlobalSlogan != null)
-    {
-        // TODO only show on home-page
-        <a-title namespace="header-title-">
-            <h1>
-                <span>@Model.GlobalSlogan.Title.ToUpper()</span>
-                <span class="secondary-color">@Model.GlobalSlogan.SubTitle</span>
-            </h1>
-        </a-title>
-    }
+<o-header menu-icon="true" namespace="header-">
+    
 
     @if (Model.NavigationItems != null && Model.NavigationItems.Any())
     {
-        <m-navigation hover="false" namespace="navigation-" mobile-breakpoint="0vw" no-scroll="nav-open">
+        <m-navigation namespace="navigation-" hit-area="false">
+
             <ul>
+                <li >
+                    <a style="color: #dfebd1" href="/">
+                        Home
+                    </a>
+                </li>
+
                 @foreach (var navItem in Model.NavigationItems)
                 {
                     <li>
-                        <a href="@navItem.Url" target="@(navItem.NewWindow ? "_blank" : string.Empty)">@navItem.Title</a>
+                        <a href="@navItem.Url" style="color: #dfebd1" target="@(navItem.NewWindow ? "_blank" : string.Empty)">@navItem.Title</a>
                         @if (navItem.Children.Any())
                         {
                             <ul>
                                 @foreach (var childNavItem in navItem.Children)
                                 {
-                                    <li><a href="@childNavItem.Url" target="@(childNavItem.NewWindow ? "_blank" : string.Empty)">@childNavItem.Title</a></li>
+                                    <li><a href="@childNavItem.Url" class="nav-link"   target="@(childNavItem.NewWindow ? "_blank" : string.Empty)">@childNavItem.Title</a></li>
                                 }
                             </ul>
                         }

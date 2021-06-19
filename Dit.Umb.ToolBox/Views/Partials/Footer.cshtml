@@ -1,41 +1,20 @@
 ﻿@using System.Linq
 @using Dit.Umb.Mutobo.Constants
 @model Dit.Umb.Mutobo.Configuration.FooterConfiguration
-<o-footer namespace="footer-" theme="@Model.Theme">
+<o-footer namespace="footer-">
     @{
         var index = 0;
     }
-
     @if (Model.PictureLinks != null && Model.PictureLinks.Any())
     {
         <div class="logo-container">
-            @foreach (var picLink in Model.PictureLinks.Take(2))
+            @foreach (var picLink in Model.PictureLinks)
             {
 
 
 
                 <a-logo namespace="footer-logo-" src="@picLink.Image.DefaultSource.Src" href="@(picLink.LogoLink?.Url ?? picLink.Link.Url)" target="@(picLink.LogoLink?.Target ?? picLink.Link.Target)">
-                    @if (index < 1)
-                    {
-                        @* QnD-Hack to fit the engagement logo to the correct size *@
-                        <style>
-                            :host{
-                                --footer-logo-max-height:40px;
-                                --footer-logo-max-height-mobile:40px;
-                                --footer-logo-text-font-size:0.4rem;
-                                --footer-logo-text-font-size-mobile:0.4rem;
-                                --footer-logo-text-padding:10px 0 0 32%;
-                                --footer-logo-text-padding-mobile:10px 0 0 32%;
-                                --footer-logo-text-padding-fr:10px 0 0 27%;
-                                --footer-logo-text-padding-mobile-fr:10px 0 0 27%;
-                                --footer-logo-text-padding-en:10px 0 0 25%;
-                                --footer-logo-text-padding-mobile-en:10px 0 0 25%;
-                            }
-                        </style>
 
-                    }
-                    @if (!string.IsNullOrEmpty(picLink.Text))
-                    {
                         <p>
                             @picLink.Text&nbsp;
                             <br />
@@ -43,8 +22,6 @@
                                 <a href="@picLink.Link.Url" target="@picLink.Link.Target">@picLink.Link.Name</a>
                             </strong>
                         </p>
-                    }
-
                 </a-logo>
                 index++;
 
@@ -63,32 +40,37 @@
         @if (Model.FooterLinks != null && Model.FooterLinks.Any())
         {
             <ul>
-                @if (Model.HasValue(DocumentTypes.FooterConfiguration.Fields.CopyRight))
-                {
-                    <li>
-                        <span>
-                            @Html.Raw(Model.Copyright)
-                        </span>
-                    </li>
-
-                }
                 @foreach (var link in Model.FooterLinks)
                 {
-                    <li>
-                        <a href="@link.Url" target="@link.Target">
+                    <li >
+                        <a href="@link.Url" style="font-size: 0.5em" target="@link.Target">
                             @link.Name
                         </a>
                     </li>
                 }
+                <li><br /></li>
+
+                @if (Model.HasValue(DocumentTypes.FooterConfiguration.Fields.CopyRight))
+                {
+                    <li>
+                        <span style="font-size: 1.3em">
+                            @Html.Raw(Model.Copyright)
+                        </span>
+                        <span style="font-size: 0.5em">
+                            <a href="https://schenk-smart-solutions.ch/" target="_blank">
+                                Designed & Developed by Schenk-Smart-Solutions
+                            </a>
+                      
+                        </span>
+                    </li>
+
+                }
+
             </ul>
-        }
-        @if (Model.Languages != null && Model.Languages.Any())
-        {
-            //Html.RenderAction("Index", "LanguageSwitcher");
         }
     </div>
 
 
-
+    
 
 </o-footer>

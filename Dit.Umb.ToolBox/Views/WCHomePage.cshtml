@@ -9,7 +9,11 @@
 }
 
 <o-body>
-
+    <style>
+        :host {
+            min-height: 62vw;
+        }
+    </style>
     @if (Model.Modules != null && Model.Modules.Any())
     {
         foreach (var module in Model.Modules)

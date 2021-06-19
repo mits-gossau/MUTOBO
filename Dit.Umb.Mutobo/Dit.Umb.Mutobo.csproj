@@ -471,16 +471,6 @@
     <None Include="Services\packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dit.Umb.Toolbox.Common.ContentExtensions\Dit.Umb.Toolbox.Common.ContentExtensions.csproj">
-      <Project>{63e7bef0-7bd7-4cb0-bb41-d6b19c949225}</Project>
-      <Name>Dit.Umb.Toolbox.Common.ContentExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dit.Umb.Toolbox.Common\Dit.Umb.ToolBox.Common.csproj">
-      <Project>{6688f7e3-0fa5-4cac-8256-805dacaf2c57}</Project>
-      <Name>Dit.Umb.ToolBox.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Compositions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
