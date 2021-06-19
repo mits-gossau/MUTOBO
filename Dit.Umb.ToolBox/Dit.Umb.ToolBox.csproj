@@ -467,6 +467,10 @@
     <Content Include="Views\WCContentPage.cshtml" />
     <Content Include="Views\Partials\BlogList.cshtml" />
     <None Include="Properties\PublishProfiles\wuwi.schenk-smart-solutions.ch - Web Deploy.pubxml" />
+    <Content Include="Views\Partials\Modules\CallForIdeas.cshtml" />
+    <Content Include="Views\Partials\Modules\CallToActionButton.cshtml" />
+    <Content Include="Views\Partials\Modules\CardContainer.cshtml" />
+    <Content Include="Views\Partials\Modules\Quote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,20 @@
+﻿@model Dit.Umb.Sparx.Modules.CallForIdeas
+
+
+@if (Model != null)
+{
+    <div style="position: fixed; top: 20%; right: 0; z-index: 100;">
+        @if (Model.TargetLink != null)
+        {
+            <a href="@Model.TargetLink.Url" title="@Model.TargetLink.Name" target="@Model.TargetLink.Target">
+                @Model.ButtonImage.RenderWcPictureTag()
+            </a>
+        }
+        else
+        {
+            @Model.ButtonImage.RenderWcPictureTag()
+        }
+
+
+    </div>
+}
