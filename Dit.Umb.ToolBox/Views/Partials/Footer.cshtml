@@ -5,36 +5,16 @@
     @{
         var index = 0;
     }
-    @if (Model.PictureLinks != null && Model.PictureLinks.Any())
-    {
-        <div class="logo-container">
-            @foreach (var picLink in Model.PictureLinks)
-            {
-
-
-
-                <a-logo namespace="footer-logo-" src="@picLink.Image.DefaultSource.Src" href="@(picLink.LogoLink?.Url ?? picLink.Link.Url)" target="@(picLink.LogoLink?.Target ?? picLink.Link.Target)">
-
-                        <p>
-                            @picLink.Text&nbsp;
-                            <br />
-                            <strong>
-                                <a href="@picLink.Link.Url" target="@picLink.Link.Target">@picLink.Link.Name</a>
-                            </strong>
-                        </p>
-                </a-logo>
-                index++;
-
-            }
-        </div>
-
-
-    }
+    <style>
+        :host {
+            background-color: rgba(62, 79, 42, 0.8);
+        }
+    </style>
 
 
 
 
-    <div class="footer-links">
+
 
 
         @if (Model.FooterLinks != null && Model.FooterLinks.Any())
@@ -43,7 +23,7 @@
                 @foreach (var link in Model.FooterLinks)
                 {
                     <li >
-                        <a href="@link.Url" style="font-size: 0.5em" target="@link.Target">
+                        <a href="@link.Url" target="@link.Target">
                             @link.Name
                         </a>
                     </li>
@@ -53,11 +33,11 @@
                 @if (Model.HasValue(DocumentTypes.FooterConfiguration.Fields.CopyRight))
                 {
                     <li>
-                        <span style="font-size: 1.3em">
+                        <span>
                             @Html.Raw(Model.Copyright)
                         </span>
-                        <span style="font-size: 0.5em">
-                            <a href="https://schenk-smart-solutions.ch/" target="_blank">
+                        <span>
+                            <a style="font-size: 0.5rem;" href="https://schenk-smart-solutions.ch/" target="_blank">
                                 Designed & Developed by Schenk-Smart-Solutions
                             </a>
                       
@@ -68,7 +48,7 @@
 
             </ul>
         }
-    </div>
+  
 
 
     

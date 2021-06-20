@@ -9,13 +9,13 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
 {
     public class HomePageController : BasePageController
     {
-        protected readonly IMutoboContentService _contentService;
+        protected readonly IMutoboContentService ContentService;
 
 
         public HomePageController(IMutoboContentService contentService)
         {
             Logger.Info<HomePageController>("HomePageController initialized");
-            _contentService = contentService;
+            ContentService = contentService;
         }
 
 
@@ -28,7 +28,7 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
 
             return base.Index<HomePage>(new HomePage(model.Content)
             {
-                Modules = _contentService.GetContent(model.Content, DocumentTypes.HomePage.Fields.Modules)
+                Modules = ContentService.GetContent(model.Content, DocumentTypes.HomePage.Fields.Modules)
             });
         }
     }

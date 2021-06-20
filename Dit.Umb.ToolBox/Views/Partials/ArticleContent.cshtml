@@ -6,11 +6,22 @@
 
 @model Dit.Umb.Mutobo.PageModels.ArticlePage
 
-<div>
+<div style="display: flex; justify-content: center; flex-direction: column">
     @if (!string.IsNullOrEmpty(Model.PageTitle))
     {
         <h2>@Model.PageTitle.ToUpper()</h2>
+        <div style="background: url(/assets/img/oak-leaves.svg) repeat-x;
+                    width: 50%;
+                    height: 2em; justify-content: center;
+                                      background-size: 3em 3em; background-position-y: center; margin: auto;"></div>
     }
+    @if (!Model.HideAbstract && !string.IsNullOrEmpty(Model.Abstract))
+    {
+        <p style="font-family: var(--font-family)">@Model.Abstract</p>
+
+    }
+
+
     @if (Model.EmotionImages != null && Model.EmotionImages.Any())
     {
         if (Model.EmotionImages.Count() < 2)
@@ -24,21 +35,18 @@
         }
         else
         {
-            var configService = (IConfigurationService) DependencyResolver.Current.GetService(typeof(IConfigurationService));
+            var configService = (IConfigurationService)DependencyResolver.Current.GetService(typeof(IConfigurationService));
             @Html.Partial("~/Views/Partials/Slider.cshtml", new EmptySliderComponent()
             {
                 Slides = Model.EmotionImages,
-                GalleryType = EGalleryType.Boxed,
+                GalleryType = EGalleryType.FullWidth,
                 Width = 800,
                 Height = 450,
             })
             ;
         }
     }
-    @if (!Model.HideAbstract && !string.IsNullOrEmpty(Model.Abstract))
-    {
-        <p>@Model.Abstract</p>
-    }
+
     @if (!string.IsNullOrEmpty(Model.MainContent))
     {
         <div>

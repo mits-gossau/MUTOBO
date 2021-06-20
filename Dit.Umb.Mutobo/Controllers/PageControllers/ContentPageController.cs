@@ -13,13 +13,13 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
     public class ContentPageController : ArticlePageController
     {
 
-        protected readonly IMutoboContentService _mutoboContentService;
+        protected readonly IMutoboContentService MutoboContentService;
 
 
         public ContentPageController(IMutoboContentService mutoboContentService, IImageService imageService) : base(imageService)
         {
          
-            _mutoboContentService = mutoboContentService;
+            MutoboContentService = mutoboContentService;
         }
 
         // GET: HighlightsPage
@@ -28,9 +28,9 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
             return base.Index<ContentPage>(new ContentPage(model.Content)
             {
                 EmotionImages = model.Content.HasValue(DocumentTypes.ArticlePage.Fields.EmotionImages)
-                    ? _imageService.GetImages(model.Content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages))
+                    ? ImageService.GetImages(model.Content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages))
                     : new List<Image>(),
-                Modules = _mutoboContentService.GetContent(model.Content, DocumentTypes.ContentPage.Fields.Modules)
+                Modules = MutoboContentService.GetContent(model.Content, DocumentTypes.ContentPage.Fields.Modules)
             });
         }
 

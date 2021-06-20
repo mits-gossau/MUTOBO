@@ -4,11 +4,11 @@
 
     @if (Model.NavigationItems != null && Model.NavigationItems.Any())
     {
-        <m-navigation namespace="navigation-" hit-area="false">
+        <m-navigation namespace="navigation-" hit-area="false" hover="true" no-scroll="nav-open">
 
             <ul>
                 <li >
-                    <a style="color: #dfebd1" href="/">
+                    <a  href="/">
                         Home
                     </a>
                 </li>
@@ -16,13 +16,13 @@
                 @foreach (var navItem in Model.NavigationItems)
                 {
                     <li>
-                        <a href="@navItem.Url" style="color: #dfebd1" target="@(navItem.NewWindow ? "_blank" : string.Empty)">@navItem.Title</a>
+                        <a href="@navItem.Url"  target="@(navItem.NewWindow ? "_blank" : string.Empty)">@navItem.Title</a>
                         @if (navItem.Children.Any())
                         {
                             <ul>
                                 @foreach (var childNavItem in navItem.Children)
                                 {
-                                    <li><a href="@childNavItem.Url" class="nav-link"   target="@(childNavItem.NewWindow ? "_blank" : string.Empty)">@childNavItem.Title</a></li>
+                                    <li><a href="@childNavItem.Url"    target="@(childNavItem.NewWindow ? "_blank" : string.Empty)">@childNavItem.Title</a></li>
                                 }
                             </ul>
                         }

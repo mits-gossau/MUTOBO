@@ -106,7 +106,7 @@ namespace Dit.Umb.Mutobo.Services
         {
             return contentNodes?.Select(n => new Image()
             {
-                Sources = GetImageSources(n,  width, height, imageCropMode),
+                Sources = GetImageSources(n, width, height, imageCropMode),
                 Alt = n.Name,
                 Height = height.HasValue ? $"{height}px" : null,
                 Width = width.HasValue ? $"{width}px" : null,

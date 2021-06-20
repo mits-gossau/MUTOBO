@@ -6,6 +6,7 @@ using Dit.Umb.Mutobo.Interfaces;
 using Dit.Umb.Mutobo.Modules;
 using Dit.Umb.Mutobo.PageModels;
 using Dit.Umb.Mutobo.PoCo;
+using UglyToad.PdfPig.DocumentLayoutAnalysis.Export.Alto;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -121,10 +122,21 @@ namespace Dit.Umb.Mutobo.Services
                             });
                             break;
                         case DocumentTypes.BlogModule.Alias:
-                            result.Add(new BlogModule(element.value)
+                            var blogModule = new BlogModule(element.value)
                             {
-                                SortOrder = element.index
-                            });
+                                SortOrder = element.index,
+                                BlogEntries = element.value.HasValue(DocumentTypes.BlogModule.Fields.ParentPage) ?
+                                    element.value.Value<IPublishedContent>(DocumentTypes.BlogModule.Fields.ParentPage).Children.Select(c => new ArticlePage(c)
+                                    {
+                                        EmotionImages = ImageService.GetImages(
+                                            c.Value<IEnumerable<IPublishedContent>>(
+                                                DocumentTypes.ArticlePage.Fields.EmotionImages), width: 400, height: 225)
+                                    }) : null
+                            };
+                            
+                     
+
+                            result.Add(blogModule);
                             break;
                         case DocumentTypes.Accordeon.Alias:
                             result.Add(new Accordeon(element.value)

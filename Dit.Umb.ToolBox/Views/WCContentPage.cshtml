@@ -10,12 +10,13 @@
 }
 
 <o-body>
+
     @Html.Partial("~/Views/Partials/ArticleContent.cshtml", Model)
 
     <div>
         @Html.Raw(Model.MainContent)
     </div>
-    
+
     @if (Model.Modules != null && Model.Modules.Any())
     {
         foreach (var module in Model.Modules)
