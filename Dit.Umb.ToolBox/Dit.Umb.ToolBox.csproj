@@ -461,6 +461,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <None Include="config\appSettings.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="css\Dreadhorn\Memory.css" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild1.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild2.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild3.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild4.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild5.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild6.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild7.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\bild8.jpg" />
+    <Content Include="css\Dreadhorn\Memorybilder\Retro-Block-Question.png" />
+    <Content Include="css\Dreadhorn\Memorybilder\Retro-Block.png" />
+    <Content Include="css\Dreadhorn\Memorybilder\trote.mp3" />
+    <Content Include="scripts\Dreadhorn\Memory.js" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\mutobo.ch - Web Deploy %28hostfactory%29.pubxml" />
     <Content Include="Views\WCContentPage.cshtml" />
@@ -469,6 +482,7 @@
     <Content Include="Views\Partials\Modules\CallToActionButton.cshtml" />
     <Content Include="Views\Partials\Modules\CardContainer.cshtml" />
     <Content Include="Views\Partials\Modules\Quote.cshtml" />
+    <Content Include="Views\Memory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
