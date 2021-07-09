@@ -1,0 +1,33 @@
+﻿@*@model Dit.Umb.Mutobo.PageModels.Dreadhorn.Game*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="~/css/Dreadhorn/Memory.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- jQuery einspielen -->
+    <title>Memory</title>
+</head>
+<body>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <!-- Audio für richtige Karten -->
+    <audio id="trote">
+        <source src="~/css/Dreadhorn/Memorybilder/trote.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Die einzelnen Karten -->
+    <div id="karten">
+
+    </div>
+
+    <!-- Die Anzeige der Spieler und der Punkte -->
+    <aside id="anzeige">
+    </aside>
+    <script src="~/Scripts/Dreadhorn/Memory.js"></script> <!-- JavaScrit einfügen -->
+</body>
+</html>

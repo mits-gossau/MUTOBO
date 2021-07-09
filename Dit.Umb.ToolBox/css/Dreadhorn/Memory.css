@@ -1,0 +1,59 @@
+/* Jede Karte */
+.feld {
+    background-image: url(Memorybilder/Retro-Block.png); /*Bild für die umgedrehte Karte */
+    width: 150px;
+    height: 150px;
+    margin: 2px;
+    position: absolute;
+}
+
+/* Bilder Grösse */
+img{
+    height: 150px;
+    width: 150px;
+}
+
+/* einzelne Bilder -------------------------*/
+/* Zeile ----------*/
+.one{
+    top: 30px;
+}
+
+.two{
+    top: 182px;
+}
+
+.three{
+    top: 334px;
+}
+
+.four{
+    top: 486px;
+}
+
+/* Spalte ----------*/
+.rone{
+    left: 0px;
+}
+
+.rtwo{
+    left: 152px;
+
+}
+
+.rthree{
+    left: 304px;
+}
+
+.rfour{
+    left: 456px;
+}
+
+aside{
+    margin-left: 650px;
+    font-size: 30px;
+}
+
+.spieler{
+    color: black;
+}
