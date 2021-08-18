@@ -49,7 +49,7 @@ namespace Dit.Umb.Mutobo.Services
                     articel = new ArticlePage(content)
                     {
                         //EmotionImages = content.HasValue(DocumentTypes.ArticlePage.Fields.EmotionImages)
-                        //    ? _imageService.GetImages(content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages), width: 500, imageCropMode: ImageCropMode.Max, nameSpace: "picture", isGoldenRatio: false) : null
+                        //    ? ImageService.GetImages(content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages), width: 500, imageCropMode: ImageCropMode.Max, nameSpace: "picture", isGoldenRatio: false) : null
                         EmotionImages = content.HasValue(DocumentTypes.ArticlePage.Fields.EmotionImages)
                             ? content.GetImages(DocumentTypes.ArticlePage.Fields.EmotionImages,
                                     width: 500, imageCropMode: ImageCropMode.Max, useSources: true) : null
@@ -60,7 +60,7 @@ namespace Dit.Umb.Mutobo.Services
                     fly.TeaserText = element.HasValue(DocumentTypes.Flyer.Fields.FlyerTeaserText) ? 
                         element.Value<string>(DocumentTypes.Flyer.Fields.FlyerTeaserText) : string.Empty;
                     fly.Image = element.GetImage(DocumentTypes.Flyer.Fields.FlyerImage, width: 900,  imageCropMode: ImageCropMode.Max, useSources: true);
-                    //fly.Image = _imageService.GetImage(element.Value<IPublishedContent>(DocumentTypes.Flyer.Fields.FlyerImage), width: 500, imageCropMode: ImageCropMode.Max, nameSpace: "picture", isGoldenRatio:false);
+                    //fly.Image = ImageService.GetImage(element.Value<IPublishedContent>(DocumentTypes.Flyer.Fields.FlyerImage), width: 500, imageCropMode: ImageCropMode.Max, nameSpace: "picture", isGoldenRatio:false);
                     fly.Link = element.HasValue(DocumentTypes.Flyer.Fields.FlyerLink) ? 
                         element.Value<Link>(DocumentTypes.Flyer.Fields.FlyerLink) : null;
                     Logger.Warn(this.GetType(), $"{AppConstants.LoggingPrefix} Keine ArtikelSeite auf dem Flyer verlinkt");
@@ -72,7 +72,7 @@ namespace Dit.Umb.Mutobo.Services
                         : articel.Abstract;
 
                     //fly.Image = element.HasValue(DocumentTypes.Flyer.Fields.FlyerImage)
-                    //    ? _imageService.GetImage(element.Value<IPublishedContent>(DocumentTypes.Flyer.Fields.FlyerImage), width: 500, imageCropMode: ImageCropMode.Max, nameSpace: "picture", isGoldenRatio: false)
+                    //    ? ImageService.GetImage(element.Value<IPublishedContent>(DocumentTypes.Flyer.Fields.FlyerImage), width: 500, imageCropMode: ImageCropMode.Max, nameSpace: "picture", isGoldenRatio: false)
                     //    : articel.EmotionImages.FirstOrDefault();
 
                     //TODO: SET PICTURE SOURCES

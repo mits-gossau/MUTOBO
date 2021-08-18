@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Dit.Umb.Mutobo.Interfaces;
 using Dit.Umb.Mutobo.Modules;
 using Dit.Umb.Mutobo.PoCo;
@@ -10,7 +6,7 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using DocumentTypes = Dit.Umb.Mutobo.Constants.DocumentTypes;
 
-namespace Dit.Umb.ToolBox.Services.Impl
+namespace Dit.Umb.Mutobo.Services
 {
     public class SliderService : ISliderService
     {

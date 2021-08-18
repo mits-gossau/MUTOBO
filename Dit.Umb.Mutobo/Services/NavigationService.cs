@@ -40,7 +40,7 @@ namespace Dit.Umb.Mutobo.Services
 
             if (homePage.Children != null && homePage.Children.Any())
             {
-                foreach (var childNode in homePage.Children.Where(n => n.IsDocumentType(DocumentTypes.BasePage.Alias, true)))
+                foreach (var childNode in homePage.Children.Where(n => n.IsComposedOf(DocumentTypes.BasePage.Alias)))
                 {
                     if (!childNode.Value<bool>(DocumentTypes.BasePage.Fields.HideFromNavigation))
                     {
@@ -71,7 +71,7 @@ namespace Dit.Umb.Mutobo.Services
   
                 foreach (var childNode in parentNode.Children.Where(c => !(new BasePage(c)).HideFromNavigation))
                 {
-                    if (childNode.IsDocumentType(DocumentTypes.BasePage.Alias, true))
+                    if (childNode.IsComposedOf(DocumentTypes.BasePage.Alias))
                     {
 
 

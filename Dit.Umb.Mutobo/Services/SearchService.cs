@@ -21,17 +21,17 @@ namespace Dit.Umb.Mutobo.Services
     public class SearchService : BaseService, ISearchService
     {
 
-        private readonly IPageLayoutService _pageLayoutService;
+        protected readonly IPageLayoutService PageLayoutService;
 
 
         public SearchService(IPageLayoutService pageLayoutService)
         {
-            _pageLayoutService = pageLayoutService;
+            PageLayoutService = pageLayoutService;
         }
 
 
 
-        public SearchResultModel PerformSearch(string term)
+        public virtual SearchResultModel PerformSearch(string term)
         {
 
             SearchResultModel result = null;
@@ -40,8 +40,8 @@ namespace Dit.Umb.Mutobo.Services
                 // create the result object and assign the search term 
                 result = new SearchResultModel (Helper.AssignedContentItem)
                 {
-                    HeaderConfiguration = _pageLayoutService.GetHeaderConfiguration(Helper.AssignedContentItem),
-                    FooterConfiguration = _pageLayoutService.GetFooterConfiguration(Helper.AssignedContentItem),
+                    HeaderConfiguration = PageLayoutService.GetHeaderConfiguration(Helper.AssignedContentItem),
+                    FooterConfiguration = PageLayoutService.GetFooterConfiguration(Helper.AssignedContentItem),
                     Term = term
                 };
             }
@@ -104,7 +104,7 @@ namespace Dit.Umb.Mutobo.Services
                                                 page.HasProperty(DocumentTypes.ArticlePage.Fields.Abstract)
                                                     ? page.Value<string>(DocumentTypes.ArticlePage.Fields.Abstract)
                                                     : string.Empty,
-                                            Title = page.HasProperty(DocumentTypes.BasePage.Fields.PageTitle) ? page.Value<string>(DocumentTypes.BasePage.Fields.PageTitle) : string.Empty,
+                                            Title = page.HasProperty(DocumentTypes.BasePage.Fields.PageTitle) && page.HasValue(DocumentTypes.BasePage.Fields.PageTitle) && !string.IsNullOrEmpty(page.Value<string>(DocumentTypes.BasePage.Fields.PageTitle).Trim()) ? page.Value<string>(DocumentTypes.BasePage.Fields.PageTitle) : page.Name,
                                             UrlTitle = Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.Global.ReadMore),
                                             Documents = new List<Document>(){documentSearchResult}
                                         };
@@ -128,8 +128,7 @@ namespace Dit.Umb.Mutobo.Services
 
                         if (!node.Value<bool>(DocumentTypes.BasePage.Fields.ExcludeFromSearch))
                         {
-                            SearchResult existingPage = pages?.FirstOrDefault();
-                            existingPage = pages.FirstOrDefault(p => p.Id == node.Id);
+                            var existingPage = pages.FirstOrDefault(p => p.Id == node.Id);
 
                             if (existingPage == null)
                             {
@@ -138,12 +137,15 @@ namespace Dit.Umb.Mutobo.Services
                                     Id = node.Id,
                                     Url = node.Url(),
                                     Abstract = node.HasProperty(DocumentTypes.ArticlePage.Fields.Abstract) ? node.Value<string>(DocumentTypes.ArticlePage.Fields.Abstract) : string.Empty,
-                                    Title = node.HasProperty(DocumentTypes.BasePage.Fields.PageTitle) ? node.Value<string>(DocumentTypes.BasePage.Fields.PageTitle) : string.Empty,
+                                     Title = node.HasProperty(DocumentTypes.BasePage.Fields.PageTitle) && 
+                                             node.HasValue(DocumentTypes.BasePage.Fields.PageTitle) && 
+                                             !string.IsNullOrEmpty(node.Value<string>(DocumentTypes.BasePage.Fields.PageTitle).Trim()) ? 
+                                         node.Value<string>(DocumentTypes.BasePage.Fields.PageTitle) : 
+                                         node.Name,
                                     UrlTitle = Umbraco.Web.Composing.Current.UmbracoHelper.GetDictionaryValue(DictionaryKeys.Global.ReadMore),
 
                                 });
                             }
-
                         }
                     }
                 }
@@ -165,7 +167,7 @@ namespace Dit.Umb.Mutobo.Services
 
             var homepage = Helper
                 .ContentAtRoot()
-                .FirstOrDefault(p => p.ContentType.Alias == DocumentTypes.HomePage.Alias);
+                .FirstOrDefault(p => p.IsComposedOf(DocumentTypes.HomePage.Alias));
 
             foreach (var page in homepage.DescendantsOrSelf())
             {

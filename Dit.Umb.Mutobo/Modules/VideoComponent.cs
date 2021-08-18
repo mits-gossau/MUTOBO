@@ -67,10 +67,7 @@ namespace Dit.Umb.Mutobo.Modules
 
             bld.Append(helper.Partial("~/Views/Partials/VideoComponent.cshtml", this));
 
-            if (SpacerAfterModule)
-            {
-                bld.Append("<div class=\"spacer\"></div>");
-            }
+
 
             return new HtmlString(bld.ToString());
         }

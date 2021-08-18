@@ -28,6 +28,8 @@ namespace Dit.Umb.Mutobo.Modules
 
             bld.Append(helper.Partial("~/Views/Partials/Modules/CardContainer.cshtml", this));
 
+
+
             return new MvcHtmlString(bld.ToString());
         }
     }

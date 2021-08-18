@@ -12,5 +12,7 @@ namespace Dit.Umb.Mutobo.Interfaces
         int? Width { get; }
         int? Height { get; }
         IHtmlString RenderIFrame(int? width = null, int? height = null);
+
+
     }
 }

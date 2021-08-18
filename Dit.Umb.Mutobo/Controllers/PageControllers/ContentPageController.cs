@@ -28,7 +28,7 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
             return base.Index<ContentPage>(new ContentPage(model.Content)
             {
                 EmotionImages = model.Content.HasValue(DocumentTypes.ArticlePage.Fields.EmotionImages)
-                    ? _imageService.GetImages(model.Content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages))
+                    ? ImageService.GetImages(model.Content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages))
                     : new List<Image>(),
                 Modules = _mutoboContentService.GetContent(model.Content, DocumentTypes.ContentPage.Fields.Modules)
             });

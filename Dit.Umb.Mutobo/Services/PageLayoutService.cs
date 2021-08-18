@@ -63,7 +63,7 @@ namespace Dit.Umb.Mutobo.Services
                     NavigationItems = _navigationService.GetNavigation(),
                     Logo = _imageService.GetImage(headerConfig.Value<IPublishedContent>(DocumentTypes.Configuration.Logo), height: 100),
                     Languages = _localizationService.GetAllLanguages()
-                        .Where(l => !Equals(l.CultureInfo, CultureInfo.CurrentCulture))
+                        .OrderBy(l => l.CultureInfo.TwoLetterISOLanguageName)
                         .Select(a => new Language()
                         {
                             Name = a.CultureInfo.NativeName.Split(' ')[0],
@@ -127,7 +127,7 @@ namespace Dit.Umb.Mutobo.Services
                     FooterNavBlocks = linkBlocks,
                     FooterContactBlock = contactNode,
                     Languages = _localizationService.GetAllLanguages()
-                        .Where(l => !Equals(l.CultureInfo, CultureInfo.CurrentCulture))
+                        .OrderBy(l => l.CultureInfo.TwoLetterISOLanguageName)
                         .Select(a => new Language()
                         {
                             Name = a.CultureInfo.NativeName.Split(' ')[0],

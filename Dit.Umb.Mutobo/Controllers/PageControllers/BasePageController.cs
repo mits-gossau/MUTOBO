@@ -52,10 +52,6 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
                 basePage.FooterConfiguration.HomePageLogo = basePage.HeaderConfiguration.Logo;
                 //basePage.Theme = _themeService.GetTheme(basePage.Content);
 
-                
-
-
-
             }
             catch(AppSettingsException e)
             {

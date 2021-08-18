@@ -20,9 +20,9 @@ namespace Dit.Umb.Mutobo.Controllers.SurfaceControllers
         {
             return View("~/Views/Partials/CookieBanner.cshtml", new CookieBannerModel()
             {
-                ApiKey = _configurationService.GetAppSettingValue("Classics.CookieBanner.APIKey"),
-                Theme = _configurationService.GetAppSettingValue("Classics.CookieBanner.Theme"),
-                Environment = _configurationService.GetAppSettingValue("Classics.CookieBanner.Environment")
+                ApiKey = _configurationService.GetAppSettingValue("CookieBanner.APIKey"),
+                Theme = _configurationService.GetAppSettingValue("CookieBanner.Theme"),
+                Environment = _configurationService.GetAppSettingValue("CookieBanner.Environment")
             });
         }
     }

@@ -13,7 +13,10 @@ namespace Dit.Umb.Mutobo.Modules
             ? this.Value<string>(Constants.Compositions.Module.Fields.ModuleTitle) : null;
         
         public bool SpacerAfterModule => this.Value<bool>(Constants.Compositions.Module.Fields.SpacerAfterModule);
-        
+
+        public bool SpacerBeforeModule => this.Value<bool>(Constants.Compositions.Module.Fields.SpacerBeforeModule);
+
+
         public int SortOrder { get; set; }
 
         public virtual IHtmlString RenderModule(HtmlHelper helper)

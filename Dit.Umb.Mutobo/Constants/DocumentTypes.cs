@@ -1,4 +1,6 @@
-﻿namespace Dit.Umb.Mutobo.Constants
+﻿using NPoco;
+
+namespace Dit.Umb.Mutobo.Constants
 {
     public static class DocumentTypes
     {
@@ -379,7 +381,7 @@
 
         public static class Picture
         {
-            public const string Alias = "picture";
+            public const string Alias = "pictureModule";
 
             public static class Fields
             {
@@ -487,9 +489,36 @@
                 public const string Lastname = "lastname";
                 public const string Firstname = "firstname";
                 public const string Function = "function";
+                public const string Description = "description";
+                public const string IsMainPerson = "isMainPerson";
+                public const string DisplayType = "displayType";
+
             }
         }
 
+
+        public static class ProjectCard
+        {
+            public const string Alias = "projectCard";
+
+                public static class Fields
+                {
+                    public const string Status = "status";
+                }
+
+        }
+
+        public static class AppointmentCard
+        {
+            public const string Alias = "appointmentCard";
+
+            public static class Fields
+            {
+                public const string Date = "date";
+                public const string Title = "title";
+                public const string Description = "description";
+            }
+        }
 
     }
 }

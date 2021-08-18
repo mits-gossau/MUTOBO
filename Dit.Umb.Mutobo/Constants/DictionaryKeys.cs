@@ -1,4 +1,7 @@
-﻿namespace Dit.Umb.Mutobo.Constants
+﻿using System.Data;
+using NUglify.JavaScript.Syntax;
+
+namespace Dit.Umb.Mutobo.Constants
 {
     public static class DictionaryKeys
     {
@@ -7,6 +10,8 @@
             public static string ReadMore = "global.ReadMore";
             public static string Download = "global.Download";
         }
+
+
 
         public static class NewsletterForm
         {

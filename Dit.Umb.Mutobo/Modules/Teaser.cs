@@ -46,6 +46,7 @@ namespace Dit.Umb.Mutobo.Modules
 
             switch (RenderAs)
             {
+            
                 case EHighlightRendering.Teaser:
                     bld.Append(helper.Partial("~/Views/Partials/NestedTeaser.cshtml", this));
                     break;
@@ -55,10 +56,7 @@ namespace Dit.Umb.Mutobo.Modules
                     break;
             }
 
-            if (SpacerAfterModule)
-            {
-                bld.Append("<div class=\"spacer\"></div>");
-            }
+
 
             return new MvcHtmlString(bld.ToString());
         }

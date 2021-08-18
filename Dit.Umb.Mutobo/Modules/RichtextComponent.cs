@@ -22,10 +22,7 @@ namespace Dit.Umb.Mutobo.Modules
             var bld = new StringBuilder();
 
             bld.Append($"<article>{helper.Raw(RichText)}</article>");
-            if (SpacerAfterModule)
-            {
-                bld.Append("<div class=\"spacer\"></div>");
-            }
+
 
             return new MvcHtmlString(bld.ToString());
         }
