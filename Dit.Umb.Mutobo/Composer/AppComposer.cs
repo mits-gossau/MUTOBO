@@ -10,6 +10,9 @@ using Umbraco.Core.Composing;
 
 namespace Dit.Umb.Mutobo.Composer
 {
+
+
+
     public class AppComposer : IUserComposer
     {
 

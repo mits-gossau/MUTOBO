@@ -9,6 +9,7 @@
             {
                 public static string ModuleTitle = "moduleTitle";
                 public static string SpacerAfterModule = "spacerAfterModule";
+                public static string SpacerBeforeModule = "spacerBeforeModule";
             }
         }
 
@@ -18,6 +19,7 @@
             public static class Fields
             {
                 public const string IsPushNews = "isPushNews";
+                public const string PushNewsTitle = "pushNewsTitle";
             }
         }
     }

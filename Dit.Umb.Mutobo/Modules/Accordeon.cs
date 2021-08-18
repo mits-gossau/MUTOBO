@@ -30,10 +30,7 @@ namespace Dit.Umb.Mutobo.Modules
             var bld = new StringBuilder();
             bld.Append(helper.Partial("~/Views/Partials/Accordeon.cshtml", this));
 
-            if (SpacerAfterModule)
-            {
-                bld.Append("<div class=\"spacer\"></div>");
-            }
+  
             return new MvcHtmlString(bld.ToString());
         }
     }

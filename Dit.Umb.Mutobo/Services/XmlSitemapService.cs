@@ -12,13 +12,10 @@ namespace Dit.Umb.Mutobo.Services
     public class XmlSitemapService : BaseService, IXmlSitemapServicecs
     {
 
-		
-
-
         public IEnumerable<BasePage> GetXmlSitemap(IPublishedContent model)
         {
             var homePage = Helper.AssignedContentItem.AncestorsOrSelf().FirstOrDefault(c =>
-                c.ContentType.Alias == DocumentTypes.HomePage.Alias);
+                c.IsComposedOf(DocumentTypes.HomePage.Alias));
             
             
             return from n in GenerateSiteMapNodes(homePage)

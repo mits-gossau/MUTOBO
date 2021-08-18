@@ -13,14 +13,13 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
     public class ArticlePageController : BasePageController
     {
 
-        protected readonly IImageService _imageService;
+        protected readonly IImageService ImageService;
 
 
 
         public ArticlePageController(IImageService imageService)
         {
-
-            _imageService = imageService;
+            ImageService = imageService;
         }
 
 
@@ -31,7 +30,7 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
             return base.Index<ArticlePage>(new ArticlePage(model.Content)
             {
                 EmotionImages = model.Content.HasValue(DocumentTypes.ArticlePage.Fields.EmotionImages) 
-                    ? _imageService.GetImages(model.Content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages)) 
+                    ? ImageService.GetImages(model.Content.Value<IEnumerable<IPublishedContent>>(DocumentTypes.ArticlePage.Fields.EmotionImages)) 
                     : new List<Image>()
             });
         }
