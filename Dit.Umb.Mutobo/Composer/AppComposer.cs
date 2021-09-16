@@ -12,7 +12,7 @@ namespace Dit.Umb.Mutobo.Composer
 {
 
 
-
+    [ComposeBefore(typeof(LogComposer))]
     public class AppComposer : IUserComposer
     {
 
