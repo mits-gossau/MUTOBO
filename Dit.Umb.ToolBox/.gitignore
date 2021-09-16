@@ -4,5 +4,4 @@ uSync/v8/Domains
 App_Data/
 Media/
 Umbraco/
-config/appSettings.config
 config/connectionStrings.config
