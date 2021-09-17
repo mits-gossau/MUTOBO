@@ -1,0 +1,40 @@
+1. This code is loosely based on this solution - 
+https://github.com/nul800sebastiaan/YubiKey2Factor
+
+In migration folder, there are an automation script to change the database and umbraco content.
+
+All the relevant files are under 2 folders of "2FactorAuthentication".
+
+2. For install this plugin you need to make sure to create in the relevant database new table for storing the 2 factor data per user.
+CREATE TABLE [dbo].[TwoFactor](
+	[userId] [int] NOT NULL,
+	[key] [nvarchar](255) NOT NULL,
+	[value] [nvarchar](255) NOT NULL,
+	[confirmed] [bit] NOT NULL
+) ON [PRIMARY]
+
+
+3. you'll need to add the following to its /Config/Dashboard.config file so the custom section's dashboard will show:
+
+<section alias="TwoFactorManagement">
+    <areas>
+      <area>content</area>
+    </areas>
+    <tab caption="Two Step Verification">
+      <control>/App_Plugins/2FactorAuthentication/managementdashboard.html</control>
+    </tab>
+  </section>
+
+
+4. Setting Up Authentication
+The Umbraco Two step verification tab will appear as a tab in the Content section of the backoffice after installation.
+
+Each user may enable 2FA for their account by performing the following steps:
+
+Go to the Umbraco Two step verification tab in Content.
+
+Open your Google Authenticator app on your smartphone (Google Play for your Android phone or iTunes for your iPhone), or a similar authenticator app, and select to add a new account by either barcode scan or manual entry.
+If using barcode scan, scan the QR code on your screen. If using manual entry, enter the long string beneath the QR code.
+Your Google Authenticator will display a 6-digit code. Enter this ento the text field and click "Validate & save".
+Congrats! You now have 2FA configured on your Umbraco account.
+To remove 2FA on your account, you can return to the Umbraco 2FA tab and click "Disable".

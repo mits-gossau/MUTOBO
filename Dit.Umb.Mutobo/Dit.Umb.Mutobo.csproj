@@ -46,6 +46,9 @@
     <Reference Include="Examine, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.1.2.0\lib\net452\Examine.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Authenticator, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleAuthenticator.2.2.0\lib\net45\Google.Authenticator.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -154,6 +157,11 @@
     <Reference Include="PDFsharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharpNetStandard2.1.51.4845\lib\netstandard2.0\PDFsharp.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="Semver, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Semver.2.0.4\lib\net452\Semver.dll</HintPath>
     </Reference>
@@ -254,6 +262,7 @@
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -336,6 +345,7 @@
     <Reference Include="WebMarkupMin.Core, Version=2.5.0.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
       <HintPath>..\packages\WebMarkupMin.Core.2.5.0\lib\net45\WebMarkupMin.Core.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ActionFilters\CompressionCleaner.cs" />
@@ -354,10 +364,20 @@
     <Compile Include="Common\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Common\Helpers\LayoutHelper.cs" />
     <Compile Include="Composer\LogComposer.cs" />
+    <Compile Include="Composer\TfaComposer.cs" />
+    <Compile Include="Constants\TfaConstants.cs" />
+    <Compile Include="Controllers\TwoFactorAuthController.cs" />
     <Compile Include="Enum\EPersonalCardDisplayType.cs" />
     <Compile Include="Enum\EProjectStatus.cs" />
     <Compile Include="Interfaces\ICardService.cs" />
+    <Compile Include="Interfaces\ITwoFactorService.cs" />
     <Compile Include="Logging\AzureTableLogViewer.cs" />
+    <Compile Include="Migration\CreateTwoFactorTable.cs" />
+    <Compile Include="Migration\TwoFactorAuthenticationSection.cs" />
+    <Compile Include="Migration\TwoFactorMigrationComponent.cs" />
+    <Compile Include="Migration\TwoFactorPlan.cs" />
+    <Compile Include="Models\TwoFactor.cs" />
+    <Compile Include="Models\TwoFactorAuthInfo.cs" />
     <Compile Include="Modules\CardContainer.cs" />
     <Compile Include="PoCo\AppointmentCard.cs" />
     <Compile Include="PoCo\PersonnelCard.cs" />
@@ -513,8 +533,13 @@
     <Compile Include="Services\SliderService.cs" />
     <Compile Include="Services\TeaserService.cs" />
     <Compile Include="Services\ThemeService.cs" />
+    <Compile Include="Services\TwoFactorService.cs" />
     <Compile Include="Services\VideoService.cs" />
     <Compile Include="Services\XmlSitemapService.cs" />
+    <Compile Include="TfaMiddleWare\TwoFactorBackOfficeUserManager.cs" />
+    <Compile Include="TfaMiddleWare\TwoFactorBackOfficeUserStore.cs" />
+    <Compile Include="TfaMiddleWare\TwoFactorEventHandler.cs" />
+    <Compile Include="TfaMiddleWare\TwoFactorValidationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
