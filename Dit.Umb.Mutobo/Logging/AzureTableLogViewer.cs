@@ -8,6 +8,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 using Serilog.Events;
 using Serilog.Formatting.Compact.Reader;
 using Serilog.Sinks.AzureTableStorage;
+using StackExchange.Profiling.Internal;
 using Umbraco.Core.Logging.Viewer;
 
 namespace Dit.Umb.Mutobo.Logging
@@ -52,6 +53,9 @@ namespace Dit.Umb.Mutobo.Logging
             foreach (var entity in results)
             {
                 var logItem = LogEventReader.ReadFromString(entity.Data);
+
+
+                
 
                 if (count > skip + take)
                 {

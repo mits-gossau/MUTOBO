@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web.Http;
@@ -38,19 +39,18 @@ namespace Dit.Umb.Mutobo.Controllers
         [HttpGet]
         public TwoFactorAuthInfo GoogleAuthenticatorSetupCode()
         {
-             var tfa = new TwoFactorAuthenticator();
+            var tfa = new TwoFactorAuthenticator();
             var user = Security.CurrentUser;
             var accountSecretKey = Guid.NewGuid().ToString();
 
+            var applicationName = ConfigurationManager.AppSettings["TfaApplicationName"];
 
-            var setupInfo = tfa.GenerateSetupCode(Constants.TfaConstants.ApplicationName, user.Email, accountSecretKey, false, 3);
-
-
+            var setupInfo = tfa.GenerateSetupCode(applicationName, user.Email, accountSecretKey, false, 3);
             var twoFactorAuthInfo = _twoFactorService.GetExistingAccount(user.Id, Constants.TfaConstants.GoogleAuthenticatorProviderName, accountSecretKey);
 
             twoFactorAuthInfo.Secret = setupInfo.ManualEntryKey;
             twoFactorAuthInfo.Email = user.Email;
-            twoFactorAuthInfo.ApplicationName = Constants.TfaConstants.ApplicationName;
+            twoFactorAuthInfo.ApplicationName = applicationName;
             twoFactorAuthInfo.QrCodeSetupImageUrl = setupInfo.QrCodeSetupImageUrl;
 
             return twoFactorAuthInfo;

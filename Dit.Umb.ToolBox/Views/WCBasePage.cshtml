@@ -30,7 +30,7 @@
     {
         @Html.Action("Index", "CssVariables", new { Theme = Model.Theme as ITheme })
     }
-    
+    @Html.Action("Index", "GoogleAnalytics")
     <style>
         @@import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
         html {
