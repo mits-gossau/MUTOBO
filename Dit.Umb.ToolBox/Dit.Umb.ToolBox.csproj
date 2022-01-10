@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\UmbracoCms.8.16.0\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.8.16.0\build\UmbracoCms.props')" />
-  <Import Project="..\packages\uSync.8.9.7\build\uSync.props" Condition="Exists('..\packages\uSync.8.9.7\build\uSync.props')" />
+  <Import Project="..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props')" />
+  <Import Project="..\packages\uSync.8.10.4\build\uSync.props" Condition="Exists('..\packages\uSync.8.10.4\build\uSync.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -50,6 +50,12 @@
   <ItemGroup>
     <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
       <HintPath>..\packages\AngleSharp.0.9.11\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
+	    <Reference Include="Carbon.Json, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Json.1.9.0\lib\netstandard2.0\Carbon.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.OAuth2, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.OAuth2.0.19.0\lib\netstandard2.0\Carbon.OAuth2.dll</HintPath>
     </Reference>
     <Reference Include="ClientDependency.Core, Version=1.9.9.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClientDependency.1.9.9\lib\net45\ClientDependency.Core.dll</HintPath>
@@ -184,6 +190,24 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.5.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.5.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.0\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.3.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=2.1.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.2.1.5\lib\net451\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>																																							  
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.2.2\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
@@ -205,6 +229,9 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.OpenIdConnect, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OpenIdConnect.3.1.0\lib\net45\Microsoft.Owin.Security.OpenIdConnect.dll</HintPath>
+    </Reference>																																							  
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.20\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
@@ -306,6 +333,10 @@
     <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>												
     <Reference Include="System.IO" />
     <Reference Include="System.Linq.Expressions" />
     <Reference Include="System.Management" />
@@ -347,6 +378,9 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>				
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -426,31 +460,52 @@
       <HintPath>..\packages\PdfPig.0.1.3\lib\net47\UglyToad.PdfPig.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Core, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Core.8.16.0\lib\net472\Umbraco.Core.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.8.17.1\lib\net472\Umbraco.Core.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Examine, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.16.0\lib\net472\Umbraco.Examine.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Web.8.17.1\lib\net472\Umbraco.Examine.dll</HintPath>
     </Reference>
-    <Reference Include="Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.16.0\lib\net472\Umbraco.ModelsBuilder.Embedded.dll</HintPath>
+    <Reference Include="Umbraco.Forms.Core, Version=8.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.8.8.0\lib\net472\Umbraco.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core.Providers, Version=8.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.8.8.0\lib\net472\Umbraco.Forms.Core.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web, Version=8.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.8.8.0\lib\net472\Umbraco.Forms.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.IdentityExtensions, Version=1.0.7156.26635, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.IdentityExtensions.2.0.0\lib\net472\Umbraco.IdentityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Licensing, Version=2.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoForms.Core.8.8.0\lib\net472\Umbraco.Licensing.dll</HintPath>
+    </Reference>																				  
+   <Reference Include="Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Web.8.17.1\lib\net472\Umbraco.ModelsBuilder.Embedded.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Web, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.16.0\lib\net472\Umbraco.Web.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Web.8.17.1\lib\net472\Umbraco.Web.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Web.UI, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UmbracoCms.Web.8.16.0\lib\net472\Umbraco.Web.UI.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Web.8.17.1\lib\net472\Umbraco.Web.UI.dll</HintPath>
     </Reference>
     <Reference Include="UmbracoExamine.PDF, Version=0.8.7634.9991, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.UmbracoExamine.PDF.2.1.0\lib\net472\UmbracoExamine.PDF.dll</HintPath>
     </Reference>
-    <Reference Include="uSync8.BackOffice, Version=8.9.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\uSync.8.9.7\lib\net472\uSync8.BackOffice.dll</HintPath>
+      <Reference Include="uSync8.BackOffice, Version=8.10.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.8.10.4\lib\net472\uSync8.BackOffice.dll</HintPath>
     </Reference>
-    <Reference Include="uSync8.Core, Version=8.9.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\uSync.Core.8.9.7\lib\net472\uSync8.Core.dll</HintPath>
+    <Reference Include="uSync8.Community.Contrib, Version=8.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.Community.Contrib.8.10.4\lib\net472\uSync8.Community.Contrib.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.ContentEdition, Version=8.10.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.ContentEdition.8.10.4\lib\net472\uSync8.ContentEdition.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.Core, Version=8.10.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uSync.Core.8.10.4\lib\net472\uSync8.Core.dll</HintPath>
     </Reference>
     <Reference Include="uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\uSync.History.8.9.7\lib\net472\uSync8.HistoryView.dll</HintPath>
+      <HintPath>..\packages\uSync.History.8.10.4\lib\net472\uSync8.HistoryView.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -476,12 +531,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Content Include="App_Plugins\2FactorAuthentication\2fa-login.html" />
-    <Content Include="App_Plugins\2FactorAuthentication\2fa-login.js" />
-    <Content Include="App_Plugins\2FactorAuthentication\managementdashboard.controller.js" />
-    <Content Include="App_Plugins\2FactorAuthentication\managementdashboard.html" />
-    <Content Include="App_Plugins\2FactorAuthentication\managementdashboard.service.js" />
-    <Content Include="App_Plugins\2FactorAuthentication\read me.txt" />
     <Content Include="App_Plugins\uSync8\backoffice\uSync8\dashboard.html" />
     <Content Include="App_Plugins\uSync8\backoffice\uSync8\uSyncDashboardController.js" />
     <Content Include="App_Plugins\uSync8\changeDialog.html" />
@@ -501,14 +550,13 @@
     <Content Include="App_Plugins\uSync8\usync.css" />
     <Content Include="App_Plugins\uSync8\uSyncHub.js" />
     <Content Include="App_Plugins\uSync8\uSyncService.js" />
-    <Content Include="App_Plugins\uSync8\usync_891.css" />
-    <Content Include="App_Plugins\uSync8\uSync_891.js" />
+    <Content Include="App_Plugins\uSync8\usync_8_10.css" />
+    <Content Include="App_Plugins\uSync8\uSync_8_10.js" />
     <Content Include="App_Plugins\uSyncHistory\history.html" />
     <Content Include="App_Plugins\uSyncHistory\historyDialog.html" />
     <Content Include="App_Plugins\uSyncHistory\package.manifest" />
     <Content Include="App_Plugins\uSync8\package.manifest" />
     <Content Include="App_Plugins\uSync8\addons.json" />
-    <Content Include="App_Plugins\2FactorAuthentication\package.manifest" />
     <None Include="config\appSettings.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="App_Plugins\uSyncHistory\syncHistoryController.js" />
@@ -535,7 +583,6 @@
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="config\logviewer.searches.config.js" />
     <Content Include="Global.asax" />
-    <Content Include="test.html" />
     <Content Include="Web.config" />
     <Content Include="Media\Web.config" />
     <Content Include="config\serilog.user.config" />
@@ -689,10 +736,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\uSync.8.9.7\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.9.7\build\uSync.props'))" />
-    <Error Condition="!Exists('..\packages\uSync.8.9.7\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.9.7\build\uSync.targets'))" />
-    <Error Condition="!Exists('..\packages\UmbracoCms.8.16.0\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.16.0\build\UmbracoCms.props'))" />
-    <Error Condition="!Exists('..\packages\UmbracoCms.8.16.0\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.16.0\build\UmbracoCms.targets'))" />
+        <Error Condition="!Exists('..\packages\uSync.8.10.4\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.10.4\build\uSync.props'))" />
+    <Error Condition="!Exists('..\packages\uSync.8.10.4\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.10.4\build\uSync.targets'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets'))" />
   </Target>
   <Import Project="..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
@@ -736,6 +783,6 @@
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
-  <Import Project="..\packages\uSync.8.9.7\build\uSync.targets" Condition="Exists('..\packages\uSync.8.9.7\build\uSync.targets')" />
-  <Import Project="..\packages\UmbracoCms.8.16.0\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.8.16.0\build\UmbracoCms.targets')" />
+  <Import Project="..\packages\uSync.8.10.4\build\uSync.targets" Condition="Exists('..\packages\uSync.8.10.4\build\uSync.targets')" />
+  <Import Project="..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets')" />
 </Project>

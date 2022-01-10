@@ -364,20 +364,10 @@
     <Compile Include="Common\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Common\Helpers\LayoutHelper.cs" />
     <Compile Include="Composer\LogComposer.cs" />
-    <Compile Include="Composer\TfaComposer.cs" />
-    <Compile Include="Constants\TfaConstants.cs" />
-    <Compile Include="Controllers\TwoFactorAuthController.cs" />
     <Compile Include="Enum\EPersonalCardDisplayType.cs" />
     <Compile Include="Enum\EProjectStatus.cs" />
     <Compile Include="Interfaces\ICardService.cs" />
-    <Compile Include="Interfaces\ITwoFactorService.cs" />
     <Compile Include="Logging\AzureTableLogViewer.cs" />
-    <Compile Include="Migration\CreateTwoFactorTable.cs" />
-    <Compile Include="Migration\TwoFactorAuthenticationSection.cs" />
-    <Compile Include="Migration\TwoFactorMigrationComponent.cs" />
-    <Compile Include="Migration\TwoFactorPlan.cs" />
-    <Compile Include="Models\TwoFactor.cs" />
-    <Compile Include="Models\TwoFactorAuthInfo.cs" />
     <Compile Include="Modules\CardContainer.cs" />
     <Compile Include="PoCo\AppointmentCard.cs" />
     <Compile Include="PoCo\PersonnelCard.cs" />
@@ -533,13 +523,8 @@
     <Compile Include="Services\SliderService.cs" />
     <Compile Include="Services\TeaserService.cs" />
     <Compile Include="Services\ThemeService.cs" />
-    <Compile Include="Services\TwoFactorService.cs" />
     <Compile Include="Services\VideoService.cs" />
     <Compile Include="Services\XmlSitemapService.cs" />
-    <Compile Include="TfaMiddleWare\TwoFactorBackOfficeUserManager.cs" />
-    <Compile Include="TfaMiddleWare\TwoFactorBackOfficeUserStore.cs" />
-    <Compile Include="TfaMiddleWare\TwoFactorEventHandler.cs" />
-    <Compile Include="TfaMiddleWare\TwoFactorValidationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -549,6 +534,7 @@
   <ItemGroup>
     <Folder Include="Compositions\" />
     <Folder Include="Controllers\CustomLogin\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
