@@ -18,7 +18,6 @@ namespace Dit.Umb.Mutobo.Services
             ImageCropMode imageCropMode = ImageCropMode.Crop, string nameSpace = "picture", bool isGoldenRatio = false)
 
         { 
-
             if (node == null)
             {
                 return null;

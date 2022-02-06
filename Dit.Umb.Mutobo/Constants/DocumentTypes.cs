@@ -131,7 +131,33 @@ namespace Dit.Umb.Mutobo.Constants
             } 
         }
 
+        public static class TwoColumnContainer
+        {
+            public const string Alias = "twoColumnContainer";
 
+            public static class Fields
+            {
+                public const string Elements = "Elements";
+            }
+        }
+        public static class ThreeColumnContainer
+        {
+            public const string Alias = "threeColumnContainer";
+
+            public static class Fields
+            {
+                public const string Elements = "Elements";
+            }
+        }
+        public static class FourColumnContainer
+        {
+            public const string Alias = "fourColumnContainer";
+
+            public static class Fields
+            {
+                public const string Elements = "Elements";
+            }
+        }
 
         public static class Theme {
             public static string Alias = "theme";

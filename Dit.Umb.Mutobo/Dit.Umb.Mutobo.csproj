@@ -369,6 +369,9 @@
     <Compile Include="Interfaces\ICardService.cs" />
     <Compile Include="Logging\AzureTableLogViewer.cs" />
     <Compile Include="Modules\CardContainer.cs" />
+    <Compile Include="Modules\FourColumnContainer.cs" />
+    <Compile Include="Modules\ThreeColumnContainer.cs" />
+    <Compile Include="Modules\TwoColumnContainer.cs" />
     <Compile Include="PoCo\AppointmentCard.cs" />
     <Compile Include="PoCo\PersonnelCard.cs" />
     <Compile Include="PoCo\ProjectCard.cs" />

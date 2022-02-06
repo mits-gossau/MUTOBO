@@ -61,7 +61,7 @@ namespace Dit.Umb.Mutobo.Services
                 return new HeaderConfiguration(headerConfig)
                 {
                     NavigationItems = _navigationService.GetNavigation(),
-                    Logo = _imageService.GetImage(headerConfig.Value<IPublishedContent>(DocumentTypes.Configuration.Logo), height: 100),
+                    Logo = _imageService.GetImage(headerConfig.Value<IPublishedContent>(DocumentTypes.Configuration.Logo)),
                     Languages = _localizationService.GetAllLanguages()
                         .OrderBy(l => l.CultureInfo.TwoLetterISOLanguageName)
                         .Select(a => new Language()
