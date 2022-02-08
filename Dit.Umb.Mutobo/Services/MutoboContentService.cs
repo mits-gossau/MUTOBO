@@ -134,24 +134,32 @@ namespace Dit.Umb.Mutobo.Services
                                         .ToList()
                                     : new List<IPublishedElement>();
 
+                            List<IPublishedElement> ResultElements = new List<IPublishedElement>();
+
                             if (Elements.Any())
                                 Elements.ForEach(e =>
                                 {
                                     if (e.ContentType.Alias == DocumentTypes.PictureModule.Alias)
                                     {
                                         var img = ImageService.GetImage(e.Value<IPublishedContent>(DocumentTypes.PictureModule.Fields.Image));
-                                        e = new PictureModule(e)
+                                        PictureModule pictureModule = new PictureModule(e)
                                         {
                                             Image = img
                                         };
+                                        ResultElements.Add(pictureModule);
                                     }
                                     else if (e.ContentType.Alias == DocumentTypes.PictureLink.Alias)
                                     {
                                         var img = ImageService.GetImage(e.Value<IPublishedContent>(DocumentTypes.PictureLink.Fields.Image));
-                                        e = new PictureLink(e)
+                                        PictureLink pictureLink = new PictureLink(e)
                                         {
                                             Image = img
                                         };
+                                        ResultElements.Add(pictureLink);
+                                    }
+                                    else
+                                    {
+                                        ResultElements.Add(e);
                                     }
                                 });
 
@@ -159,21 +167,21 @@ namespace Dit.Umb.Mutobo.Services
                             {
                                 result.Add(new TwoColumnContainer(element.value)
                                 {
-                                    Elements = Elements,
+                                    Elements = ResultElements,
                                     SortOrder = element.index
                                 });
                             } else if (element.value.ContentType.Alias == DocumentTypes.ThreeColumnContainer.Alias)
                             {
                                 result.Add(new ThreeColumnContainer(element.value)
                                 {
-                                    Elements = Elements,
+                                    Elements = ResultElements,
                                     SortOrder = element.index
                                 });
                             } else if (element.value.ContentType.Alias == DocumentTypes.FourColumnContainer.Alias)
                             {
                                 result.Add(new FourColumnContainer(element.value)
                                 {
-                                    Elements = Elements,
+                                    Elements = ResultElements,
                                     SortOrder = element.index
                                 });
                             }
