@@ -1,0 +1,48 @@
+﻿@using Dit.Umb.Mutobo.Constants
+@using Dit.Umb.Mutobo.Modules
+@using Dit.Umb.Mutobo.PoCo
+@using NPoco
+@model Dit.Umb.Mutobo.Modules.TwoColumnContainer
+
+@if (Model.SpacerBeforeModule)
+{
+    <div class="spacer"></div>
+}
+<div>
+    @*TODO: add columns attribute to Wrapper.js to base solution*@
+    @*TODO: render images with sources *@
+    <o-wrapper columns="2" no-space>
+        @foreach (var element in Model.Elements)
+        {
+            switch (element.ContentType.Alias)
+            {
+                case DocumentTypes.PictureModule.Alias:
+                {
+        <div>
+            @(element.Value<Dit.Umb.Mutobo.PoCo.Image>(DocumentTypes.PictureModule.Fields.Image).RenderWcPictureTag())
+            @*<a-picture defaultSource="@(element.Value<IPublishedContent>(DocumentTypes.PictureModule.Fields.Image).Url())"></a-picture>*@
+        </div>
+                }
+                    break;
+                case DocumentTypes.PictureLink.Alias:
+                {
+                    Umbraco.Web.Models.Link link = element.Value<Umbraco.Web.Models.Link>(DocumentTypes.PictureLink.Fields.Link);
+
+                    <a href="@(link?.Url)" target="@(link?.Target)">
+                        <a-picture defaultSource="@(element.Value<IPublishedContent>(DocumentTypes.PictureModule.Fields.Image).Url())"></a-picture>
+                    </a>
+                }
+                    break;
+                case DocumentTypes.RichTextComponent.Alias:
+                    @Html.Raw(element.Value(DocumentTypes.RichTextComponent.Fields.RichText))
+                    break;
+            }
+        }
+        
+    </o-wrapper>
+</div>
+
+@if (Model.SpacerAfterModule)
+{
+    <div class="spacer"></div>
+}
