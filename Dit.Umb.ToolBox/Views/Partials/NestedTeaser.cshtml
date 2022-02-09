@@ -2,7 +2,7 @@
 @model Dit.Umb.Mutobo.Modules.Teaser
 
 
-    <o-teaser-wrapper>
+    <o-teaser-wrapper @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
         <m-teaser>
             @if (Model.Images.Any())
             {

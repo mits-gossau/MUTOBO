@@ -19,11 +19,10 @@ namespace Dit.Umb.Mutobo.Modules
 
         public override IHtmlString RenderModule(HtmlHelper helper)
         {
+            Anchor = Anchor != string.Empty ? $"id ={Anchor}" : "";
+
             var bld = new StringBuilder();
-
-            bld.Append($"<article>{helper.Raw(RichText)}</article>");
-
-
+            bld.Append($"<article {Anchor}>{helper.Raw(RichText)}</article>");
             return new MvcHtmlString(bld.ToString());
         }
     }

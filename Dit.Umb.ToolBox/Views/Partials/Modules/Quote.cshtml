@@ -1,6 +1,6 @@
 ﻿@model Dit.Umb.Mutobo.Modules.Quote
 
-<article>
+<article @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     &laquo;
     @Model.QuoteText
     &raquo;

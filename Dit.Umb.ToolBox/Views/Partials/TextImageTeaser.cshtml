@@ -3,7 +3,7 @@
 @model Dit.Umb.MKulturProzent.Classics.Models.Poco.TextImageSlide
 
 
-<div style="display:flex;flex-direction: column;">
+<div style="display:flex;flex-direction: column;" @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     @if (Model.Image != null)
     {
         @Model.Image.RenderWcPictureTag()

@@ -3,7 +3,7 @@
 
 @if (Model != null)
 {
-    <div style="position: fixed; top: 20%; right: 0; z-index: 100;">
+    <div style="position: fixed; top: 20%; right: 0; z-index: 100;" @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
         @if (Model.TargetLink != null)
         {
             <a href="@Model.TargetLink.Url" title="@Model.TargetLink.Name" target="@Model.TargetLink.Target">

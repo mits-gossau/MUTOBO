@@ -47,9 +47,15 @@ namespace Dit.Umb.Mutobo.Controllers.PageControllers
 
             try
             {
-                basePage.HeaderConfiguration = _pageLayoutService.GetHeaderConfiguration(CurrentPage);
-                basePage.FooterConfiguration = _pageLayoutService.GetFooterConfiguration(CurrentPage);
-                basePage.FooterConfiguration.HomePageLogo = basePage.HeaderConfiguration.Logo;
+                // Check if an other Controller sets the HeaderConfiguration
+                if (basePage.HeaderConfiguration == null)
+                    basePage.HeaderConfiguration = _pageLayoutService.GetHeaderConfiguration(CurrentPage);
+                if (basePage.FooterConfiguration == null)
+                {
+                    basePage.FooterConfiguration = _pageLayoutService.GetFooterConfiguration(CurrentPage);
+                    basePage.FooterConfiguration.HomePageLogo = basePage.HeaderConfiguration.Logo;
+                }
+
                 //basePage.Theme = _themeService.GetTheme(basePage.Content);
 
             }

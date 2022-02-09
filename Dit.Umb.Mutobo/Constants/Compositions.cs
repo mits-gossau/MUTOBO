@@ -10,6 +10,7 @@
                 public static string ModuleTitle = "moduleTitle";
                 public static string SpacerAfterModule = "spacerAfterModule";
                 public static string SpacerBeforeModule = "spacerBeforeModule";
+                public static string Anchor = "navigationAnchor";
             }
         }
 

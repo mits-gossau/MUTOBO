@@ -3,7 +3,7 @@
 @{
     var image = Model.EmotionImages?.FirstOrDefault();
 }
-<m-wide-teaser href="@Model.Content.Url()">
+<m-wide-teaser href="@Model.Content.Url()" @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     <!-- TODO:
     Redirect is currently being handled by JavaScript, check if this is UX/Accessibility compliant
     -->

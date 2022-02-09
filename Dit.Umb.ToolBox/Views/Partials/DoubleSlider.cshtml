@@ -5,7 +5,9 @@
 
 
 
-<third-party-macro-carousel pagination loop height="@(Model.Height != null ? $"{Model.Height}px" : "auto")" namespace="carousel-" interval="@(Model.Interval.HasValue && Model.Interval > 0 ? Model.Interval : 5000)" sync-id="@Model.Key">
+<third-party-macro-carousel pagination loop height="@(Model.Height != null ? $"{Model.Height}px" : "auto")" 
+                            namespace="carousel-" interval="@(Model.Interval.HasValue && Model.Interval > 0 ? Model.Interval : 5000)" 
+                            sync-id="@Model.Key" @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     @foreach (var slide in Model.Slides)
     {
         if (slide.Image != null)
@@ -20,7 +22,8 @@
 </third-party-macro-carousel>
 
 
-<third-party-macro-carousel loop height="auto" namespace="carousel-" sync-id="@Model.Key" disable-drag>
+<third-party-macro-carousel loop height="auto" namespace="carousel-" 
+                            sync-id="@Model.Key" disable-drag @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     <style>
         :host > macro-carousel > div.text {
             align-items: start;

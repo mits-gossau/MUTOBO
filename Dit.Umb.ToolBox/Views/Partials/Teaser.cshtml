@@ -1,7 +1,7 @@
 ﻿@using Dit.Umb.Mutobo.Common
 
 @model IEnumerable<Dit.Umb.Mutobo.PageModels.ArticlePage>
-<o-teaser-wrapper>
+<o-teaser-wrapper @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     @foreach (var teaser in Model)
     {
         <m-teaser>

@@ -5,7 +5,7 @@
 @if (Model.BlogEntries != null && Model.BlogEntries.Any())
 {
 
-    <o-highlight-list>
+    <o-highlight-list @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
         @foreach (var highlight in Model.BlogEntries)
         {
             <m-highlight>

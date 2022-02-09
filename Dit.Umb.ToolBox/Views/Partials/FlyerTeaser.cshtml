@@ -9,7 +9,7 @@
     //Model.GetImage(DocumentTypes.Flyer.FlyerImage);
 }
 
-<m-flyer href="@(Model.Link?.Url ?? "#")">
+<m-flyer href="@(Model.Link?.Url ?? "#")" @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     <h1>@Model.Title</h1>
     <p>
         @Model.TeaserText

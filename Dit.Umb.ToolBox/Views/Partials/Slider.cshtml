@@ -2,7 +2,9 @@
 @using Dit.Umb.Mutobo.PoCo
 @model  Dit.Umb.Mutobo.Interfaces.ISliderComponent
 
-<third-party-macro-carousel pagination loop height="@(Model.Height != null ? $"{Model.Height}px" : "auto")"  namespace="carousel-" interval="@(Model.Interval ?? 5000)">
+<third-party-macro-carousel pagination loop height="@(Model.Height != null ? $"{Model.Height}px" : "auto")"
+                            namespace="carousel-" interval="@(Model.Interval ?? 5000)"
+                            @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     @foreach (var media in Model.Slides)
     {
         if (media is Dit.Umb.Mutobo.PoCo.Image image)

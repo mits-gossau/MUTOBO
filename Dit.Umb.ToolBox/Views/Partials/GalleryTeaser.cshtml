@@ -19,7 +19,7 @@
         @Html.Partial("~/Views/Partials/Slider.cshtml", new EmptySliderComponent(){ Slides = Model.Images })
     }
 }
-<h3>@Model.TeaserTitle</h3>
+<h3 @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>@Model.TeaserTitle</h3>
 <p>
     @Html.Raw(Model.TeaserText)
 </p>

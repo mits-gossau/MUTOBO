@@ -48,7 +48,10 @@
     <p-general>
         @Html.Partial("~/Views/Partials/Header.cshtml", Model.HeaderConfiguration)
         @RenderBody()
-        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration as Dit.Umb.Mutobo.Configuration.FooterConfiguration)
+        @if (Model.FooterConfiguration is Dit.Umb.Mutobo.Configuration.FooterConfiguration)
+        {
+            Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration as Dit.Umb.Mutobo.Configuration.FooterConfiguration);
+        }
     </p-general>
 @Html.Action("Index", "WcRender")
 @Html.RenderJsHere()

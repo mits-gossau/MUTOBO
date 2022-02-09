@@ -19,10 +19,6 @@ namespace Dit.Umb.Mutobo.Modules
             ?  (EHeadingRenderType)System.Enum.Parse(typeof(EHeadingRenderType), this.Value<string>(DocumentTypes.Heading.Fields.RenderAs)) 
             : EHeadingRenderType.Heading1;
 
-        public string NavigationAnchor => this.HasValue(DocumentTypes.Heading.Fields.NavigationAnchor)
-            ? this.Value<string>(DocumentTypes.Heading.Fields.NavigationAnchor)
-            : null;
-
         public Heading(IPublishedElement content) : base(content)
         {
         }
@@ -31,7 +27,7 @@ namespace Dit.Umb.Mutobo.Modules
         {
             var bld = new StringBuilder();
 
-                var anchor = $"id=\"{NavigationAnchor}\"" ?? string.Empty;
+                var anchor = $"id=\"{Anchor}\"" ?? string.Empty;
 
                 switch (RenderAs)
                 {

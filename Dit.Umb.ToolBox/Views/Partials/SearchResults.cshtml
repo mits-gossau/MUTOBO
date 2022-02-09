@@ -4,7 +4,7 @@
 
 @if (!string.IsNullOrEmpty(Model.Term))
 {
-    <h3>@Current.UmbracoHelper.GetDictionaryValue("SearchResultsPageTitle")</h3>
+    <h3 @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>@Current.UmbracoHelper.GetDictionaryValue("SearchResultsPageTitle")</h3>
     if (Model.Results.Any())
     {
 

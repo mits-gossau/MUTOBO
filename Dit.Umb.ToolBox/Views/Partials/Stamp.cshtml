@@ -1,7 +1,7 @@
 ﻿@model Dit.Umb.Mutobo.PoCo.StampModel
 
 
-<a-stamp show="true">
+<a-stamp show="true" @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     <style>
         :host {
             --opacity: 0.9;
@@ -39,29 +39,30 @@
                 right: 1%;
                 top: -10%;
             }
-        }</style>
+        }
+    </style>
     
-@if (!Model.Modal)
-{
-    <a href="#" class="close">
-        <p>
-            <span href="#" class="close">
-                X
-            </span>
-            @Html.Raw(Model.Label)
-        </p>
-    </a>
-}
-else
-{
-    <div>
-        <p>
-            <span href="#" class="close">
-                X
-            </span>
-            @Html.Raw(Model.Label)
-        </p>
-    </div>
-}
+    @if (!Model.Modal)
+    {
+        <a href="#" class="close">
+            <p>
+                <span href="#" class="close">
+                    X
+                </span>
+                @Html.Raw(Model.Label)
+            </p>
+        </a>
+    }
+    else
+    {
+        <div>
+            <p>
+                <span href="#" class="close">
+                    X
+                </span>
+                @Html.Raw(Model.Label)
+            </p>
+        </div>
+    }
 </a-stamp>
 

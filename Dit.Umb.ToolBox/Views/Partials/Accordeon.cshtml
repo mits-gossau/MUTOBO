@@ -2,7 +2,7 @@
 @using Dit.Umb.Mutobo.Constants
 @using Umbraco.Web.Composing
 @model Dit.Umb.Mutobo.Modules.Accordeon
-<m-details>
+<m-details @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     <details >
         <summary>
             @Model.Summary.ToUpper()

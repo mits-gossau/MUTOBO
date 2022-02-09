@@ -2,7 +2,7 @@
 @using Dit.Umb.Sparx.Constants
 @model Dit.Umb.Mutobo.Modules.CardContainer
 
-<o-teaser-wrapper>
+<o-teaser-wrapper @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     @*TODO: Remove this CRAP! *@ 
     <style>
         :host {

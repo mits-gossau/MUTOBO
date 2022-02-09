@@ -1,0 +1,34 @@
+
+
+/**umb_name:Heading 2*/
+h2 {
+	color: white;
+	font-size: 64px;
+}
+
+/**umb_name:Heading 3*/
+h3 {
+	color: white;
+	font-size: 48px;
+}
+
+/**umb_name:Heading 4*/
+h4 {
+	color: white;
+	font-size: 40px;
+	line-height: 125%;
+}
+
+/**umb_name:Heading 5*/
+h5 {
+	color: white;
+	font-size: 32px;
+	line-height: 125%;
+}
+
+/**umb_name:Heading 6*/
+h6 {
+	color: white;
+	font-size: 24px;
+	line-height: 125%;
+}

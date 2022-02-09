@@ -1,7 +1,7 @@
 ﻿@model Dit.Umb.Sparx.Modules.CallForIdeas
 
 
-<div>
+<div @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
     <h2>@Model.Title</h2>
     <article>
         @Model.Description

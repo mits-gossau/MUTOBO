@@ -1,6 +1,5 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using Dit.Umb.Mutobo.Constants;
 using Dit.Umb.Mutobo.Interfaces;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
@@ -16,6 +15,8 @@ namespace Dit.Umb.Mutobo.Modules
 
         public bool SpacerBeforeModule => this.Value<bool>(Constants.Compositions.Module.Fields.SpacerBeforeModule);
 
+        public string Anchor { get; set; }
+
 
         public int SortOrder { get; set; }
 
@@ -26,6 +27,9 @@ namespace Dit.Umb.Mutobo.Modules
 
         public  MutoboContentModule(IPublishedElement content) : base(content)
         {
+            Anchor = this.HasValue(Constants.Compositions.Module.Fields.Anchor)
+                ? this.Value<string>(Constants.Compositions.Module.Fields.Anchor) : string.Empty;
+
         }
     }
 }

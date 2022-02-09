@@ -31,8 +31,9 @@ namespace Dit.Umb.Mutobo.Modules
 
         public override IHtmlString RenderModule(HtmlHelper helper)
         {
+            Anchor = Anchor != string.Empty ? $"id ={Anchor}" : "";
             var bld = new StringBuilder();
-            bld.Append($"<div>{Image.RenderWcPictureTag(nameSpace: "picture-", width: $"{Image.Width}", height: $"{Image.Height}")}</div>");
+            bld.Append($"<div {Anchor}>{Image.RenderWcPictureTag(nameSpace: "picture -", width: $"{Image.Width}", height: $"{Image.Height}")}</div>");
             return new HtmlString(bld.ToString());
         }
     }
