@@ -6,6 +6,8 @@ using Dit.Umb.Mutobo.Interfaces;
 using Dit.Umb.Mutobo.Modules;
 using Dit.Umb.Mutobo.PageModels;
 using Dit.Umb.Mutobo.PoCo;
+using NUglify.Helpers;
+using Umbraco.Core;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.Web.Models;
@@ -119,6 +121,70 @@ namespace Dit.Umb.Mutobo.Services
                             {
                                 SortOrder = element.index
                             });
+                            break;
+                        case DocumentTypes.TwoColumnContainer.Alias:
+                        case DocumentTypes.ThreeColumnContainer.Alias:
+                        case DocumentTypes.FourColumnContainer.Alias:
+
+                            IEnumerable<IPublishedElement> Elements =
+                                element.value.HasValue(DocumentTypes.TwoColumnContainer.Fields.Elements)
+                                    ? element.value
+                                        .Value<IEnumerable<IPublishedElement>>(DocumentTypes.TwoColumnContainer.Fields
+                                            .Elements)
+                                        .ToList()
+                                    : new List<IPublishedElement>();
+
+                            List<IPublishedElement> ResultElements = new List<IPublishedElement>();
+
+                            if (Elements.Any())
+                                Elements.ForEach(e =>
+                                {
+                                    if (e.ContentType.Alias == DocumentTypes.PictureModule.Alias)
+                                    {
+                                        var img = ImageService.GetImage(e.Value<IPublishedContent>(DocumentTypes.PictureModule.Fields.Image));
+                                        PictureModule pictureModule = new PictureModule(e)
+                                        {
+                                            Image = img
+                                        };
+                                        ResultElements.Add(pictureModule);
+                                    }
+                                    else if (e.ContentType.Alias == DocumentTypes.PictureLink.Alias)
+                                    {
+                                        var img = ImageService.GetImage(e.Value<IPublishedContent>(DocumentTypes.PictureLink.Fields.Image));
+                                        PictureLink pictureLink = new PictureLink(e)
+                                        {
+                                            Image = img
+                                        };
+                                        ResultElements.Add(pictureLink);
+                                    }
+                                    else
+                                    {
+                                        ResultElements.Add(e);
+                                    }
+                                });
+
+                            if (element.value.ContentType.Alias == DocumentTypes.TwoColumnContainer.Alias)
+                            {
+                                result.Add(new TwoColumnContainer(element.value)
+                                {
+                                    Elements = ResultElements,
+                                    SortOrder = element.index
+                                });
+                            } else if (element.value.ContentType.Alias == DocumentTypes.ThreeColumnContainer.Alias)
+                            {
+                                result.Add(new ThreeColumnContainer(element.value)
+                                {
+                                    Elements = ResultElements,
+                                    SortOrder = element.index
+                                });
+                            } else if (element.value.ContentType.Alias == DocumentTypes.FourColumnContainer.Alias)
+                            {
+                                result.Add(new FourColumnContainer(element.value)
+                                {
+                                    Elements = ResultElements,
+                                    SortOrder = element.index
+                                });
+                            }
                             break;
                         case DocumentTypes.BlogModule.Alias:
                             result.Add(new BlogModule(element.value)
