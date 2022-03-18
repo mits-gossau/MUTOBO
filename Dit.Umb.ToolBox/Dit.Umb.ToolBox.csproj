@@ -638,7 +638,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="App_Plugins\costumIcons\" />
+    <Folder Include="App_Plugins\CustomIcons\" />
     <Folder Include="assets\img\" />
     <Folder Include="scripts\TfaLogin\" />
     <Folder Include="uSync\v8\ContentTypes\" />
