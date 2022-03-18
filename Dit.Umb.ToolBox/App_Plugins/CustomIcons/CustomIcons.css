@@ -1,0 +1,18 @@
+
+@font-face {
+    font-family: 'CustomIcons';
+    src: url('../CustomIcons/CustomIcons.eot');
+    src: url('../CustomIcons/CustomIcons.eot?#iefix') format('embedded-opentype'),
+        url('../CustomIcons/CustomIcons.ttf') format('truetype'), 
+        url('../CustomIcons/CustomIcons.svg#CustomIcons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='icon-custom-']:before {
+    font-family: 'CustomIcons'; font-style: normal;
+    background: none; width: auto; height: auto; 
+}
+
+
+.icon-custom-hotspot-container:before{content:'\0041';}
+.icon-custom-image-hotspot:before{content:'\0042';}
