@@ -1,0 +1,20 @@
+﻿@model Dit.Umb.Mutobo.Modules.ImageMitHotspots
+
+<div>
+    @(Model.Image?.RenderWcPictureTag())
+    @foreach (var Container in Model.Hotspots)
+    {
+        <div>
+            <p>X = @Container.X Y = @Container.Y Place = @Container.Place</p>
+            <p>@Container.Hotspot.Title</p>
+            @if (Container.Hotspot.Modules != null && Container.Hotspot.Modules.Any())
+            {
+                foreach (var module in Container.Hotspot.Modules)
+                {
+                    @module.RenderModule(this.Html)
+                }
+            }
+        </div>
+    }
+</div>
+

@@ -583,6 +583,7 @@
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="config\logviewer.searches.config.js" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Partials\Modules\ImageMitHotspots.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Media\Web.config" />
     <Content Include="config\serilog.user.config" />
