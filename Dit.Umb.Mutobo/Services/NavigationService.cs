@@ -14,10 +14,10 @@ namespace Dit.Umb.Mutobo.Services
     public class NavigationService : BaseService, INavigationService
     {
 
-        private readonly IMutoboContentService _mutoboContentService;
+        private readonly IMutoboSimpleContentService _mutoboContentService;
 
 
-        public NavigationService(IMutoboContentService mutoboContentService)
+        public NavigationService(IMutoboSimpleContentService mutoboContentService)
         {
             _mutoboContentService = mutoboContentService;
         }

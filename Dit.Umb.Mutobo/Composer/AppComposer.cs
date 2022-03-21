@@ -73,6 +73,8 @@ namespace Dit.Umb.Mutobo.Composer
             composition.Register(typeof(ILoggingService), typeof(LoggingService), Lifetime.Singleton);
             composition.Register(typeof(ISeoService), typeof(SeoService), Lifetime.Singleton);
             composition.Register(typeof(ICardService), typeof(CardService), Lifetime.Scope);
+            composition.Register(typeof(IImageHotspotService), typeof(ImageHotspotService), Lifetime.Scope);
+            composition.Register(typeof(IMutoboSimpleContentService), typeof(MutoboSimpleContentService), Lifetime.Scope);
         }
     }
 }

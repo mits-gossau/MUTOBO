@@ -546,5 +546,44 @@ namespace Dit.Umb.Mutobo.Constants
             }
         }
 
+        public static class ImageMitHotspot
+        {
+            public const string Alias = "imageMitHotspots";
+
+            public static class Fields
+            {
+                public const string Image = "image";
+                public const string Hotspots = "hotspots";
+            }
+
+           
+        }
+        public static class ImageHotspotContainer
+        {
+            public const string Alias = "hotspotContainer";
+
+            public static class Fields
+            {
+                public const string Hotspot = "hotspot";
+                public const string X = "percentX";
+                public const string Y = "percentY";
+                public const string Place = "place";
+            }
+        } 
+        
+        public static class ImageHotspot
+        {
+            public const string Alias = "imageHotspot";
+            public const string FolderAlias = "imageHotspots";
+
+            public static class Fields
+            {
+                public const string Title = "title";
+                public const string Modules = "modules";
+            }
+        }
+         
+
+
     }
 }

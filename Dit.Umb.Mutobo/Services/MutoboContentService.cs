@@ -22,18 +22,24 @@ namespace Dit.Umb.Mutobo.Services
         protected readonly ISliderService SliderService;
         protected readonly IConfigurationService ConfigurationService;
         private readonly ICardService _cardService;
+        private readonly IImageHotspotService _imageHotspotService;
+        private readonly IMutoboSimpleContentService _mutoboSimpleContentService;
 
 
         public MutoboContentService(
             IImageService imageService,
             ISliderService sliderService,
             IConfigurationService configurationService,
-            ICardService cardService)
+            ICardService cardService,
+            IImageHotspotService imageHotspotService,
+            IMutoboSimpleContentService mutoboSimpleContentService)
         {
             _cardService = cardService;
             ImageService = imageService;
             SliderService = sliderService;
             ConfigurationService = configurationService;
+            _imageHotspotService = imageHotspotService;
+            _mutoboSimpleContentService = mutoboSimpleContentService;
         }
 
 
@@ -48,28 +54,12 @@ namespace Dit.Umb.Mutobo.Services
                 var elements =
                     content.Value<IEnumerable<IPublishedElement>>(fieldName);
 
+                result.AddRange(_mutoboSimpleContentService.GetSimpleContent(content, fieldName));
+
                 foreach (var element in elements.Select((value, index) => new {index, value}))
                 {
                     switch (element.value.ContentType.Alias)
                     {
-                        case DocumentTypes.Heading.Alias:
-                            result.Add(new Heading(element.value)
-                            {
-                                SortOrder = element.index
-                            });
-                            break;
-                        case DocumentTypes.VideoComponent.Alias:
-                            result.Add(new VideoComponent(element.value)
-                            {
-                                SortOrder = element.index
-                            });
-                            break;
-                        case DocumentTypes.RichTextComponent.Alias:
-                            result.Add(new RichtextComponent(element.value)
-                            {
-                                SortOrder = element.index
-                            });
-                            break;
                         case DocumentTypes.Flyer.Alias:
                             result.Add(new Flyer(element.value)
                             {
@@ -98,24 +88,6 @@ namespace Dit.Umb.Mutobo.Services
                                 DocumentTypes.SliderComponent.Fields.Slides, sliderModule.Width);
                             result.Add(sliderModule);
                             break;
-
-
-             
-                        case DocumentTypes.PictureModule.Alias:
-                            var picModule = new PictureModule(element.value)
-                            {
-                                SortOrder = element.index
-                            };
-                            var isGoldenRatio = (picModule.Height == null && picModule.Width == null);
-                            picModule.Image = element.value.HasValue(DocumentTypes.Picture.Fields.Image)
-                                ? ImageService.GetImage(
-                                    element.value.Value<IPublishedContent>(DocumentTypes.Picture.Fields.Image), 
-                                    height: picModule.Height, 
-                                    width: picModule.Width )
-                                : null;
-                            result.Add(picModule);
-                            break;
-
                         case DocumentTypes.Newsletter.Alias:
                             result.Add(new Newsletter(element.value)
                             {
@@ -210,6 +182,15 @@ namespace Dit.Umb.Mutobo.Services
                                 Cards = _cardService.GetCards(element.value, Constants.DocumentTypes.CardContainer.Fields.Cards),
                                 // set the sort order of the module to ensure the module order
                                 SortOrder = element.index
+                            });
+                            break;
+                        case DocumentTypes.ImageMitHotspot.Alias:
+                            result.Add(new ImageMitHotspots(element.value)
+                            {
+                                Image = element.value.HasValue(DocumentTypes.ImageMitHotspot.Fields.Image)
+                                ? ImageService.GetImage(element.value.Value<IPublishedContent>(DocumentTypes.ImageMitHotspot.Fields.Image))
+                                : null,
+                                Hotspots = _imageHotspotService.GetImageHotspotContainers(element.value, DocumentTypes.ImageMitHotspot.Fields.Hotspots)
                             });
                             break;
                     }
