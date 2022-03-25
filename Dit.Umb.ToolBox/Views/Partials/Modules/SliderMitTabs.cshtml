@@ -1,0 +1,23 @@
+﻿@model Dit.Umb.Mutobo.Modules.SliderMitTabs
+
+<div>
+    <h3>@Model.Title</h3>
+    @Html.Raw(Model.Info)
+    @(Model.BackgroundImg?.RenderWcPictureTag())
+    <p>@Model.BackgroundColor</p>
+
+    @foreach (var Tab in Model.Tabs)
+    {
+        <div>
+            <h3>@Tab.Title</h3>
+            @(Tab.MediaImg?.RenderWcPictureTag())
+            @if (Tab.Modules != null && Tab.Modules.Any())
+            {
+                foreach (var module in Tab.Modules)
+                {
+                    @module.RenderModule(this.Html)
+                }
+            }
+        </div>
+    }
+</div>
