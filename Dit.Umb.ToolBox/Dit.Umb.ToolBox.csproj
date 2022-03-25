@@ -584,6 +584,7 @@
     <Content Include="config\logviewer.searches.config.js" />
     <Content Include="Global.asax" />
     <Content Include="Views\Partials\Modules\ImageMitHotspots.cshtml" />
+    <Content Include="Views\Partials\Modules\SliderMitTabs.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Media\Web.config" />
     <Content Include="config\serilog.user.config" />
@@ -609,7 +610,6 @@
     <Content Include="Views\Partials\Modules\TwoColumnContainer.cshtml" />
     <Content Include="Views\Partials\Modules\ThreeColumnContainer.cshtml" />
     <Content Include="Views\Partials\Modules\FourColumnContainer.cshtml" />
-    <Content Include="Views\Partials\Modules\SliderMitTabs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
