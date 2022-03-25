@@ -609,6 +609,7 @@
     <Content Include="Views\Partials\Modules\TwoColumnContainer.cshtml" />
     <Content Include="Views\Partials\Modules\ThreeColumnContainer.cshtml" />
     <Content Include="Views\Partials\Modules\FourColumnContainer.cshtml" />
+    <Content Include="Views\Partials\Modules\SliderMitTabs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
