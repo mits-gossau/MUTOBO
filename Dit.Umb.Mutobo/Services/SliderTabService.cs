@@ -34,33 +34,17 @@ namespace Dit.Umb.Mutobo.Services
 
             foreach (var tab in content.Value<IEnumerable<IPublishedContent>>(fieldName))
             {
-                SliderTab t = new SliderTab(tab)
+                result.Add(new SliderTab(tab)
                 {
                     Modules = _contentService.GetSimpleContent(tab, DocumentTypes.SliderTab.Fields.Modules),
                     BackgroundImg = tab.HasValue(DocumentTypes.SliderTab.Fields.BackgroundImg)
                         ? _imageService.GetImage(tab.Value<IPublishedContent>(DocumentTypes.SliderTab.Fields.BackgroundImg))
+                        : null,
+                    Media = tab.HasValue(DocumentTypes.SliderTab.Fields.Media)
+                        ? _contentService.GetSimpleContent(tab, DocumentTypes.SliderTab.Fields.Media).FirstOrDefault()
                         : null
-                };
-
-                if (tab.HasValue(DocumentTypes.SliderTab.Fields.Media))
-                {
-                    var node = tab.Value<IEnumerable<IPublishedElement>>(DocumentTypes.SliderTab.Fields.Media).FirstOrDefault();
-                    try
-                    {
-                        //t.MediaImg = _imageService.GetImage(node);
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            //t.MediaVideo = _videoService.GetVideo(node);
-                        }
-                        catch { }
-                    }
-                }
-
-                result.Add(t);
-            }
+                });
+            };
 
             return result;
         }

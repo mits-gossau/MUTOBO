@@ -1,16 +1,34 @@
-﻿@model Dit.Umb.Mutobo.Modules.SliderMitTabs
+﻿
+@using PictureModule = Dit.Umb.Mutobo.Modules.PictureModule
+@using VideoComponent = Dit.Umb.Mutobo.Modules.VideoComponent
+
+@model Dit.Umb.Mutobo.Modules.SliderMitTabs
 
 <div>
     <h3>@Model.Title</h3>
     @Html.Raw(Model.Info)
+
+    Background: @Model.BackgroundColor Fix:@Model.BackgroundFix
     @(Model.BackgroundImg?.RenderWcPictureTag())
-    <p>@Model.BackgroundColor</p>
 
     @foreach (var Tab in Model.Tabs)
     {
         <div>
             <h3>@Tab.Title</h3>
-            @(Tab.MediaImg?.RenderWcPictureTag())
+            Media:
+            @if (Tab.Media is PictureModule img)
+            {
+                @img.RenderModule(this.Html)
+            }
+            else if (Tab.Media is VideoComponent vid)
+            {
+                @vid.RenderModule(this.Html)
+            }
+
+            Background: @Tab.BackgroundColor
+            @(Tab.BackgroundImg?.RenderWcPictureTag())
+            <br />
+            Modules:
             @if (Tab.Modules != null && Tab.Modules.Any())
             {
                 foreach (var module in Tab.Modules)
@@ -21,3 +39,5 @@
         </div>
     }
 </div>
+
+

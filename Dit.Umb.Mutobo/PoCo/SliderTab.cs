@@ -16,8 +16,7 @@ namespace Dit.Umb.Mutobo.PoCo
            ? this.Value<string>(DocumentTypes.SliderTab.Fields.Title)
            : string.Empty;
 
-        public Image MediaImg { get; set; }
-        public Video MediaVideo { get; set; }
+        public MutoboContentModule Media { get; set; }
 
         public IEnumerable<MutoboContentModule> Modules { get; set; }
 
