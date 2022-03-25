@@ -51,5 +51,16 @@ namespace Dit.Umb.Mutobo.Constants
             public const string PrivacyStatement = "newsletter.PrivacyStatement";
 
         }
+
+        public static class ScreenReader
+        {
+            public static class ImageHotspot
+            {
+                public const string Title = "sr.ImageHotspot.title";
+                public const string Manual = "sr.ImageHotspot.manual";
+                public const string OpenHotspot = "sr.ImageHotspot.openHotspot";
+                public const string CloseHotspot = "sr.ImageHotspot.closeHotspot";
+            }
+        }
     }
 }

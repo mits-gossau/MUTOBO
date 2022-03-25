@@ -4,7 +4,7 @@ using Dit.Umb.Mutobo.PoCo;
 
 namespace Dit.Umb.Mutobo.Interfaces
 {
-    public interface IVideoComponent
+    public interface IVideoComponent: IModule
     {
         Video Video { get;  }
         String Embedded { get; }

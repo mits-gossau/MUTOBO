@@ -7,6 +7,7 @@ namespace Dit.Umb.Mutobo.Interfaces
     {
         string ModuleTitle { get; }
         bool SpacerAfterModule { get; }
+        string Anchor { get; set; }
         IHtmlString RenderModule(HtmlHelper helper);
     }
 }
