@@ -367,13 +367,16 @@
     <Compile Include="Enum\EImageHotspotPlace.cs" />
     <Compile Include="Enum\EPersonalCardDisplayType.cs" />
     <Compile Include="Enum\EProjectStatus.cs" />
+    <Compile Include="Extentions\HtmlHelperExtensions.cs" />
     <Compile Include="Interfaces\ICardService.cs" />
     <Compile Include="Interfaces\IImageHotspotService.cs" />
     <Compile Include="Interfaces\IMutoboSimpleContentService.cs" />
+    <Compile Include="Interfaces\ISliderTabService.cs" />
     <Compile Include="Logging\AzureTableLogViewer.cs" />
     <Compile Include="Modules\CardContainer.cs" />
     <Compile Include="Modules\FourColumnContainer.cs" />
     <Compile Include="Modules\ImageMitHotspots.cs" />
+    <Compile Include="Modules\SliderMitTabs.cs" />
     <Compile Include="Modules\ThreeColumnContainer.cs" />
     <Compile Include="Modules\TwoColumnContainer.cs" />
     <Compile Include="PoCo\AppointmentCard.cs" />
@@ -381,6 +384,7 @@
     <Compile Include="PoCo\ImageHotspotContainer.cs" />
     <Compile Include="PoCo\PersonnelCard.cs" />
     <Compile Include="PoCo\ProjectCard.cs" />
+    <Compile Include="PoCo\SliderTab.cs" />
     <Compile Include="Services\CardService.cs" />
     <Compile Include="Modules\Quote.cs" />
     <Compile Include="PoCo\Card.cs" />
@@ -532,6 +536,7 @@
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Services\SeoService.cs" />
     <Compile Include="Services\SliderService.cs" />
+    <Compile Include="Services\SliderTabService.cs" />
     <Compile Include="Services\TeaserService.cs" />
     <Compile Include="Services\ThemeService.cs" />
     <Compile Include="Services\VideoService.cs" />

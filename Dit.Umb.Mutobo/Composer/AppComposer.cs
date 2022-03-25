@@ -75,6 +75,7 @@ namespace Dit.Umb.Mutobo.Composer
             composition.Register(typeof(ICardService), typeof(CardService), Lifetime.Scope);
             composition.Register(typeof(IImageHotspotService), typeof(ImageHotspotService), Lifetime.Scope);
             composition.Register(typeof(IMutoboSimpleContentService), typeof(MutoboSimpleContentService), Lifetime.Scope);
+            composition.Register(typeof(ISliderTabService), typeof(SliderTabService), Lifetime.Scope);
         }
     }
 }

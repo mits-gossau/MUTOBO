@@ -24,6 +24,7 @@ namespace Dit.Umb.Mutobo.Services
         private readonly ICardService _cardService;
         private readonly IImageHotspotService _imageHotspotService;
         private readonly IMutoboSimpleContentService _mutoboSimpleContentService;
+        private readonly ISliderTabService _sliderTabService;
 
 
         public MutoboContentService(
@@ -32,7 +33,8 @@ namespace Dit.Umb.Mutobo.Services
             IConfigurationService configurationService,
             ICardService cardService,
             IImageHotspotService imageHotspotService,
-            IMutoboSimpleContentService mutoboSimpleContentService)
+            IMutoboSimpleContentService mutoboSimpleContentService,
+            ISliderTabService sliderTabService)
         {
             _cardService = cardService;
             ImageService = imageService;
@@ -40,6 +42,7 @@ namespace Dit.Umb.Mutobo.Services
             ConfigurationService = configurationService;
             _imageHotspotService = imageHotspotService;
             _mutoboSimpleContentService = mutoboSimpleContentService;
+            _sliderTabService = sliderTabService;
         }
 
 
@@ -187,16 +190,25 @@ namespace Dit.Umb.Mutobo.Services
                         case DocumentTypes.ImageMitHotspot.Alias:
                             result.Add(new ImageMitHotspots(element.value)
                             {
+                                SortOrder = element.index,
                                 Image = element.value.HasValue(DocumentTypes.ImageMitHotspot.Fields.Image)
                                 ? ImageService.GetImage(element.value.Value<IPublishedContent>(DocumentTypes.ImageMitHotspot.Fields.Image))
                                 : null,
                                 Hotspots = _imageHotspotService.GetImageHotspotContainers(element.value, DocumentTypes.ImageMitHotspot.Fields.Hotspots)
                             });
                             break;
+                        case DocumentTypes.SliderMitTabs.Alias:
+                            result.Add(new SliderMitTabs(element.value)
+                            {
+                                SortOrder = element.index,
+                                Tabs = _sliderTabService.GetTabs(element.value, DocumentTypes.SliderMitTabs.Fields.Tabs),
+                                BackgroundImg = ImageService.GetImage(element.value.Value<IPublishedContent>(DocumentTypes.SliderMitTabs.Fields.BackgroundImg))
+                            });
+                            break;
                     }
                 }
 
-                return result;
+                return result.OrderBy(e => e.SortOrder);
             }
 
             return null;

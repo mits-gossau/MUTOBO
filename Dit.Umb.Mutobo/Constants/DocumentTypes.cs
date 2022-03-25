@@ -582,6 +582,38 @@ namespace Dit.Umb.Mutobo.Constants
                 public const string Modules = "modules";
             }
         }
+
+
+        public static class SliderMitTabs
+        {
+            public const string Alias = "sliderMitTabs";
+
+            public static class Fields
+            {
+                public const string Title = "title";
+                public const string Info = "info";
+                public const string Tabs = "tabs";
+                public const string BackgroundColor = "backgroundColor";
+                public const string BackgroundImg = "backgroundImg";
+                public const string BackgroundFix = "backgroundFix";
+            }
+        }
+
+
+        public static class SliderTab
+        {
+            public const string Alias = "sliderTab";
+            public const string FolderAlias = "sliderTabs";
+
+            public static class Fields
+            {
+                public const string Title = "title";
+                public const string Media = "media";
+                public const string Modules = "modules";
+                public const string BackgroundColor = "backgroundColor";
+                public const string BackgroundImg = "backgroundImg";
+            }
+        }
          
 
 
