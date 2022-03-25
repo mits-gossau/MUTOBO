@@ -1,14 +1,12 @@
 ﻿using Dit.Umb.Mutobo.Constants;
 using Dit.Umb.Mutobo.Interfaces;
 using Dit.Umb.Mutobo.PoCo;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Core.PropertyEditors;
 using Umbraco.Web;
 
 namespace Dit.Umb.Mutobo.Services
@@ -47,27 +45,4 @@ namespace Dit.Umb.Mutobo.Services
             return result;
         }
     }
-
-	public class Hotspot
-	{
-        [JsonProperty("left")]
-        public int Left { get; set; }
-        [JsonProperty("top")]
-        public int Top { get; set; }
-        [JsonProperty("percentX")]
-        public decimal PercentX { get; set; }
-        [JsonProperty("percentY")]
-        public decimal PercentY { get; set; }
-        [JsonProperty("width")]
-        public int Width { get; set; }
-        [JsonProperty("height")]
-        public int Height { get; set; }
-        [JsonProperty("image")]
-        public string Image { get; set; }
-
-		public override string ToString()
-		{
-			return "left: " + PercentX + "%; top: " + PercentY + "%;";
-		}
-	}
 }
