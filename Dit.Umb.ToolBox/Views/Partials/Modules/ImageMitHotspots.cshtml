@@ -1,20 +1,41 @@
-﻿@model Dit.Umb.Mutobo.Modules.ImageMitHotspots
+﻿@using Dit.Umb.Mutobo.Extentions
+@using Dit.Umb.Mutobo.Constants
+@model Dit.Umb.Mutobo.Modules.ImageMitHotspots
 
-<div>
-    @(Model.Image?.RenderWcPictureTag())
-    @foreach (var Container in Model.Hotspots)
+<m-image-hotspot>
+    @(Model.Image?.RenderWcPictureTag(null, null, "hotspot-picture-", "", true))
+    <h6 class="sr-only">
+        @Html.UmbracoTranslation(DictionaryKeys.ScreenReader.ImageHotspot.Title)
+    </h6>
+    <p class="sr-only">
+        @Html.UmbracoTranslation(DictionaryKeys.ScreenReader.ImageHotspot.Manual)
+    </p>
+    @if (Model.Hotspots != null && Model.Hotspots.Any())
     {
-        <div>
-            <p>X = @Container.X Y = @Container.Y Place = @Container.Place</p>
-            <p>@Container.Hotspot.Title</p>
-            @if (Container.Hotspot.Modules != null && Container.Hotspot.Modules.Any())
+        foreach (var Container in Model.Hotspots)
+        {
+            if (Container.Y > 0 && Container.X > 0)
             {
-                foreach (var module in Container.Hotspot.Modules)
-                {
-                    @module.RenderModule(this.Html)
-                }
+                <a-hotspot top="@Container.Y" left="@Container.X" place="@Container.Place">
+                    <span class="sr-only sr-open" aria-hidden="false">
+                        @Html.UmbracoTranslation(DictionaryKeys.ScreenReader.ImageHotspot.OpenHotspot)
+                    </span>
+                    <span class="sr-only sr-close" aria-hidden="true">
+                        @Html.UmbracoTranslation(DictionaryKeys.ScreenReader.ImageHotspot.CloseHotspot)
+                    </span>
+                    <div class="content">
+                        <h3>@Container.Hotspot.Title</h3>
+                        @if (Container.Hotspot.Modules != null && Container.Hotspot.Modules.Any())
+                        {
+                            foreach (var module in Container.Hotspot.Modules)
+                            {
+                                @module.RenderModule(this.Html)
+                            }
+                        }
+                    </div>
+                </a-hotspot>
             }
-        </div>
+        }
     }
-</div>
+</m-image-hotspot>
 
