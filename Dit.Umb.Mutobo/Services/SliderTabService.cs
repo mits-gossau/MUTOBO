@@ -15,14 +15,12 @@ namespace Dit.Umb.Mutobo.Services
     {
         protected readonly IMutoboSimpleContentService _contentService;
         protected readonly IImageService _imageService;
-        protected readonly IVideoService _videoService;
 
-
-        public SliderTabService(IMutoboSimpleContentService contentService, IImageService imageService, IVideoService videoService)
+        public SliderTabService(IMutoboSimpleContentService contentService, 
+            IImageService imageService)
         {
             _contentService = contentService;
             _imageService = imageService;
-            _videoService = videoService;
         }
 
         public IEnumerable<SliderTab> GetTabs(IPublishedElement content, string fieldName)
@@ -32,16 +30,20 @@ namespace Dit.Umb.Mutobo.Services
 
             var result = new List<SliderTab>();
 
-            foreach (var tab in content.Value<IEnumerable<IPublishedContent>>(fieldName))
+            foreach (var tab in content.Value<IEnumerable<IPublishedContent>>(fieldName)
+                .Select((value, index) => new { index, value }))
             {
-                result.Add(new SliderTab(tab)
+                result.Add(new SliderTab(tab.value)
                 {
-                    Modules = _contentService.GetSimpleContent(tab, DocumentTypes.SliderTab.Fields.Modules),
-                    BackgroundImg = tab.HasValue(DocumentTypes.SliderTab.Fields.BackgroundImg)
-                        ? _imageService.GetImage(tab.Value<IPublishedContent>(DocumentTypes.SliderTab.Fields.BackgroundImg))
+                    DataId = tab.index,
+                    Modules = _contentService.GetSimpleContent(tab.value, DocumentTypes.SliderTab.Fields.Modules),
+                    BackgroundImg = tab.value.HasValue(DocumentTypes.SliderTab.Fields.BackgroundImg)
+                        ? _imageService.GetImage(
+                            tab.value.Value<IPublishedContent>(DocumentTypes.SliderTab.Fields.BackgroundImg))
                         : null,
-                    Media = tab.HasValue(DocumentTypes.SliderTab.Fields.Media)
-                        ? _contentService.GetSimpleContent(tab, DocumentTypes.SliderTab.Fields.Media).FirstOrDefault()
+                    Media = tab.value.HasValue(DocumentTypes.SliderTab.Fields.Media)
+                        ? _contentService.GetSimpleContent(
+                            tab.value, DocumentTypes.SliderTab.Fields.Media).FirstOrDefault()
                         : null
                 });
             };

@@ -12,6 +12,7 @@ namespace Dit.Umb.Mutobo.PoCo
 {
     public class SliderTab : PublishedContentModel
     {
+        public int DataId { get; set; }
         public string Title => this.HasValue(DocumentTypes.SliderTab.Fields.Title)
            ? this.Value<string>(DocumentTypes.SliderTab.Fields.Title)
            : string.Empty;

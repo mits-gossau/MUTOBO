@@ -4,40 +4,80 @@
 
 @model Dit.Umb.Mutobo.Modules.SliderMitTabs
 
-<div>
-    <h3>@Model.Title</h3>
-    @Html.Raw(Model.Info)
+@if (Model.SpacerBeforeModule)
+{
+    <div class="spacer"></div>
+}
 
-    Background: @Model.BackgroundColor Fix:@Model.BackgroundFix
-    @(Model.BackgroundImg?.RenderWcPictureTag())
-
+<o-wrapper no-space @(Model.Anchor != string.Empty ? $"id={Model.Anchor}" : "")>
+    <h2>@Model.Title</h2>
+    @if (Model.Info != null)
+    {
+        @Html.Raw(Model.Info)
+    }
+</o-wrapper>
+<m-slider>
     @foreach (var Tab in Model.Tabs)
     {
-        <div>
-            <h3>@Tab.Title</h3>
-            Media:
-            @if (Tab.Media is PictureModule img)
+        string NavImg = null, NavColor = null;
+        if (Model.BackgroundFix)
+        {
+            if (Model.BackgroundImg != null)
             {
-                @img.RenderModule(this.Html)
+                NavImg = Model.BackgroundImg?.DefaultSource.Src;
             }
-            else if (Tab.Media is VideoComponent vid)
+            else
             {
-                @vid.RenderModule(this.Html)
+                NavColor = Model.BackgroundColor;
             }
+        }
+        else
+        {
+            if (Tab.BackgroundImg != null)
+            {
+                NavImg = Tab.BackgroundImg?.DefaultSource.Src;
+            }
+            else
+            {
+                NavColor = Tab.BackgroundColor;
+            }
+        }
 
-            Background: @Tab.BackgroundColor
-            @(Tab.BackgroundImg?.RenderWcPictureTag())
-            <br />
-            Modules:
-            @if (Tab.Modules != null && Tab.Modules.Any())
-            {
-                foreach (var module in Tab.Modules)
+        <a-slider-tab @(NavImg != null ? 
+            $"nav-img=\"{NavImg}\"" : $"nav-color=\"{NavColor}\"")
+                      data-index="@Tab.DataId">
+            <div class="nav">
+                @if (Tab.Media is PictureModule img)
                 {
-                    @module.RenderModule(this.Html)
+                    @(img.Image?.RenderWcPictureTag(useSources:true))
                 }
-            }
-        </div>
+                else if (Tab.Media is VideoComponent vid)
+                {
+                    @vid.RenderModule(this.Html)
+                }
+            </div>
+            <div class="content">
+                <h3>@Tab.Title</h3>
+                @if (Tab.Modules != null && Tab.Modules.Any())
+                {
+                    foreach (var module in Tab.Modules)
+                    {
+                        @module.RenderModule(this.Html)
+                    }
+                }
+            </div>
+        </a-slider-tab>
+
     }
-</div>
+    <div class="tab-slider">
+        @foreach (var Tab in Model.Tabs)
+        {
+            <span class="milestone" data-index="@Tab.DataId">@Tab.Title</span>
+        }
+    </div>
+</m-slider>
 
-
+@if (Model.SpacerBeforeModule)
+{
+    <div class="spacer"></div>
+}
